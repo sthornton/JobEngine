@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Common", "..\..\Projects\JobEngine.Common\JobEngine.Common.csproj", "{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Core.Persistence", "..\..\Projects\JobEngine.Core.Persistence\JobEngine.Core.Persistence.csproj", "{C7304D19-A3F8-40B3-9757-5CDD3EE8EBEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Core.Persistence.Tests", "..\..\Projects\JobEngine.Core.Persistence.Tests\JobEngine.Core.Persistence.Tests.csproj", "{247BB4BD-AF55-402E-A5D1-45E1C363F2FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Core.WebApi", "..\..\Projects\JobEngine.Core.WebApi\JobEngine.Core.WebApi.csproj", "{69AA0BBE-F93A-4BB5-B171-C83714DBC0D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Models", "..\..\Projects\JobEngine.Models\JobEngine.Models.csproj", "{497393AB-4F09-4E3B-BA8E-0C5985E97F21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7304D19-A3F8-40B3-9757-5CDD3EE8EBEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7304D19-A3F8-40B3-9757-5CDD3EE8EBEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7304D19-A3F8-40B3-9757-5CDD3EE8EBEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7304D19-A3F8-40B3-9757-5CDD3EE8EBEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{247BB4BD-AF55-402E-A5D1-45E1C363F2FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{247BB4BD-AF55-402E-A5D1-45E1C363F2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{247BB4BD-AF55-402E-A5D1-45E1C363F2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{247BB4BD-AF55-402E-A5D1-45E1C363F2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69AA0BBE-F93A-4BB5-B171-C83714DBC0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69AA0BBE-F93A-4BB5-B171-C83714DBC0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69AA0BBE-F93A-4BB5-B171-C83714DBC0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69AA0BBE-F93A-4BB5-B171-C83714DBC0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,109 @@
+﻿@model JobEngine.Web.Areas.AssemblyJobs.Models.AssemblyJobViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<form action="@Url.Action("Edit")" method="post" enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Assembly Job</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AssemblyJobId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PluginName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PluginName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PluginName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PluginFileName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PluginFileName, new { @class = "form-control", @readonly = "readonly", @style = "max-width:300px;" })
+                @Html.ValidationMessageFor(model => model.PluginFileName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.File, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.File, new { type = "file", @style = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    
+</form>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    <p>
+        @Html.ActionLink("Add Parameters", "AddParameter", new { id = Model.AssemblyJobId })
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].DataType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].IsRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].InputValidationRegExPattern)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].IsEncrypted)
+            </th>
+        </tr>
+
+        @if (Model.AssemblyJobParameters != null)
+        {
+            foreach (var item in Model.AssemblyJobParameters)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(param => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(param => item.DataType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(param => item.IsRequired)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(param => item.InputValidationRegExPattern)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(param => item.IsEncrypted)
+                    </td>
+                </tr>
+            }
+        }
+
+
+    </table>
+
+
+

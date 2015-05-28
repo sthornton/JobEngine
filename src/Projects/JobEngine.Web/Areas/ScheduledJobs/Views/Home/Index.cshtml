@@ -1,0 +1,140 @@
+﻿@model IEnumerable<JobEngine.Web.Areas.ScheduledJobs.Models.ScheduledJobViewModel>
+
+@{
+    ViewBag.Title = "Scheduled Jobs";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+}
+
+@section style
+{
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mainTable").DataTable();
+        });
+    </script>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="mainTable" class="display" style="text-align:center;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobEngineClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Result
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastExecutionTime)
+            </th>
+            <th>
+                Active
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:left">
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobEngineClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @if (item.LastExecutionResult == null)
+                {
+                    <td>
+                        <div class="label label-primary">
+                            NOT EXECUTED
+                        </div>
+                    </td>
+                }
+                else if (item.LastExecutionResult.ToLower() == "success")
+                {
+                    <td>
+                        <div class="label label-success">
+                            @Html.DisplayFor(modelItem => item.LastExecutionResult)
+                        </div>
+                    </td>
+                }
+                else if (item.LastExecutionResult.ToLower() == "error")
+                {
+                    <td>
+                        <div class="label label-danger">
+                            @Html.DisplayFor(modelItem => item.LastExecutionResult)
+                        </div>
+                    </td>
+                }
+                else if (item.LastExecutionResult.ToLower() == "warning")
+                {
+                    <td>
+                        <div class="label label-warning">
+                            @Html.DisplayFor(modelItem => item.LastExecutionResult)
+                        </div>
+                    </td>
+                }
+                else if (item.LastExecutionResult.ToLower() == "fatal")
+                {
+                    <td>
+                        <div class="label label-danger">
+                            @Html.DisplayFor(modelItem => item.LastExecutionResult)
+                        </div>
+                    </td>
+                }
+                <td>
+                    @if (item.LastExecutionTime.HasValue)
+                    {
+                        @Html.DisplayFor(modelItem => item.LastExecutionTime.Value)
+                    }
+
+                </td>
+
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.ActionLink("Trigger Now", "TriggerNow", new { id = item.ScheduledJobId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledJobId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ScheduledJobId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ScheduledJobId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

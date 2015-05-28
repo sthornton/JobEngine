@@ -1,0 +1,115 @@
+﻿@model JobEngine.Web.Areas.AssemblyJobs.Models.AssemblyJobViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<div>
+    <h4>Assembly Job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PluginName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PluginName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PluginFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PluginFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateModified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateModified)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AssemblyJobId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<br />
+<h4>
+    Parameters
+</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].DataType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].IsRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].InputValidationRegExPattern)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyJobParameters[0].IsEncrypted)
+        </th>
+    </tr>
+
+    @if (Model.AssemblyJobParameters != null)
+    {
+        foreach (var item in Model.AssemblyJobParameters)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(param => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.DataType)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.IsRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.InputValidationRegExPattern)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.IsEncrypted)
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>
+

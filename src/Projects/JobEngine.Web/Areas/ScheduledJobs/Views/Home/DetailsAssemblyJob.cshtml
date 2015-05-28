@@ -1,0 +1,69 @@
+﻿@model JobEngine.Web.Areas.ScheduledJobs.Models.ScheduledAssemblyJobViewModel
+
+@{
+    ViewBag.Title = "Scheduled Job Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+
+<div>
+    <h4>@Model.Name</h4>
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Customers, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SelectedCustomerId, Model.Customers, new { @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobEngineClients, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SelectedJobEngineClientId, Model.JobEngineClients, new { @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @disabled = "disabled", @style = "max-width:300px;" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CronSchedule, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CronSchedule,  new { @class = "form-control", @disabled = "disabled", @style = "max-width:300px;"  })
+                @Html.ValidationMessageFor(model => model.CronSchedule, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { @disabled = "disabled" })
+                    </label>
+                </div>
+            </div>
+        </div>
+        @for (int i = 0; i < Model.AssemblyJobParameters.Count(); i++)
+        {
+            <div class="form-group">
+                @Html.HiddenFor(m => m.AssemblyJobParameters[i].Name)
+                @Html.Label(Model.AssemblyJobParameters[i].Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.AssemblyJobParameters[i].Value,  new { @class = "form-control", @disabled = "disabled", @style = "max-width:300px;"  })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduledJobId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

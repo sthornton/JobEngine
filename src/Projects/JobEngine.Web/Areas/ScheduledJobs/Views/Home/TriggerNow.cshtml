@@ -1,0 +1,171 @@
+﻿@model JobEngine.Web.Areas.ScheduledJobs.Models.TriggerNowJobResultsViewModel
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+    <script>
+        $(document).ready(function () {
+            poll();
+            function poll() {
+                var id = $('#JobExecutionQueueId').val();
+                setTimeout(function () {
+                    $.ajax({
+                        url: "../GetJobExecutionQueueStatus",
+                        data: {
+                            jobExecutionQueueId: id
+                        },
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.Status == "SUCCESS") {
+                                $("#jobStatus").html("<div><i style='color:green;' class='fa fa-check fa-2x'></i></div>");
+                            }
+                            else
+                            {
+                                $("#jobStatus").text(data.Status.replace("_", " ").replace("_", " ").replace("_"," "));
+                            }
+                            $("#clientPickup").text(data.ClientPickup);
+                            $('#totalExecutionTime').text(data.TotalExecutionTime);
+                            if (logs != null)
+                            {
+                                var logText = '';
+                                for (var i = 0; i < data.Logs.length; i++) {
+                                    if (data.Logs[i].LogLevel == 0 || data.Logs[i].LogLevel == 1) {
+                                        logText += '<span style = "color:#348fe2;">' + data.Logs[i].Date + ' -- ' + data.Logs[i].Message + '</span><br>';
+                                    }
+                                    else {
+                                        logText += data.Logs[i].Date + ' -- ' + data.Logs[i].Message + '<br>';
+                                    }
+                                }
+                                $('#logs').html(logText);
+                            }
+                           
+                            if (data.TotalExecutionTime == null) {
+                                poll(); // poll till the end of the job
+                            }
+                           
+                        }, dataType: "json"
+                    });
+                }, 1000);
+            }
+        });
+    </script>
+
+@section style
+{
+    <style>
+        .box-header{
+            font-size:15px;
+        }
+        .box-color {
+             background-color:#dddcdc;
+        }
+        .widget {
+             text-align:left;            
+              color: #353535;
+              padding: 15px;
+              overflow: hidden;
+                margin-bottom: 20px;
+              display: block;
+              height:120px;
+            }
+      .box-value{
+          text-align:center;
+          font-size:16px;
+          height:500px;
+          margin-top:25px;
+      }
+
+      .line {
+          width:100%;
+          height:1px;
+          margin-top:3px;
+          margin-bottom:15px;
+          background-color:#353535;
+      }
+
+      .console-log {
+          padding:15px;
+          height:100%;
+          min-height:300px;
+         background: #dddcdc;
+         color:353535;
+      }
+        
+    </style>
+}
+<div>
+     <h3>@ViewBag.JobTitle</h3>
+    <hr />
+    <div class="row">
+        @Html.HiddenFor(x => x.JobExecutionQueueId)
+
+        <div class="col-lg-3 col-md-6">
+            <div class="box-color widget">
+                <div class="box-header">
+                    CURRENT STATUS<div class="fa fa-flag fa-fw" style="float:right;"></div>
+                </div>
+                <div class="line"></div>
+                <div id="jobStatus" class="box-value" >
+                    @Model.JobExecutionStatus.ToString().Replace("_"," ")
+                </div>                         
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="box-color widget">
+                <div class="box-header">
+                    ENTERED QUEUE<div class="fa fa-play fa-fw" style="float:right;"></div>
+                </div>
+                <div class="line"></div>
+                <div class="box-value">
+                    @Model.DateEnteredQueue.ToString()
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="box-color widget">
+                <div class="box-header">
+                    CLIENT PICKUP<div class="fa fa-exchange fa-fw" style="float:right;"></div>
+                </div>
+                <div class="line"></div>
+                <div id="clientPickup" class="box-value">
+                    @Model.DateReceivedByClient.ToString()
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="box-color widget">
+                <div class="box-header">
+                    EXECUTION TIME (ms)<div class="fa fa-clock-o fa-fw" style="float:right;"></div>
+                </div>
+                <div class="line"></div>
+                <div id="totalExecutionTime" class="box-value">
+                    @Model.TotalExecutionTimeInMs
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Live Log Results</h3>
+            <hr />
+        </div>
+       
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="logs" class="console-log">
+
+            </div>
+        </div>
+    </div>
+   
+
+</div>
+<br />
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

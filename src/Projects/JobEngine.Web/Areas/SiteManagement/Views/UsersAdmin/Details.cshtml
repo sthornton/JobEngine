@@ -1,0 +1,56 @@
+﻿@model JobEngine.Web.Areas.SiteManagement.Models.ApplicationUser
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+<h2>User</h2>
+<div>
+    <h4>@Model.UserName</h4>
+    <table class="table">
+        <tr>
+            <td>Username</td>
+            <td>
+                @Html.DisplayFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                @Model.Email
+            </td>
+        </tr>
+        <tr>
+            <td>Lockout Enabled</td>
+            <td>@Html.DisplayFor(model => model.LockoutEnabled)</td>
+        </tr>
+        <tr>
+            <td>
+                Phone Number
+            </td>
+            <td>
+                @Model.PhoneNumber
+            </td>
+        </tr>
+    </table>
+</div>
+<h4>Roles</h4>
+@if (ViewBag.RoleNames.Count == 0)
+{
+    <hr />
+    <p>No roles found for this user.</p>
+}
+<table class="table">
+    @foreach (var item in ViewBag.RoleNames)
+    {
+        <tr>
+            <td>
+                @item
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

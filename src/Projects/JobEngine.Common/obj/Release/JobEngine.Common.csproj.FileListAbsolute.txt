@@ -1,0 +1,5 @@
+C:\Zebra\Source\Job Engine\JobEngine.Common\bin\Release\JobEngine.Common.dll
+C:\Zebra\Source\Job Engine\JobEngine.Common\bin\Release\JobEngine.Common.pdb
+C:\Zebra\Source\Job Engine\JobEngine.Common\obj\Release\JobEngine.Common.csprojResolveAssemblyReference.cache
+C:\Zebra\Source\Job Engine\JobEngine.Common\obj\Release\JobEngine.Common.dll
+C:\Zebra\Source\Job Engine\JobEngine.Common\obj\Release\JobEngine.Common.pdb

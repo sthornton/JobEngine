@@ -1,0 +1,102 @@
+﻿@model JobEngine.Web.Areas.Configuration.Models.AutomationJobViewModel
+
+@{
+    ViewBag.Title = "Add Parameters";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<h2>AddParameters</h2>
+
+<div>
+    <h4>AutomationJobViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateModified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateModified)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Add Parameters", "AddParameter", new { id = Model.AutomationJobId })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AutomationJobParameters[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutomationJobParameters[0].DataType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutomationJobParameters[0].IsRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutomationJobParameters[0].InputValidationRegExPattern)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutomationJobParameters[0].IsEncrypted)
+        </th>
+    </tr>
+
+    @if (Model.AutomationJobParameters != null)
+    {
+        foreach (var item in Model.AutomationJobParameters)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(param => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.DataType)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.IsRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.InputValidationRegExPattern)
+                </td>
+                <td>
+                    @Html.DisplayFor(param => item.IsEncrypted)
+                </td>
+            </tr>
+        }
+    }
+   
+
+</table>
+
+
+
+   
+

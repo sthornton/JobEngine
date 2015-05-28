@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/default-theme.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+
+    @model JobEngine.Web.Areas.SiteManagement.Models.LoginViewModel
+
+    <div class="container">
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            @Html.HiddenFor(m => m.ReturnUrl, new { @Value = Request["ReturnUrl"] })
+
+            <div style="text-align:center;"><h2 class="form-signin-heading">Sign In</h2></div>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input name="Username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus value="@Model.Username">
+            <br/>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input name="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required value="@Model.Password">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Sign in</button>
+            <br />
+            if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Message</div>
+            }
+        }
+    </div>
+</body>
+</html>
+

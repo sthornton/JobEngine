@@ -1,0 +1,83 @@
+﻿@model IEnumerable<JobEngine.Web.Areas.Clients.Models.JobEngineClientViewModel>
+
+@{
+    ViewBag.Title = "Job Engine Clients";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mainTable").DataTable();
+        });
+    </script>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="mainTable" class="display">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HostName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IpAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsEnabled)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.LastConnected)
+            </th>         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HostName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IpAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsEnabled)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastConnected)
+                </td>
+             
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.JobEngineClientId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.JobEngineClientId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.JobEngineClientId })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

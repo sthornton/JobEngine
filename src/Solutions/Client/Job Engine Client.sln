@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyJobExecuter", "..\..\Projects\AssemblyJobExecuter\AssemblyJobExecuter.csproj", "{F367EA91-43D8-465C-A927-5B1B945200F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyJobHelper", "..\..\Projects\AssemblyJobHelper\AssemblyJobHelper.csproj", "{EC386CA0-B465-463A-83B7-0A8C98A0B34A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ping", "..\..\Projects\AssemblyJobs\Ping\Ping.csproj", "{C85576AF-E6D3-42D6-876A-B5FF13A3C57F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Client", "..\..\Projects\JobEngine.Client\JobEngine.Client.csproj", "{705C2B15-F598-4C48-B3EE-1141DCFC7468}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Client.Shell", "..\..\Projects\JobEngine.Client.Shell\JobEngine.Client.Shell.csproj", "{C2D08CE5-F66F-4D74-AB67-67BB4D1A5A43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Common", "..\..\Projects\JobEngine.Common\JobEngine.Common.csproj", "{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobEngine.Models", "..\..\Projects\JobEngine.Models\JobEngine.Models.csproj", "{497393AB-4F09-4E3B-BA8E-0C5985E97F21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F367EA91-43D8-465C-A927-5B1B945200F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F367EA91-43D8-465C-A927-5B1B945200F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F367EA91-43D8-465C-A927-5B1B945200F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F367EA91-43D8-465C-A927-5B1B945200F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC386CA0-B465-463A-83B7-0A8C98A0B34A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC386CA0-B465-463A-83B7-0A8C98A0B34A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC386CA0-B465-463A-83B7-0A8C98A0B34A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC386CA0-B465-463A-83B7-0A8C98A0B34A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C85576AF-E6D3-42D6-876A-B5FF13A3C57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C85576AF-E6D3-42D6-876A-B5FF13A3C57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85576AF-E6D3-42D6-876A-B5FF13A3C57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85576AF-E6D3-42D6-876A-B5FF13A3C57F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{705C2B15-F598-4C48-B3EE-1141DCFC7468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705C2B15-F598-4C48-B3EE-1141DCFC7468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705C2B15-F598-4C48-B3EE-1141DCFC7468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705C2B15-F598-4C48-B3EE-1141DCFC7468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2D08CE5-F66F-4D74-AB67-67BB4D1A5A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2D08CE5-F66F-4D74-AB67-67BB4D1A5A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2D08CE5-F66F-4D74-AB67-67BB4D1A5A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2D08CE5-F66F-4D74-AB67-67BB4D1A5A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB2F6C0-0FEA-44A3-A76F-772B723578A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497393AB-4F09-4E3B-BA8E-0C5985E97F21}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

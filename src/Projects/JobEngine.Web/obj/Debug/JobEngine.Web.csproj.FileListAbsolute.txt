@@ -1,0 +1,195 @@
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\AutoMapper.Net4.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Post Deploymnet Sql Scripts\ElmahInstall.sql
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Web.dll.config
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Web.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Web.pdb
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Antlr3.Runtime.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\AutoMapper.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Elmah.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Elmah.Mvc.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\EntityFramework.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\EntityFramework.SqlServer.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Hangfire.Core.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Hangfire.SqlServer.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Common.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Core.Persistence.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Models.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Security.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Newtonsoft.Json.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Owin.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Helpers.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Mvc.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Optimization.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Razor.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.WebPages.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.WebPages.Razor.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\WebGrease.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Common.pdb
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Core.Persistence.pdb
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\JobEngine.Models.pdb
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Antlr3.Runtime.pdb
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\AutoMapper.pdb
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\AutoMapper.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\AutoMapper.Net4.pdb
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\EntityFramework.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\EntityFramework.SqlServer.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Hangfire.Core.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Hangfire.SqlServer.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Security.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\Newtonsoft.Json.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Helpers.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Mvc.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Optimization.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.Razor.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.WebPages.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\bin\System.Web.WebPages.Razor.xml
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\obj\Debug\JobEngine.Web.csprojResolveAssemblyReference.cache
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\obj\Debug\JobEngine.Web.dll
+C:\Zebra\Source\Job Engine Web\JobEngine.Web\obj\Debug\JobEngine.Web.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.csprojResolveAssemblyReference.cache
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\AutoMapper.Net4.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Post Deploymnet Sql Scripts\ElmahInstall.sql
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Web.dll.config
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Web.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Web.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Antlr3.Runtime.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\AutoMapper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Elmah.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Elmah.Mvc.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\EntityFramework.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\EntityFramework.SqlServer.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Hangfire.Core.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Hangfire.SqlServer.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Common.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Core.Persistence.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Models.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Newtonsoft.Json.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Owin.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Helpers.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Mvc.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Optimization.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Razor.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.WebPages.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.WebPages.Razor.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\WebGrease.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Common.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Core.Persistence.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\JobEngine.Models.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Antlr3.Runtime.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\AutoMapper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\AutoMapper.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\AutoMapper.Net4.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\EntityFramework.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\EntityFramework.SqlServer.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Hangfire.Core.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Hangfire.SqlServer.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\Newtonsoft.Json.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Helpers.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Mvc.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Optimization.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.Razor.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.WebPages.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\bin\System.Web.WebPages.Razor.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\AutoMapper.Net4.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Post Deploymnet Sql Scripts\ElmahInstall.sql
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Web.dll.config
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Web.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Web.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Antlr3.Runtime.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\AutoMapper.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Elmah.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Elmah.Mvc.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\EntityFramework.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\EntityFramework.SqlServer.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Hangfire.Core.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Hangfire.SqlServer.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Common.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Core.Persistence.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Models.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Web.Infrastructure.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Newtonsoft.Json.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Owin.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Helpers.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Mvc.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Optimization.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Razor.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.WebPages.Deployment.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.WebPages.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.WebPages.Razor.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\WebGrease.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Common.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Core.Persistence.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\JobEngine.Models.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Antlr3.Runtime.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\AutoMapper.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\AutoMapper.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\AutoMapper.Net4.pdb
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\EntityFramework.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\EntityFramework.SqlServer.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Hangfire.Core.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Hangfire.SqlServer.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\Newtonsoft.Json.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Helpers.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Mvc.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Optimization.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.Razor.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.WebPages.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.WebPages.Deployment.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\bin\System.Web.WebPages.Razor.xml
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.csprojResolveAssemblyReference.cache
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.dll
+C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.pdb

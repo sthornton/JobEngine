@@ -1,0 +1,102 @@
+﻿@model IEnumerable<JobEngine.Web.Areas.Clients.Models.JobEngineClientViewModel>
+
+@{
+    ViewBag.Title = "Client Status";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+
+@section scripts
+{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#mainTable").DataTable();
+    });
+</script>
+}
+
+
+
+<table id="mainTable" class="display">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HostName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IpAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastConnected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HostName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IpAddress)
+                </td>
+
+                @if (item.LastConnected == null)
+                {
+                    <td>
+                        <div class="label label-warning" style="font-size:12px;">
+                           NEVER CONNECTED
+                        </div>
+                    </td>
+                }
+                else if (item.LastConnected < DateTime.UtcNow.AddMinutes(-5))
+                {
+                    <td>
+                        <div class="label label-danger" style="font-size:12px;">
+                            @Html.DisplayFor(modelItem => item.LastConnected)
+                        </div>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <div class="label label-success" style="font-size:12px;">
+                            @Html.DisplayFor(modelItem => item.LastConnected)
+                        </div>
+                    </td>
+                }
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateModified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,4 @@
+C:\Zebra\Source\Job Engine Client\AssemblyJobHelper\bin\Release\AssemblyJobHelper.dll
+C:\Zebra\Source\Job Engine Client\AssemblyJobHelper\bin\Release\AssemblyJobHelper.pdb
+C:\Zebra\Source\Job Engine Client\AssemblyJobHelper\obj\Release\AssemblyJobHelper.dll
+C:\Zebra\Source\Job Engine Client\AssemblyJobHelper\obj\Release\AssemblyJobHelper.pdb

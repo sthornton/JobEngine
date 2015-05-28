@@ -1,0 +1,17 @@
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\JobEngine.Client.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\JobEngine.Client.pdb
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\AssemblyJobHelper.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\JobEngine.Common.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\JobEngine.Models.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\log4net.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\Newtonsoft.Json.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\System.Net.Http.Formatting.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\AssemblyJobHelper.pdb
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\JobEngine.Common.pdb
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\JobEngine.Models.pdb
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\log4net.xml
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\Newtonsoft.Json.xml
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\bin\Release\System.Net.Http.Formatting.xml
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\obj\Release\JobEngine.Client.csprojResolveAssemblyReference.cache
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\obj\Release\JobEngine.Client.dll
+C:\Zebra\Source\Job Engine Client\JobEngine.Client\obj\Release\JobEngine.Client.pdb

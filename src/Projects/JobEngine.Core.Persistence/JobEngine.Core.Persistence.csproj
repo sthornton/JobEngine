@@ -82,8 +82,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Post Deploymnet Sql Scripts\CreateIdentityTables.sql" />
-    <Content Include="Post Deploymnet Sql Scripts\ElmahInstall.sql">
+    <Content Include="_CreateDatabase\createDb.sql" />
+    <Content Include="_CreateDatabase\CreateIdentityTables.sql" />
+    <Content Include="_CreateDatabase\ElmahInstall.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -15,6 +15,12 @@ namespace JobEngine.Client
 
         public static string ApiUrl { get; set; }
 
+        public static string RealTimeUrl { get; set; }
+
+        public static string RealTimeHubName { get; set; }
+
+        public static int PollInterval { get; set; }
+
         public static Guid JobEngineClientId { get; set; }
 
         public static string TempFileDirectory { get; set; }
@@ -28,8 +34,14 @@ namespace JobEngine.Client
             ApiUsername = "testUser";
             ApiPassword = "password";
             ApiUrl = "http://localhost:64196";
+
+            RealTimeHubName = "ClientCommunicatorHub";
+            RealTimeUrl = "http://localhost:63376/";
+
             JobEngineClientId = new Guid("38AFF521-11FB-E411-827B-E8B1FC46C78C");
             TempFileDirectory = "C:\\Temp\\";
+
+            PollInterval = 20;
 
             string fullPath = string.Empty;
             if(!AppDomain.CurrentDomain.IsDefaultAppDomain())

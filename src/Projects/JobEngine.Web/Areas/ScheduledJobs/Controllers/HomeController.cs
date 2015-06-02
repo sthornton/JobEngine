@@ -3,6 +3,7 @@ using JobEngine.Core.Persistence;
 using JobEngine.Models;
 using JobEngine.Web.Areas.AssemblyJobs.Models;
 using JobEngine.Web.Areas.ScheduledJobs.Models;
+using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -378,6 +379,9 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
 
         public ActionResult TriggerNow(int id)
         {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ClientCommunicatorHub>();
+            hubContext.Clients.All.sendPollRequest("test message");
+
             IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
             var scheduledJob = scheduledJobsRepository.Get(id);
             JobEngine.Persistence.JobQueue jobQueue = new Persistence.JobQueue();

@@ -23,6 +23,7 @@ namespace JobEngine.Web
             app.UseHangfireDashboard();
             ConfigureAuth(app);
             InitializeJobs();
+            app.MapSignalR();
         }
 
         public void InitializeJobs()

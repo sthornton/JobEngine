@@ -37,7 +37,6 @@ C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence\bin\Debug\Newt
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.dll
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.pdb
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\Post Deploymnet Sql Scripts\ElmahInstall.sql
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\JobEngine.Core.Persistence.dll.config
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\JobEngine.Core.Persistence.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\JobEngine.Core.Persistence.pdb
@@ -50,3 +49,4 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\_CreateDatabase\ElmahInstall.sql

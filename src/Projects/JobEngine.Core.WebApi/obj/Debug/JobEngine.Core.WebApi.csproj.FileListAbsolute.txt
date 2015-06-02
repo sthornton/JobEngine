@@ -110,7 +110,6 @@ C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Core.WebApi\bin\System.We
 C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Core.WebApi\bin\System.Web.WebPages.xml
 C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Core.WebApi\bin\System.Web.WebPages.Deployment.xml
 C:\Zebra\GIT\Source\Repos\JobEngine\Projects\JobEngine.Core.WebApi\bin\System.Web.WebPages.Razor.xml
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Post Deploymnet Sql Scripts\ElmahInstall.sql
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\JobEngine.Core.WebApi.dll.config
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\JobEngine.Core.WebApi.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\JobEngine.Core.WebApi.pdb
@@ -166,3 +165,4 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Syste
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\_CreateDatabase\ElmahInstall.sql

@@ -91,6 +91,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Solutions\Web\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\..\Solutions\Web\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\..\Solutions\Web\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -233,6 +239,8 @@
     <Content Include="Areas\ScheduledJobs\Views\Home\TriggerNow.cshtml" />
     <Content Include="packages.config" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +276,8 @@
     <Compile Include="Areas\SiteManagement\Models\IdentityModels.cs" />
     <Compile Include="Areas\SiteManagement\Models\ManageViewModels.cs" />
     <Compile Include="Areas\SiteManagement\SiteManagementAreaRegistration.cs" />
+    <Compile Include="ClientCommunicator.cs" />
+    <Compile Include="ClientCommunicatorHub.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -277,6 +287,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\LdapAuthentication.cs" />
+    <Compile Include="IClientCommunicator.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />

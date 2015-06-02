@@ -18,12 +18,15 @@ namespace JobEngine.Client
         private BlockingCollection<JobExecutionQueue> jobQueue = new BlockingCollection<JobExecutionQueue>();
         private CancellationTokenSource consumerCancelTokenSource = new CancellationTokenSource();
         private bool isStopping = false;
+        private bool isCurrentlyDownloadingJobs = false;
         private static readonly ILog log = LogManager.GetLogger(typeof(JobEngineClient));
         private static string logger = typeof(JobEngineClient).Name;
-        private Thread consumer;
-        private Thread producer;
+        private Thread jobsConsumerThread;
+        private Thread jobsProducerThread;
+        private Thread realTimeListenerThread;
         private bool isSynchingAssemblyJobs = false;
         private System.Timers.Timer synchAssembliesTimer;
+        private RealTimeServerConnection realTimeConnection;
 
         public JobEngineClient()
         {
@@ -34,11 +37,26 @@ namespace JobEngine.Client
         {
             InitializeSyncAssemblyJobsTimer();            
             
-            producer = new Thread(ProduceJobs);
-            producer.Start();
+            jobsProducerThread = new Thread(ProduceJobs);
+            jobsProducerThread.Start();
 
-            consumer = new Thread(ConsumeJobs);
-            consumer.Start();
+            jobsConsumerThread = new Thread(ConsumeJobs);
+            jobsConsumerThread.Start();
+
+            realTimeListenerThread = new Thread(ConnectToRealTimeServer);
+            realTimeListenerThread.Start();    
+        }
+
+        private void ConnectToRealTimeServer()
+        {
+            realTimeConnection = new RealTimeServerConnection();
+            realTimeConnection.PollRequested += RealTimeConnection_PollRequested;
+            realTimeConnection.Connect(Settings.RealTimeUrl, Settings.RealTimeHubName, Settings.JobEngineClientId);
+        }
+
+        private void RealTimeConnection_PollRequested(object sender, EventArgs e)
+        {
+            DownloadJobsWaitingToExecute(); 
         }
 
         private void InitializeSyncAssemblyJobsTimer()
@@ -55,15 +73,26 @@ namespace JobEngine.Client
             consumerCancelTokenSource.Cancel();
             synchAssembliesTimer.Stop();
             synchAssembliesTimer.Dispose();
+            realTimeConnection.Disconnect();
         }
 
         public void ProduceJobs()
         {
             while(!isStopping)
             {
+                DownloadJobsWaitingToExecute();            
+                Thread.Sleep(Settings.PollInterval * 1000);
+            }
+        }
+
+        private void DownloadJobsWaitingToExecute()
+        {
+            if (!isCurrentlyDownloadingJobs)
+            {
+                isCurrentlyDownloadingJobs = true;    
                 try
-                {                    
-                    JobEngineApi api = new JobEngineApi("http://localhost:64196", "testUser", "password");
+                {
+                    JobEngineApi api = new JobEngineApi(Settings.ApiUrl, Settings.ApiUsername, Settings.ApiPassword);
                     var jobs = api.GetJobsWaitingToExecute(Settings.JobEngineClientId, ClientInfoHelper.GetLocalHostIPAddress(), Environment.MachineName).Result;
                     foreach (var job in jobs)
                     {
@@ -78,8 +107,7 @@ namespace JobEngine.Client
                         log.Error(exception);
                     }
                 }
-               
-                Thread.Sleep(1000);
+                isCurrentlyDownloadingJobs = false;
             }
         }
 

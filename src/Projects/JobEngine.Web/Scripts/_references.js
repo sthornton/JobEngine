@@ -1,3 +1,2 @@
-﻿/// <reference path="jquery-ui-1.11.4.js" />
-/// <reference path="jquery-2.1.3.js" />
-/// <autosync enabled="true" />
+﻿/// <autosync enabled="true" />
+/// <reference path="jquery.signalr-2.2.0.min.js" />

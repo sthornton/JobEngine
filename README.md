@@ -3,4 +3,4 @@ Welcome to the JobEngine repo.  This application allows you to execute automatio
 
 The goal is to create a centralized management console for scheduling and distributing automation jobs with the ability to execute them on-demand in realtime.  There's still plenty of work left to do.
 
-*ACTIVELY UNDER DEVELOPMENT*
+*UNDER DEVELOPMENT*

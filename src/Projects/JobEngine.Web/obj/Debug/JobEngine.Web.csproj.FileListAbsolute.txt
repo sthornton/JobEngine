@@ -262,3 +262,8 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\System.Web.We
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.SignalR.Redis.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\StackExchange.Redis.StrongName.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.SignalR.Redis.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\StackExchange.Redis.StrongName.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\StackExchange.Redis.StrongName.xml

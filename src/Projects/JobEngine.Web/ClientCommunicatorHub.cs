@@ -3,24 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
+using JobEngine.Common;
 
 namespace JobEngine.Web
 {
     public class ClientCommunicatorHub : Hub
     {
-        public void Hello()
-        {
-            Clients.All.hello();
-        }
-
-        public void SendPollRequest(Guid jobEngineClientId)
-        {
-            Clients.All.sendPollRequest();
-        }
+        private ICacheProvider cacheProvider = new MemoryCacheProvider();
+        private static string CACHE_KEY = "Realtime_Job_Client-";
 
         public void AwaitingCommands(Guid jobEngineClientId)
         {
-            Console.WriteLine(jobEngineClientId.ToString());
+            cacheProvider.RemoveCacheItem(CACHE_KEY + jobEngineClientId.ToString());
+            cacheProvider.AddCacheItem(CACHE_KEY + jobEngineClientId.ToString(), 60 * 50000, Context.ConnectionId);
         }
     }
 }

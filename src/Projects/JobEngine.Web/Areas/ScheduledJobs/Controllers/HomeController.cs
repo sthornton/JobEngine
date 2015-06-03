@@ -378,14 +378,13 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         }
 
         public ActionResult TriggerNow(int id)
-        {
-            var hubContext = GlobalHost.ConnectionManager.GetHubContext<ClientCommunicatorHub>();
-            hubContext.Clients.All.sendPollRequest("test message");
-
+        {           
             IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
             var scheduledJob = scheduledJobsRepository.Get(id);
             JobEngine.Persistence.JobQueue jobQueue = new Persistence.JobQueue();
             long jobExecutionQueueId = jobQueue.QueueScheduledJob(scheduledJob);
+            ClientCommunicator clientCommunicator = new ClientCommunicator();
+            clientCommunicator.SendPollRequest(scheduledJob.JobEngineClientId);
             IJobExecutionQueueRepository jobExecutionQueueRepository = RepositoryFactory.GetJobExecutionQueueRepository();
             var jobExecutionQueueItem = jobExecutionQueueRepository.Get(jobExecutionQueueId);
             TriggerNowJobResultsViewModel viewModel = Mapper.Map<JobExecutionQueue, TriggerNowJobResultsViewModel>(jobExecutionQueueItem);

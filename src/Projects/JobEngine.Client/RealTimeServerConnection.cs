@@ -11,18 +11,27 @@ namespace JobEngine.Client
     {
         private static IHubProxy hubProxy;
         private static HubConnection hubConnection;
+        private string _serverUrl;
+        private string _hubName;
+        private Guid _jobEngineClientId;
 
         public event EventHandler PollRequested;
 
         public void Connect(string serverUrl, string hubName, Guid jobEngineClientId)
         {
+            _serverUrl = serverUrl;
+            _hubName = hubName;
+            _jobEngineClientId = jobEngineClientId;
+
             hubConnection = new HubConnection(serverUrl);
             hubProxy = hubConnection.CreateHubProxy(hubName);
 
+            hubConnection.Error -= HubConnection_Error;
+            hubConnection.Error += HubConnection_Error;
 
-            hubProxy.On<string>("sendPollRequest", (message) =>
+            hubProxy.On("sendPollRequest", () =>
             {
-                // fire poll requested event
+                // bubble poll requested event
                 if (this.PollRequested != null)
                 {
                     this.PollRequested(this, new EventArgs());
@@ -31,6 +40,11 @@ namespace JobEngine.Client
 
             hubConnection.Start().Wait();
             hubProxy.Invoke("AwaitingCommands", jobEngineClientId).Wait();
+        }
+
+        void HubConnection_Error(Exception obj)
+        {
+            Connect(_serverUrl, _hubName, _jobEngineClientId);
         }
 
         public void Disconnect()

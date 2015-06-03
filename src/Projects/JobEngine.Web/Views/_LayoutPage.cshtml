@@ -117,11 +117,11 @@
     <div class="page-wrapper" style="margin-left:-50px;">
 
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" style="min-height:79px;">
 
                 @if (!string.IsNullOrEmpty(ViewBag.Title))
                 {
-                    <div class="col-md-2" >
+                    <div class="col-md-3">
                         <div id="text" class="title">
                             <h2>@ViewBag.Title</h2>
                         </div>
@@ -140,7 +140,7 @@
 
                 @if (TempData["SuccessMessage"] != null)
                 {
-                    <div class="col-md-10">
+                    <div class="col-md-9">
 
                         <div id="successMessage" class="alert alert-success">
                             <a href="#" class="close" data-dismiss="alert"></a>

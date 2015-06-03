@@ -8,3 +8,8 @@ C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Common\bin\Debug\JobEngine.Comm
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Common\obj\Debug\JobEngine.Common.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Common\obj\Debug\JobEngine.Common.dll
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Common\obj\Debug\JobEngine.Common.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Common\bin\Debug\JobEngine.Common.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Common\bin\Debug\JobEngine.Common.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Common\obj\Debug\JobEngine.Common.csprojResolveAssemblyReference.cache
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Common\obj\Debug\JobEngine.Common.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Common\obj\Debug\JobEngine.Common.pdb

@@ -13,9 +13,16 @@ namespace JobEngine.Core.Persistence
 {
     public class JobExecutionQueueRepository : IJobExecutionQueueRepository
     {
+        private readonly string connectionString;
+
+        public JobExecutionQueueRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
         public void AckJobRecieved(long jobExecutionQueueId, DateTime dateRecieved)
         {
-            using(SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
+            using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Execute(@"UPDATE [JobExecutionQueue]
                                SET [JobExecutionStatus] = @JobExecutionStatus                                 
@@ -33,7 +40,7 @@ namespace JobEngine.Core.Persistence
         public IEnumerable<JobExecutionQueue> GetJobsToExecute(Guid jobEngineClientId)
         {
             IEnumerable<JobExecutionQueue> results;
-            using(SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
+            using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 results = conn.Query<JobExecutionQueue>(@"DECLARE @output TABLE
                                                         (
@@ -87,7 +94,7 @@ namespace JobEngine.Core.Persistence
 
         public void UpdateJobExecutionResult(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus, string resultMessage, DateTime dateCompleted, long totalExecutionTimeInMs)
         {
-            using (SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Execute(@"
                                 DECLARE @scheduledJobId TABLE ( ScheduledJobId INT NULL);
@@ -124,7 +131,7 @@ namespace JobEngine.Core.Persistence
 
         public void UpdateJobExecutionStatus(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus)
         {
-            using (SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Execute(@" UPDATE [JobExecutionQueue]
                                 SET  [JobExecutionStatus] = @JobExecutionStatus
@@ -145,7 +152,7 @@ namespace JobEngine.Core.Persistence
         public JobExecutionQueue Get(long jobExecutionQueueId)
         {
             JobExecutionQueue result;
-            using (SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                    result = conn.Query<JobExecutionQueue>(@"
                                 SELECT [JobExecutionQueueId]

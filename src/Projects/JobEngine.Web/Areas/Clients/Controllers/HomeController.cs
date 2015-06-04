@@ -12,10 +12,17 @@ namespace JobEngine.Web.Areas.Clients.Controllers
 {
     public class HomeController : BaseController
     {
+        private IClientRepository clientRepository;
+        private ICustomerRepository customerRepository;
+
+        public HomeController(IClientRepository clientRepository, ICustomerRepository customerRepository)
+        {
+            this.clientRepository = clientRepository;
+            this.customerRepository = customerRepository;
+        }
         public ActionResult Index()
         {
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            var clients = clientRepository.GetAll();
+            var clients = this.clientRepository.GetAll();
             var viewModel = Mapper.Map<IEnumerable<JobEngineClient>, IEnumerable<JobEngineClientViewModel>>(clients);
             return View(viewModel.OrderBy(x => x.HostName));
         }
@@ -24,8 +31,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         {
             if(id.HasValue)
             {
-                IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-                var client = clientRepository.Get(id.Value);
+                var client = this.clientRepository.Get(id.Value);
                 var viewModel = Mapper.Map<JobEngineClient, JobEngineClientViewModel>(client);
                 return View(viewModel);
             }
@@ -35,8 +41,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         public ActionResult Create()
         {
             CreateJobEngineClientViewModel viewModel = new CreateJobEngineClientViewModel();
-            ICustomerRepository jobEngineRepository = RepositoryFactory.GetCustomerRepository();
-            var customers = jobEngineRepository.GetAll();
+            var customers = this.customerRepository.GetAll();
             viewModel.Customers = new SelectList(customers, "CustomerId", "Name");
             viewModel.IsEnabled = true;
             return View(viewModel);
@@ -48,8 +53,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         {
             if (ModelState.IsValid)
             {
-                IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-                Guid clientId = clientRepository.Create(
+                Guid clientId = this.clientRepository.Create(
                         viewModel.SelectedCustomerId,
                         viewModel.Name,
                         viewModel.IsEnabled,
@@ -59,8 +63,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
                 SuccessMessage = "Client created successfully";
                 return RedirectToAction("Edit", new { id = clientId });
             }
-            ICustomerRepository jobEngineRepository = RepositoryFactory.GetCustomerRepository();
-            var customers = jobEngineRepository.GetAll();
+            var customers = this.customerRepository.GetAll();
             viewModel.Customers = new SelectList(customers, "CustomerId", "Name");
             return View(viewModel);
         }
@@ -70,8 +73,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         {
             if (id.HasValue)
             {
-                IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-                var jobEngineClient = clientRepository.Get(id.Value);
+                var jobEngineClient = this.clientRepository.Get(id.Value);
                 JobEngineClientViewModel viewModel = Mapper.Map<JobEngineClient, JobEngineClientViewModel>(jobEngineClient);
                 return View(viewModel);                
             }
@@ -84,8 +86,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         {
             if (ModelState.IsValid)
             {
-                IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-                var client =  clientRepository.Get(viewModel.JobEngineClientId);
+                var client =  this.clientRepository.Get(viewModel.JobEngineClientId);
                 client.IsEnabled = viewModel.IsEnabled;
                 client.Name = viewModel.Name;
                 client.Username = viewModel.Username;
@@ -103,8 +104,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         {
             if (id.HasValue)
             {
-                IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-                var client = clientRepository.Get(id.Value);
+                var client = this.clientRepository.Get(id.Value);
                 JobEngineClientViewModel viewModel = Mapper.Map<JobEngineClient, JobEngineClientViewModel>(client);
                 return View(viewModel);
                
@@ -116,8 +116,7 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            clientRepository.Delete(id);
+            this.clientRepository.Delete(id);
             SuccessMessage = "Deleted successfully";
             return RedirectToAction("Index");
         }

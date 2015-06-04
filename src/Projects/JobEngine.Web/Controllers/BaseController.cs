@@ -9,6 +9,8 @@ namespace JobEngine.Web
     [Authorize]
     public class BaseController : Controller
     {
+        public BaseController() { }
+
         public string SuccessMessage
         {
             set { TempData["SuccessMessage"] = value; }

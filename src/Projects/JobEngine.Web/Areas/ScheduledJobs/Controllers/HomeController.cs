@@ -16,16 +16,36 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
 {
     public class HomeController : BaseController
     {
+        private ICustomerRepository customerRepository;
+        private IScheduledJobsRepository scheduledJobsRepository;
+        private IClientRepository clientRepository;
+        private IAssemblyJobRepository assemblyJobsRepository;
+        private IJobScheduler jobScheduler;
+        private ILoggingRepository loggingRepository;
+        private IJobExecutionQueueRepository jobExecutionQueueRepository;
+
+        public HomeController(ICustomerRepository customerRepository,
+                              IScheduledJobsRepository scheduledJobsRepository,
+                              IClientRepository clientRepository,
+                              IAssemblyJobRepository assemblyJobsRepository,
+                              IJobScheduler jobScheduler,
+                              ILoggingRepository loggingRepository,
+                              IJobExecutionQueueRepository jobExecutionQueueRepository)
+        {
+            this.customerRepository = customerRepository;
+            this.scheduledJobsRepository = scheduledJobsRepository;
+            this.clientRepository = clientRepository;
+            this.assemblyJobsRepository = assemblyJobsRepository;
+            this.jobScheduler = jobScheduler;
+            this.loggingRepository = loggingRepository;
+            this.jobExecutionQueueRepository = jobExecutionQueueRepository;
+        }
+
         public ActionResult Index()
         {
-            ICustomerRepository repository = RepositoryFactory.GetCustomerRepository();
-            var customers = repository.GetAll();
-
-            IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
-            var scheduledJobs = scheduledJobsRepository.GetAll();
-
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            var clients = clientRepository.GetAll();
+            var customers = this.customerRepository.GetAll();
+            var scheduledJobs = this.scheduledJobsRepository.GetAll();
+            var clients = this.clientRepository.GetAll();
 
             List<ScheduledJobViewModel> viewModel = new List<ScheduledJobViewModel>();
             foreach (var scheduledJob in scheduledJobs)
@@ -51,9 +71,8 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         [HttpGet]
         public ActionResult SelectAssembly()
         {
-            IAssemblyJobRepository repository = RepositoryFactory.GetAssemblyJobRepository();
-            var automationJobs = repository.GetAll().ToList();
-            var viewModel = Mapper.Map<List<AssemblyJob>, List<AssemblyJobViewModel>>(automationJobs);
+            var assemblyJobs = this.assemblyJobsRepository.GetAll().ToList();
+            var viewModel = Mapper.Map<List<AssemblyJob>, List<AssemblyJobViewModel>>(assemblyJobs);
             return View("SelectAssembly", viewModel);
         }
 
@@ -61,17 +80,14 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         public ActionResult CreateAssemblyJob(int id)
         {
             ScheduledAssemblyJobViewModel viewModel = new ScheduledAssemblyJobViewModel();
-            ICustomerRepository customerRepository = RepositoryFactory.GetCustomerRepository();
 
-            var customers = customerRepository.GetAll();
+            var customers = this.customerRepository.GetAll();
             viewModel.Customers = new SelectList(customers, "CustomerId", "Name");
 
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            var jobEngineClients = clientRepository.GetAll();
+            var jobEngineClients = this.clientRepository.GetAll();
             viewModel.JobEngineClients = new SelectList(jobEngineClients, "JobEngineClientId", "Name");
 
-            IAssemblyJobRepository repository = RepositoryFactory.GetAssemblyJobRepository();
-            var assemblyJob = repository.Get(id);
+            var assemblyJob = this.assemblyJobsRepository.Get(id);
             viewModel.AssemblyJobId = id;
             viewModel.AssemblyJobParameters = Mapper.Map<List<AssemblyJobParameter>, List<AssemblyJobParameterViewModel>>(assemblyJob.Parameters);
             foreach (var param in viewModel.AssemblyJobParameters) { param.Value = ""; }
@@ -81,18 +97,15 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         [HttpPost,ValidateAntiForgeryToken]
         public ActionResult CreateAssemblyJob(ScheduledAssemblyJobViewModel viewModel)
         {
-            ICustomerRepository customerRepository = RepositoryFactory.GetCustomerRepository();
-            var customers = customerRepository.GetAll();
+            var customers = this.customerRepository.GetAll();
             viewModel.Customers = new SelectList(customers, "CustomerId", "Name");
 
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            var jobEngineClients = clientRepository.GetAll();
+            var jobEngineClients = this.clientRepository.GetAll();
             viewModel.JobEngineClients = new SelectList(jobEngineClients, "JobEngineClientId", "Name");
 
             if(ModelState.IsValid)
             {
-                IAssemblyJobRepository repository = RepositoryFactory.GetAssemblyJobRepository();
-                var assemblyJob = repository.Get(viewModel.AssemblyJobId);
+                var assemblyJob = this.assemblyJobsRepository.Get(viewModel.AssemblyJobId);
                 Dictionary<string, string> settings = new Dictionary<string, string>();
                 int parametersErrorCount = 0;
                 if (assemblyJob.Parameters != null)
@@ -163,14 +176,12 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
                     ModifiedBy = User.Identity.Name,
                     Name = viewModel.Name
                 };
-                IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
-                int jobId = scheduledJobsRepository.CreateScheduledJob(scheduledJob);
+                int jobId = this.scheduledJobsRepository.CreateScheduledJob(scheduledJob);
 
                 if(scheduledJob.IsActive)
                 {
                     scheduledJob.ScheduledJobId = jobId;
-                    IJobScheduler jobScheduler = new HangfireJobScheduler();
-                    jobScheduler.AddOrUpdate(scheduledJob);                    
+                    this.jobScheduler.AddOrUpdate(scheduledJob);                    
                 }
                 SuccessMessage = "Job has been created successfully.";
                 return RedirectToAction("Index");
@@ -182,11 +193,9 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         {
             try
             {
-                IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
-                var scheduledJob = scheduledJobsRepository.Get(id);
-                scheduledJobsRepository.DeleteScheduledJob(id);
-                IJobScheduler jobScheduler = new HangfireJobScheduler();
-                jobScheduler.RemoveIfExists(scheduledJob.Name + "~" + scheduledJob.ScheduledJobId);
+                var scheduledJob = this.scheduledJobsRepository.Get(id);
+                this.scheduledJobsRepository.DeleteScheduledJob(id);
+                this.jobScheduler.RemoveIfExists(scheduledJob.Name + "~" + scheduledJob.ScheduledJobId);
                 SuccessMessage = "Job '" + scheduledJob.Name + "' has been deleted successfully.";                
             }
             catch (Exception e)
@@ -198,18 +207,15 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
 
         public ActionResult Edit(int id)
         {
-            IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
-            var scheduledJob = scheduledJobsRepository.Get(id);
+            var scheduledJob = this.scheduledJobsRepository.Get(id);
             switch (scheduledJob.JobType)
             {
                 case JobType.AssemblyJob:
                     ScheduledAssemblyJobViewModel viewModel = new ScheduledAssemblyJobViewModel();                 
                     var assemblyJob = JsonConvert.DeserializeObject<AssemblyJob>(scheduledJob.JobSettings);
-                    ICustomerRepository customerRepository = RepositoryFactory.GetCustomerRepository();
-                    var customers = customerRepository.GetAll();
+                    var customers = this.customerRepository.GetAll();
                     viewModel.Customers = new SelectList(customers, "CustomerId", "Name");
-                    IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-                    var jobEngineClients = clientRepository.GetAll();
+                    var jobEngineClients = this.clientRepository.GetAll();
                     viewModel.JobEngineClients = new SelectList(jobEngineClients, "JobEngineClientId", "Name");
                     viewModel.CronSchedule = scheduledJob.CronSchedule;
                     viewModel.IsActive = scheduledJob.IsActive;
@@ -217,8 +223,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
                     viewModel.SelectedCustomerId = scheduledJob.CustomerId;
                     viewModel.SelectedJobEngineClientId = scheduledJob.JobEngineClientId;
                     viewModel.ScheduledJobId = id;
-                    IAssemblyJobRepository repository = RepositoryFactory.GetAssemblyJobRepository();
-                    var assemblyJobDetails = repository.Get(assemblyJob.AssemblyJobId);
+                    var assemblyJobDetails = this.assemblyJobsRepository.Get(assemblyJob.AssemblyJobId);
                     viewModel.AssemblyJobId = assemblyJobDetails.AssemblyJobId;
                     viewModel.AssemblyJobParameters = Mapper.Map<List<AssemblyJobParameter>, List<AssemblyJobParameterViewModel>>(assemblyJobDetails.Parameters);
                     foreach (var param in viewModel.AssemblyJobParameters) 
@@ -243,19 +248,15 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult EditAssemblyJob(ScheduledAssemblyJobViewModel viewModel)
         {
-            ICustomerRepository customerRepository = RepositoryFactory.GetCustomerRepository();
-            var customers = customerRepository.GetAll();
+            var customers = this.customerRepository.GetAll();
             viewModel.Customers = new SelectList(customers, "CustomerId", "Name");
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            var jobEngineClients = clientRepository.GetAll();
+            var jobEngineClients = this.clientRepository.GetAll();
             viewModel.JobEngineClients = new SelectList(jobEngineClients, "JobEngineClientId", "Name");
 
             if (ModelState.IsValid)
             {
-                IAssemblyJobRepository repository = RepositoryFactory.GetAssemblyJobRepository();
-                var assemblyJob = repository.Get(viewModel.AssemblyJobId);
-                IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
-                var scheduledJob = scheduledJobsRepository.Get(viewModel.ScheduledJobId);
+                var assemblyJob = this.assemblyJobsRepository.Get(viewModel.AssemblyJobId);
+                var scheduledJob = this.scheduledJobsRepository.Get(viewModel.ScheduledJobId);
                 Dictionary<string, string> settings = new Dictionary<string, string>();
                 int parametersErrorCount = 0;
                 foreach (var param in assemblyJob.Parameters)
@@ -318,13 +319,12 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
                 scheduledJob.JobSettings = serializedAssemblyJobSettings;
                 scheduledJob.ModifiedBy = User.Identity.Name;
                 scheduledJob.Name = viewModel.Name;
-                scheduledJobsRepository.UpdateScheduledJob(scheduledJob);
+                this.scheduledJobsRepository.UpdateScheduledJob(scheduledJob);
 
-                IJobScheduler jobScheduler = new HangfireJobScheduler();
-                jobScheduler.RemoveIfExists(scheduledJob.Name + "~" + scheduledJob.ScheduledJobId);
+                this.jobScheduler.RemoveIfExists(scheduledJob.Name + "~" + scheduledJob.ScheduledJobId);
 
                 if(scheduledJob.IsActive)
-                    jobScheduler.AddOrUpdate(scheduledJob);
+                    this.jobScheduler.AddOrUpdate(scheduledJob);
                
 
                 SuccessMessage = "Job has been saved successfully.";
@@ -335,18 +335,15 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
 
         public ActionResult Details(int id)
         {
-            IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
-            var scheduledJob = scheduledJobsRepository.Get(id);
+            var scheduledJob = this.scheduledJobsRepository.Get(id);
             switch (scheduledJob.JobType)
             {
                 case JobType.AssemblyJob:
                     ScheduledAssemblyJobViewModel viewModel = new ScheduledAssemblyJobViewModel();
                     var assemblyJob = JsonConvert.DeserializeObject<AssemblyJob>(scheduledJob.JobSettings);
-                    ICustomerRepository customerRepository = RepositoryFactory.GetCustomerRepository();
-                    var customers = customerRepository.GetAll();
+                    var customers = this.customerRepository.GetAll();
                     viewModel.Customers = new SelectList(customers, "CustomerId", "Name");
-                    IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-                    var jobEngineClients = clientRepository.GetAll();
+                    var jobEngineClients = this.clientRepository.GetAll();
                     viewModel.JobEngineClients = new SelectList(jobEngineClients, "JobEngineClientId", "Name");
                     viewModel.CronSchedule = scheduledJob.CronSchedule;
                     viewModel.IsActive = scheduledJob.IsActive;
@@ -354,8 +351,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
                     viewModel.SelectedCustomerId = scheduledJob.CustomerId;
                     viewModel.SelectedJobEngineClientId = scheduledJob.JobEngineClientId;
                     viewModel.ScheduledJobId = id;
-                    IAssemblyJobRepository repository = RepositoryFactory.GetAssemblyJobRepository();
-                    var assemblyJobDetails = repository.Get(assemblyJob.AssemblyJobId);
+                    var assemblyJobDetails = this.assemblyJobsRepository.Get(assemblyJob.AssemblyJobId);
                     viewModel.AssemblyJobId = assemblyJobDetails.AssemblyJobId;
                     viewModel.AssemblyJobParameters = Mapper.Map<List<AssemblyJobParameter>, List<AssemblyJobParameterViewModel>>(assemblyJobDetails.Parameters);
                     foreach (var param in viewModel.AssemblyJobParameters)
@@ -378,15 +374,13 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         }
 
         public ActionResult TriggerNow(int id)
-        {           
-            IScheduledJobsRepository scheduledJobsRepository = RepositoryFactory.GetScheduledJobsRepository();
-            var scheduledJob = scheduledJobsRepository.Get(id);
+        {
+            var scheduledJob = this.scheduledJobsRepository.Get(id);
             JobEngine.Persistence.JobQueue jobQueue = new Persistence.JobQueue();
             long jobExecutionQueueId = jobQueue.QueueScheduledJob(scheduledJob);
             ClientCommunicator clientCommunicator = new ClientCommunicator();
             clientCommunicator.SendPollRequest(scheduledJob.JobEngineClientId);
-            IJobExecutionQueueRepository jobExecutionQueueRepository = RepositoryFactory.GetJobExecutionQueueRepository();
-            var jobExecutionQueueItem = jobExecutionQueueRepository.Get(jobExecutionQueueId);
+            var jobExecutionQueueItem = this.jobExecutionQueueRepository.Get(jobExecutionQueueId);
             TriggerNowJobResultsViewModel viewModel = Mapper.Map<JobExecutionQueue, TriggerNowJobResultsViewModel>(jobExecutionQueueItem);
             ViewBag.JobTitle = scheduledJob.Name;
             return View(viewModel);
@@ -394,14 +388,12 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
 
         public ActionResult GetJobExecutionQueueStatus(long jobExecutionQueueId)
         {
-            IJobExecutionQueueRepository repo = RepositoryFactory.GetJobExecutionQueueRepository();
-            var queueItem = repo.Get(jobExecutionQueueId);
+            var queueItem = this.jobExecutionQueueRepository.Get(jobExecutionQueueId);
             dynamic dynamicObject = new ExpandoObject();
             dynamicObject.Status = queueItem.JobExecutionStatus.ToString();
             dynamicObject.ClientPickup = queueItem.DateReceivedByClient.HasValue ? queueItem.DateReceivedByClient : null;
-            dynamicObject.TotalExecutionTime = queueItem.TotalExecutionTimeInMs.HasValue ? queueItem.TotalExecutionTimeInMs : null;
-            ILoggingRepository logsRepository = RepositoryFactory.GetLoggingRepository();            
-            var logs = logsRepository.GetLogs(jobExecutionQueueId);
+            dynamicObject.TotalExecutionTime = queueItem.TotalExecutionTimeInMs.HasValue ? queueItem.TotalExecutionTimeInMs : null;            
+            var logs = this.loggingRepository.GetLogs(jobExecutionQueueId);
             dynamicObject.Logs = logs;
             var serailizedJsonResult = JsonConvert.SerializeObject(dynamicObject);
             return Content(serailizedJsonResult, "application/json");

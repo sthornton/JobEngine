@@ -267,3 +267,15 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\StackExchange
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.AspNet.SignalR.Redis.xml
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\StackExchange.Redis.StrongName.pdb
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\StackExchange.Redis.StrongName.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.Mvc.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\WebActivatorEx.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.Mvc.xml

@@ -20,12 +20,12 @@ namespace JobEngine.Core.Persistence
 
         public static ILoggingRepository GetLoggingRepository()
         {
-            return new LoggingRepository();
+            return new LoggingRepository(Settings.JobEngineConnectionString);
         }
 
         public static IJobExecutionQueueRepository GetJobExecutionQueueRepository()
         {
-            return new JobExecutionQueueRepository();
+            return new JobExecutionQueueRepository(Settings.JobEngineConnectionString);
         }
 
         public static IScheduledJobsRepository GetScheduledJobsRepository()

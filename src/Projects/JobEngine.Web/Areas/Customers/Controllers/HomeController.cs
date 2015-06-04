@@ -16,11 +16,16 @@ namespace JobEngine.Web.Areas.Customers.Controllers
     [Authorize]
     public class HomeController : BaseController
     {
-        private static ICustomerRepository customerRepository = RepositoryFactory.GetCustomerRepository();
+        private ICustomerRepository customerRepository;
+
+        public HomeController(ICustomerRepository customerRepository)
+        {
+            this.customerRepository = customerRepository;
+        }
 
         public ActionResult Index()
         {
-            var customers = customerRepository.GetAll();
+            var customers = this.customerRepository.GetAll();
             var viewModel = Mapper.Map<IEnumerable<Customer>, IEnumerable<CustomerViewModel>>(customers);
             return View(viewModel.OrderBy(x => x.Name));
         }
@@ -29,7 +34,7 @@ namespace JobEngine.Web.Areas.Customers.Controllers
         {
             if (id.HasValue)
             {
-                var customer = customerRepository.Get(id.Value);
+                var customer = this.customerRepository.Get(id.Value);
                 var viewModel = Mapper.Map<Customer, CustomerViewModel>(customer);
                 return View(viewModel);
             }
@@ -47,7 +52,7 @@ namespace JobEngine.Web.Areas.Customers.Controllers
         {
             if (ModelState.IsValid)
             {
-                customerRepository.Create(viewModel.Name, User.Identity.Name);
+                this.customerRepository.Create(viewModel.Name, User.Identity.Name);
                 SuccessMessage = "Customer created successfully";
                 return RedirectToAction("Index");
             }
@@ -58,7 +63,7 @@ namespace JobEngine.Web.Areas.Customers.Controllers
         {
             if(id.HasValue)
             {
-                var customer = customerRepository.Get(id.Value);
+                var customer = this.customerRepository.Get(id.Value);
                 var viewModel = Mapper.Map<Customer, CustomerViewModel>(customer);
                 return View(viewModel);
             }
@@ -71,11 +76,11 @@ namespace JobEngine.Web.Areas.Customers.Controllers
         {
             if (ModelState.IsValid)
             {
-                var customer = customerRepository.Get(viewModel.CustomerId);
+                var customer = this.customerRepository.Get(viewModel.CustomerId);
                 customer.Name = viewModel.Name;
                 customer.ModifiedBy = User.Identity.Name;
                 customer.DateModified = DateTime.UtcNow;
-                customerRepository.Edit(customer);
+                this.customerRepository.Edit(customer);
                 SuccessMessage = "Customer modified successfully";
                 return RedirectToAction("Index");
             }
@@ -86,7 +91,7 @@ namespace JobEngine.Web.Areas.Customers.Controllers
         {
             if (id.HasValue)
             {
-                var customer = customerRepository.Get(id.Value);
+                var customer = this.customerRepository.Get(id.Value);
                 var viewModel = Mapper.Map<Customer, CustomerViewModel>(customer);
                 return View(viewModel);
             }
@@ -98,7 +103,7 @@ namespace JobEngine.Web.Areas.Customers.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            customerRepository.Delete(id);
+            this.customerRepository.Delete(id);
             SuccessMessage = "Customer deleted successfully";
             return RedirectToAction("Index");
         }

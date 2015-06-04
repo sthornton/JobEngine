@@ -7,9 +7,16 @@ namespace JobEngine.Core.Persistence
 {
     public class LoggingRepository : ILoggingRepository
     {
+        private readonly string connectionString;
+
+        public LoggingRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
         public void AddJobExecutionLogEntry(JobExecutionLog logEntry)
-        {            
-            using(SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Execute(@"INSERT INTO [JobExecutionLogs]
                                     ([JobExecutionQueueId]
@@ -41,7 +48,7 @@ namespace JobEngine.Core.Persistence
         public IEnumerable<JobExecutionLog> GetLogs(long jobExecutionQueueId)
         {
             IEnumerable<JobExecutionLog> results;
-            using(SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
+            using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 results = conn.Query<JobExecutionLog>(@"SELECT [JobExecutionLogId]
                                   ,[JobExecutionQueueId]

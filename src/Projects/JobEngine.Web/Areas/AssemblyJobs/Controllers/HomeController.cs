@@ -13,11 +13,16 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
 {
     public class HomeController : BaseController
     {
-        private static IAssemblyJobRepository assemblyJobRepository = RepositoryFactory.GetAssemblyJobRepository();
+        private IAssemblyJobRepository assemblyJobRepository;
+
+        public HomeController(IAssemblyJobRepository assemblyJobRepository)
+        {
+            this.assemblyJobRepository = assemblyJobRepository;
+        }
 
         public ActionResult Index()
         {
-            var assemblyJobs = assemblyJobRepository.GetAll().ToList();
+            var assemblyJobs = this.assemblyJobRepository.GetAll().ToList();
             var viewModel = Mapper.Map<List<AssemblyJob>, List<AssemblyJobViewModel>>(assemblyJobs);
             return View(viewModel);
         }
@@ -55,7 +60,7 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
                     assemblyJob.DateCreated = DateTime.UtcNow;
                     assemblyJob.DateModified = DateTime.UtcNow;
                     assemblyJob.ModifiedBy = HttpContext.User.Identity.Name;
-                    int assemblyJobId = assemblyJobRepository.Create(assemblyJob);
+                    int assemblyJobId = this.assemblyJobRepository.Create(assemblyJob);
                     SuccessMessage = "Assembly Job created successfully";
                     return RedirectToAction("Edit", new { id = assemblyJobId });
                 }
@@ -66,7 +71,7 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            AssemblyJob assemblyJob = assemblyJobRepository.Get(id);
+            AssemblyJob assemblyJob = this.assemblyJobRepository.Get(id);
             AssemblyJobViewModel viewModel = Mapper.Map<AssemblyJob, AssemblyJobViewModel>(assemblyJob);
             viewModel.AssemblyJobParameters = Mapper.Map<List<AssemblyJobParameter>, List<AssemblyJobParameterViewModel>>(assemblyJob.Parameters);
             return View("Details", viewModel);
@@ -75,7 +80,7 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            AssemblyJob assemblyJob = assemblyJobRepository.Get(id);
+            AssemblyJob assemblyJob = this.assemblyJobRepository.Get(id);
             IEnumerable<AssemblyJobParameter> parameters = assemblyJobRepository.GetParameters(id);
             AssemblyJobViewModel viewModel = Mapper.Map<AssemblyJob, AssemblyJobViewModel>(assemblyJob);
             viewModel.AssemblyJobParameters = Mapper.Map<List<AssemblyJobParameter>, List<AssemblyJobParameterViewModel>>(parameters.ToList());
@@ -87,7 +92,7 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
         {
             if (ModelState.IsValid)
             {
-                AssemblyJob assemblyJob = assemblyJobRepository.Get(viewModel.AssemblyJobId);
+                AssemblyJob assemblyJob = this.assemblyJobRepository.Get(viewModel.AssemblyJobId);
 
                 if (viewModel.File != null)
                 {
@@ -102,7 +107,7 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
                 assemblyJob.Name = viewModel.Name;
                 assemblyJob.DateModified = DateTime.UtcNow;
                 assemblyJob.ModifiedBy = User.Identity.Name;
-                assemblyJobRepository.Edit(assemblyJob);
+                this.assemblyJobRepository.Edit(assemblyJob);
                 return RedirectToAction("Index");
 
             }
@@ -112,7 +117,7 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
         [HttpGet]
         public ActionResult AddParameter(int id)
         {
-            AssemblyJob assemblyJob = assemblyJobRepository.Get(id);
+            AssemblyJob assemblyJob = this.assemblyJobRepository.Get(id);
             AssemblyJobParameterViewModel viewModel = new AssemblyJobParameterViewModel();
             viewModel.AssemblyJobId = assemblyJob.AssemblyJobId;
             return View("AddParameter", viewModel);
@@ -130,13 +135,13 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
                 IsRequired = viewModel.IsRequired,
                 Name = viewModel.Name
             };
-            assemblyJobRepository.CreateParameter(parameter);
+            this.assemblyJobRepository.CreateParameter(parameter);
             return RedirectToAction("Edit", new { id = viewModel.AssemblyJobId });
         }
 
         public ActionResult Delete(int id)
         {
-            assemblyJobRepository.Delete(id);
+            this.assemblyJobRepository.Delete(id);
             SuccessMessage = "Assembly Job deleted successfully";
             return RedirectToAction("Index");
         }

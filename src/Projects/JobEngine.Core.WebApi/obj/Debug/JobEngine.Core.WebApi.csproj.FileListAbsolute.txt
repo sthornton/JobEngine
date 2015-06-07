@@ -166,3 +166,15 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.pdb
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\_CreateDatabase\ElmahInstall.sql
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.Mvc.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\WebActivatorEx.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml

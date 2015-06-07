@@ -12,10 +12,16 @@ namespace JobEngine.Core.WebApi.Controllers
     [Authorize]
     public class LogController : ApiController
     {
+        private ILoggingRepository loggingRepository;
+
+        public LogController(ILoggingRepository loggingRepository)
+        {
+            this.loggingRepository = loggingRepository;
+        }
+
         public void AddJobExecutionLogEntry(JobExecutionLog logEntry)
         {
-            ILoggingRepository repository = RepositoryFactory.GetLoggingRepository();
-            repository.AddJobExecutionLogEntry(logEntry);
+            this.loggingRepository.AddJobExecutionLogEntry(logEntry);
         }
     }
 }

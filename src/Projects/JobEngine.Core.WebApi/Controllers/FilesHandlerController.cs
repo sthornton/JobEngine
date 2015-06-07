@@ -14,7 +14,12 @@ namespace JobEngine.Core.WebApi.Controllers
     [Authorize]
     public class FilesHandlerController : ApiController
     {
-        private IAssemblyJobRepository assemblyJobRepository = RepositoryFactory.GetAssemblyJobRepository();
+        private IAssemblyJobRepository assemblyJobRepository;
+
+        public FilesHandlerController(IAssemblyJobRepository assemblyJobRepository)
+        {
+            this.assemblyJobRepository = assemblyJobRepository;
+        }
 
         [HttpPost]
         public HttpResponseMessage SynchAssemblies([FromUri]Guid jobEngineClientId, Dictionary<string, DateTime> files)
@@ -23,7 +28,7 @@ namespace JobEngine.Core.WebApi.Controllers
             {
                 string tempFolderName = Guid.NewGuid().ToString();
                 string tempDir = Path.Combine(Settings.TempDirectory, Guid.NewGuid().ToString());
-                var assemblyJobs = assemblyJobRepository.GetAll();
+                var assemblyJobs = this.assemblyJobRepository.GetAll();
 
                 bool isSendingFilesDownToClient = false;
                 foreach (var assemblyJob in assemblyJobs)

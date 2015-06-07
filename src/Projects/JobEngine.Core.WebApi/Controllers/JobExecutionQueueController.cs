@@ -15,18 +15,25 @@ namespace JobEngine.Core.WebApi.Controllers
     [Authorize]
     public class JobExecutionQueueController : ApiController
     {
+        private IJobExecutionQueueRepository jobExecutionQueueRepository;
+        private IClientRepository clientRepository;
+
+        public JobExecutionQueueController(IJobExecutionQueueRepository jobExecutionQueueRepository,
+                                           IClientRepository clientRepository)
+        {
+            this.jobExecutionQueueRepository = jobExecutionQueueRepository;
+            this.clientRepository = clientRepository;
+        }
         public HttpResponseMessage AckJobRecieved(long jobExecutionQueueId,DateTime dateRecieved)
         {
-            IJobExecutionQueueRepository repository = RepositoryFactory.GetJobExecutionQueueRepository();
-            repository.AckJobRecieved(jobExecutionQueueId, dateRecieved);
+            this.jobExecutionQueueRepository.AckJobRecieved(jobExecutionQueueId, dateRecieved);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         public HttpResponseMessage GetJobsWaitingToExecute(string id, string ipAddress, string hostName)
         {
             var jobEngineClientId = new Guid(id);
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            var clients = clientRepository.GetAll();
+            var clients = this.clientRepository.GetAll();
             var client = clients.Where(x => x.JobEngineClientId == jobEngineClientId && x.IsEnabled && !x.IsDeleted)
                                 .FirstOrDefault();
             if (client == null)
@@ -40,8 +47,7 @@ namespace JobEngine.Core.WebApi.Controllers
             client.IpAddress = ipAddress;
             client.HostName = hostName;
             clientRepository.Edit(client);
-            IJobExecutionQueueRepository repository = RepositoryFactory.GetJobExecutionQueueRepository();
-            var jobsToExecute = repository.GetJobsToExecute(jobEngineClientId);
+            var jobsToExecute = this.jobExecutionQueueRepository.GetJobsToExecute(jobEngineClientId);
             return Request.CreateResponse(HttpStatusCode.OK, jobsToExecute);
         }
 
@@ -53,16 +59,14 @@ namespace JobEngine.Core.WebApi.Controllers
                 var response = new HttpResponseMessage(HttpStatusCode.NotFound);
                 response.ReasonPhrase = string.Format("The job execution status is not known about: {0}", jobExecutionStatus);
                 return response;
-            }                
+            }
 
-            IJobExecutionQueueRepository repository = RepositoryFactory.GetJobExecutionQueueRepository();
-            repository.UpdateJobExecutionStatus(jobExecutionQueueId, status);
+            this.jobExecutionQueueRepository.UpdateJobExecutionStatus(jobExecutionQueueId, status);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         public HttpResponseMessage UpdateJobExecutionResult(JobExecutionQueueResult result)
         {
-            IJobExecutionQueueRepository repository = RepositoryFactory.GetJobExecutionQueueRepository();
             JobExecutionStatus status = JobExecutionStatus.ERROR;
             switch (result.Result)
             {
@@ -76,9 +80,9 @@ namespace JobEngine.Core.WebApi.Controllers
                     break;
                 default:
                     break;
-            }            
+            }
 
-            repository.UpdateJobExecutionResult(
+            this.jobExecutionQueueRepository.UpdateJobExecutionResult(
                 jobExecutionQueueId: result.JobExecutionQueueId,
                 jobExecutionStatus: status,
                 resultMessage: result.Message,

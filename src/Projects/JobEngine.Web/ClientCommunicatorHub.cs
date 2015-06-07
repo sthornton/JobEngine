@@ -9,8 +9,13 @@ namespace JobEngine.Web
 {
     public class ClientCommunicatorHub : Hub
     {
-        private ICacheProvider cacheProvider = new MemoryCacheProvider();
+        private ICacheProvider cacheProvider;
         private static string CACHE_KEY = "Realtime_Job_Client-";
+
+        public ClientCommunicatorHub(ICacheProvider cacheProvider)
+        {
+            this.cacheProvider = cacheProvider;
+        }
 
         public void AwaitingCommands(Guid jobEngineClientId)
         {

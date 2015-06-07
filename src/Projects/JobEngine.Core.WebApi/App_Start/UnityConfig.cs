@@ -3,9 +3,8 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using JobEngine.Core.Persistence;
 using System.Configuration;
-using JobEngine.Common;
 
-namespace JobEngine.Web.App_Start
+namespace JobEngine.Core.WebApi.App_Start
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -47,10 +46,6 @@ namespace JobEngine.Web.App_Start
             container.RegisterType<IClientRepository, ClientRepository>(new InjectionConstructor(jobEngineConnectionString));
             container.RegisterType<ILoggingRepository, LoggingRepository>(new InjectionConstructor(jobEngineConnectionString));
             container.RegisterType<IJobExecutionQueueRepository, JobExecutionQueueRepository>(new InjectionConstructor(jobEngineConnectionString));
-
-            container.RegisterType<ICacheProvider, MemoryCacheProvider>();
-            container.RegisterType<IJobScheduler, HangfireJobScheduler>();
-            container.RegisterType<IClientCommunicator, ClientCommunicator>();
         }
     }
 }

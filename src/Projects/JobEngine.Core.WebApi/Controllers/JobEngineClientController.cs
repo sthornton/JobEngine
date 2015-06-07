@@ -12,17 +12,24 @@ namespace JobEngine.Core.Api.Areas.Api.Controllers
 {
     [Authorize]
     public class JobEngineClientController : ApiController
-    {       
+    {
+        private IClientRepository clientRepository;
+        private ICustomerRepository customerRepository;
+
+        public JobEngineClientController(IClientRepository clientRepository, ICustomerRepository customerRepository)
+        {
+            this.customerRepository = customerRepository;
+            this.clientRepository = clientRepository;
+        }
+
         public IEnumerable<JobEngineClient> GetAllClients()
         {
-            IClientRepository clientRepository = RepositoryFactory.GetClientRespository();
-            return clientRepository.GetAll();
+            return this.clientRepository.GetAll();
         }
 
         public IEnumerable<Customer> GetAllCustomers()
         {
-            ICustomerRepository customerRepository = RepositoryFactory.GetCustomerRepository();
-            return customerRepository.GetAll();
+            return this.customerRepository.GetAll();
         }        
     }
 }

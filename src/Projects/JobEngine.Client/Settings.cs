@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,20 +32,43 @@ namespace JobEngine.Client
 
         static Settings()
         {
+
+#if DEBUG
             ApiUsername = "testUser";
-            ApiPassword = "password";
+#else
+            ApiUsername = ConfigurationManager.AppSettings["ApiUser"];
+#endif 
+
+#if DEBUG
+            ApiPassword = "http://localhost:64196";
+#else
+            ApiPassword = ConfigurationManager.AppSettings["ApiPassword"];
+#endif
+
+#if DEBUG
             ApiUrl = "http://localhost:64196";
+#else
+            ApiUrl = ConfigurationManager.AppSettings["ApiUrl"];
+#endif
 
             RealTimeHubName = "ClientCommunicatorHub";
+
+#if DEBUG
             RealTimeUrl = "http://localhost:63376/";
+#else
+            RealTimeUrl = ConfigurationManager.AppSettings["RealtimeUrl"];
+#endif
 
+#if DEBUG
             JobEngineClientId = new Guid("38AFF521-11FB-E411-827B-E8B1FC46C78C");
-            TempFileDirectory = "C:\\Temp\\";
-
+#else
+            JobEngineClientId = Guid.Parse(ConfigurationManager.AppSettings["JobEngineClientId"]);
+#endif
+            TempFileDirectory = ConfigurationManager.AppSettings["TempFileDirectory"];
             PollInterval = 20;
 
             string fullPath = string.Empty;
-            if(!AppDomain.CurrentDomain.IsDefaultAppDomain())
+            if (!AppDomain.CurrentDomain.IsDefaultAppDomain())
             {
                 AssemblyJobPluginsDirectory = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + "\\Plugins";
                 AppDirectory = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);

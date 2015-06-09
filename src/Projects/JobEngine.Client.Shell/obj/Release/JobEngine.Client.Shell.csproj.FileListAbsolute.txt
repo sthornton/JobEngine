@@ -21,3 +21,4 @@ C:\Zebra\Source\Job Engine Client\JobEngine.Client.Shell\obj\Release\JobEngine.C
 C:\Zebra\Source\JobEngine\Job Engine Client\JobEngine.Client.Shell\bin\Release\JobEngine.Client.Shell.exe.config
 C:\Zebra\Source\JobEngine\Job Engine Client\JobEngine.Client.Shell\obj\Release\JobEngine.Client.Shell.exe
 C:\Zebra\Source\JobEngine\Job Engine Client\JobEngine.Client.Shell\obj\Release\JobEngine.Client.Shell.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Client.Shell.exe.config

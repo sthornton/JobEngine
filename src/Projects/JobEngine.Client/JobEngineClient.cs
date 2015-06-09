@@ -118,7 +118,7 @@ namespace JobEngine.Client
                 switch (jobQueueItem.JobType)
                 {
                     case JobType.AssemblyJob:
-                        Task.Factory.StartNew(() => ProcessAssemblyJob(jobQueueItem));
+                        Task.Factory.StartNew(() => ProcessAssemblyJob(jobQueueItem), TaskCreationOptions.LongRunning);
                         break;
                     default:
                         break;

@@ -11,6 +11,9 @@ $RECYCLE.BIN/
 # The packages folder can be ignored because of Package Restore
 **/packages/*
 
+Release/
+Debug/
+
 # Windows Installer files
 *.cab
 *.msi

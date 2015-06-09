@@ -21641,3 +21641,154 @@ Parameter name: path1
 2015-06-08 20:35:15,351 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:649)
 2015-06-08 20:35:15,351 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:649) = SUCCESS
 2015-06-08 20:35:15,382 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:649)
+2015-06-09 13:47:37,736 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-09 13:47:38,462 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-09 13:47:39,008 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:650) using assembly Ping.dll
+2015-06-09 13:47:39,008 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:651) using assembly Ping.dll
+2015-06-09 13:47:39,012 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:653) using assembly Ping.dll
+2015-06-09 13:47:39,016 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:652) using assembly Ping.dll
+2015-06-09 13:47:39,073 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:654) using assembly Ping.dll
+2015-06-09 13:47:39,234 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:655) using assembly Ping.dll
+2015-06-09 13:47:41,385 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:653)
+2015-06-09 13:47:41,388 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:653) = SUCCESS
+2015-06-09 13:47:41,556 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:652)
+2015-06-09 13:47:41,556 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:652) = SUCCESS
+2015-06-09 13:47:41,788 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:651)
+2015-06-09 13:47:41,788 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:651) = SUCCESS
+2015-06-09 13:47:41,938 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:655)
+2015-06-09 13:47:41,939 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:655) = SUCCESS
+2015-06-09 13:47:42,026 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:654)
+2015-06-09 13:47:42,026 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:654) = SUCCESS
+2015-06-09 13:47:42,040 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:650)
+2015-06-09 13:47:42,040 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:650) = SUCCESS
+2015-06-09 13:47:42,154 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:653)
+2015-06-09 13:47:42,323 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:656) using assembly Ping.dll
+2015-06-09 13:47:42,676 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:659) using assembly Ping.dll
+2015-06-09 13:47:42,702 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:658) using assembly Ping.dll
+2015-06-09 13:47:43,044 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:654)
+2015-06-09 13:47:43,318 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:657) using assembly Ping.dll
+2015-06-09 13:47:43,330 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:660) using assembly Ping.dll
+2015-06-09 13:47:43,922 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:652)
+2015-06-09 13:47:44,264 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:661) using assembly Ping.dll
+2015-06-09 13:47:44,621 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:655)
+2015-06-09 13:47:45,058 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:663) using assembly Ping.dll
+2015-06-09 13:47:45,328 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:656)
+2015-06-09 13:47:45,328 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:656) = SUCCESS
+2015-06-09 13:47:45,694 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:650)
+2015-06-09 13:47:45,734 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:660)
+2015-06-09 13:47:45,734 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:660) = SUCCESS
+2015-06-09 13:47:45,811 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:658)
+2015-06-09 13:47:45,812 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:658) = SUCCESS
+2015-06-09 13:47:45,867 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:659)
+2015-06-09 13:47:45,868 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:659) = SUCCESS
+2015-06-09 13:47:46,342 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:662) using assembly Ping.dll
+2015-06-09 13:47:46,823 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:661)
+2015-06-09 13:47:46,823 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:661) = SUCCESS
+2015-06-09 13:47:47,244 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:657)
+2015-06-09 13:47:47,244 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:657) = SUCCESS
+2015-06-09 13:47:47,591 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:663)
+2015-06-09 13:47:47,592 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:663) = SUCCESS
+2015-06-09 13:47:47,592 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:664) using assembly Ping.dll
+2015-06-09 13:47:47,622 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:651)
+2015-06-09 13:47:47,987 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:665) using assembly Ping.dll
+2015-06-09 13:47:48,276 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:666) using assembly Ping.dll
+2015-06-09 13:47:48,682 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:663)
+2015-06-09 13:47:49,525 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:667) using assembly Ping.dll
+2015-06-09 13:47:49,601 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:656)
+2015-06-09 13:47:49,973 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:668) using assembly Ping.dll
+2015-06-09 13:47:50,230 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:659)
+2015-06-09 13:47:50,349 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:662)
+2015-06-09 13:47:50,349 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:662) = SUCCESS
+2015-06-09 13:47:50,381 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:669) using assembly Ping.dll
+2015-06-09 13:47:50,740 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:664)
+2015-06-09 13:47:50,740 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:664) = SUCCESS
+2015-06-09 13:47:50,910 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:670) using assembly Ping.dll
+2015-06-09 13:47:50,968 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:658)
+2015-06-09 13:47:51,291 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:666)
+2015-06-09 13:47:51,291 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:666) = SUCCESS
+2015-06-09 13:47:51,349 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:665)
+2015-06-09 13:47:51,349 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:665) = SUCCESS
+2015-06-09 13:47:51,549 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:671) using assembly Ping.dll
+2015-06-09 13:47:51,595 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:657)
+2015-06-09 13:47:52,411 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:672) using assembly Ping.dll
+2015-06-09 13:47:52,647 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:660)
+2015-06-09 13:47:53,501 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:668)
+2015-06-09 13:47:53,507 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:668) = SUCCESS
+2015-06-09 13:47:53,727 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:673) using assembly Ping.dll
+2015-06-09 13:47:54,017 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:661)
+2015-06-09 13:47:54,123 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:667)
+2015-06-09 13:47:54,123 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:667) = SUCCESS
+2015-06-09 13:47:54,367 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:669)
+2015-06-09 13:47:54,368 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:669) = SUCCESS
+2015-06-09 13:47:55,079 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:674) using assembly Ping.dll
+2015-06-09 13:47:55,153 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:665)
+2015-06-09 13:47:55,455 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:670)
+2015-06-09 13:47:55,455 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:670) = SUCCESS
+2015-06-09 13:47:55,553 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:675) using assembly Ping.dll
+2015-06-09 13:47:55,829 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:676) using assembly Ping.dll
+2015-06-09 13:47:55,956 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:671)
+2015-06-09 13:47:55,956 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:671) = SUCCESS
+2015-06-09 13:47:56,084 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:666)
+2015-06-09 13:47:56,513 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:677) using assembly Ping.dll
+2015-06-09 13:47:56,612 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:667)
+2015-06-09 13:47:56,779 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:678) using assembly Ping.dll
+2015-06-09 13:47:57,118 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:668)
+2015-06-09 13:47:57,328 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:673)
+2015-06-09 13:47:57,328 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:673) = SUCCESS
+2015-06-09 13:47:57,467 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:679) using assembly Ping.dll
+2015-06-09 13:47:57,805 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:669)
+2015-06-09 13:47:58,143 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:672)
+2015-06-09 13:47:58,143 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:672) = SUCCESS
+2015-06-09 13:47:58,652 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:675)
+2015-06-09 13:47:58,653 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:675) = SUCCESS
+2015-06-09 13:47:58,684 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:670)
+2015-06-09 13:47:58,752 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:680) using assembly Ping.dll
+2015-06-09 13:47:59,350 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:674)
+2015-06-09 13:47:59,351 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:674) = SUCCESS
+2015-06-09 13:48:00,017 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:681) using assembly Ping.dll
+2015-06-09 13:48:00,176 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:677)
+2015-06-09 13:48:00,177 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:677) = SUCCESS
+2015-06-09 13:48:00,214 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:671)
+2015-06-09 13:48:00,689 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:676)
+2015-06-09 13:48:00,689 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:676) = SUCCESS
+2015-06-09 13:48:00,705 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:682) using assembly Ping.dll
+2015-06-09 13:48:01,547 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:672)
+2015-06-09 13:48:01,774 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:678)
+2015-06-09 13:48:01,774 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:678) = SUCCESS
+2015-06-09 13:48:02,288 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:683) using assembly Ping.dll
+2015-06-09 13:48:02,675 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:673)
+2015-06-09 13:48:02,987 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:684) using assembly Ping.dll
+2015-06-09 13:48:03,076 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:685) using assembly Ping.dll
+2015-06-09 13:48:03,393 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:679)
+2015-06-09 13:48:03,394 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:679) = SUCCESS
+2015-06-09 13:48:03,459 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:674)
+2015-06-09 13:48:03,834 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:686) using assembly Ping.dll
+2015-06-09 13:48:03,870 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:680)
+2015-06-09 13:48:03,870 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:680) = SUCCESS
+2015-06-09 13:48:03,918 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:675)
+2015-06-09 13:48:04,318 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:688) using assembly Ping.dll
+2015-06-09 13:48:04,583 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:676)
+2015-06-09 13:48:05,102 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:687) using assembly Ping.dll
+2015-06-09 13:48:05,734 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:677)
+2015-06-09 13:48:06,155 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:682)
+2015-06-09 13:48:06,169 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:682) = SUCCESS
+2015-06-09 13:48:06,849 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:681)
+2015-06-09 13:48:06,849 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:681) = SUCCESS
+2015-06-09 13:48:06,876 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:684)
+2015-06-09 13:48:06,916 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:684) = SUCCESS
+2015-06-09 13:48:07,139 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:678)
+2015-06-09 13:48:07,196 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:685)
+2015-06-09 13:48:07,197 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:685) = SUCCESS
+2015-06-09 13:48:07,344 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:689) using assembly Ping.dll
+2015-06-09 13:48:08,092 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:690) using assembly Ping.dll
+2015-06-09 13:48:08,382 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:679)
+2015-06-09 13:48:08,732 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:691) using assembly Ping.dll
+2015-06-09 13:48:09,015 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:688)
+2015-06-09 13:48:09,015 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:688) = SUCCESS
+2015-06-09 13:48:09,247 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:680)
+2015-06-09 13:48:09,441 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:683)
+2015-06-09 13:48:09,441 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:683) = SUCCESS
+2015-06-09 13:48:09,672 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:686)
+2015-06-09 13:48:09,672 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:686) = SUCCESS
+2015-06-09 13:48:09,863 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:692) using assembly Ping.dll
+2015-06-09 13:49:42,849 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs

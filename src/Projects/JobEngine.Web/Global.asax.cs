@@ -5,10 +5,6 @@ using JobEngine.Web.Areas.AssemblyJobs.Models;
 using JobEngine.Web.Areas.Clients.Models;
 using JobEngine.Web.Areas.Customers.Models;
 using JobEngine.Web.Areas.ScheduledJobs.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 

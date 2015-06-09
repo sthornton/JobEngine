@@ -57,7 +57,7 @@ namespace JobEngine.Client
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GetAccessToken());
-                responseMessage = client.PostAsync(new Uri(m_BaseUri, "api/FilesHandler/SynchAssemblies?jobEngineClientId=" + Guid.NewGuid().ToString()), fileDetails, new JsonMediaTypeFormatter()).Result;
+                responseMessage = client.PostAsync(new Uri(m_BaseUri, "api/FilesHandler/SynchAssemblies?jobEngineClientId=" + Settings.JobEngineClientId.ToString()), fileDetails, new JsonMediaTypeFormatter()).Result;
                 responseMessage.EnsureSuccessStatusCode();
                 var byteArray = responseMessage.Content.ReadAsByteArrayAsync().Result;
                 if (byteArray.Length > 0)

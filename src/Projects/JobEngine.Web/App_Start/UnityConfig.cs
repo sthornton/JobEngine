@@ -1,9 +1,11 @@
 using System;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 using JobEngine.Core.Persistence;
 using System.Configuration;
 using JobEngine.Common;
+using Microsoft.AspNet.SignalR.Hubs;
+using Microsoft.AspNet.SignalR;
+using JobEngine.Web.Areas.SiteManagement.Controllers;
 
 namespace JobEngine.Web.App_Start
 {
@@ -38,6 +40,9 @@ namespace JobEngine.Web.App_Start
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
 
+            var unityHubActivator = new UnityHubActivator(container);
+            GlobalHost.DependencyResolver.Register(typeof(IHubActivator), () => unityHubActivator);
+
             var jobEngineConnectionString = ConfigurationManager.ConnectionStrings["JobEngineConnectionString"].ConnectionString;
             var jobSchedulerConnectionString = ConfigurationManager.ConnectionStrings["HangfireConnectionString"].ConnectionString;
 
@@ -51,6 +56,11 @@ namespace JobEngine.Web.App_Start
             container.RegisterType<ICacheProvider, MemoryCacheProvider>();
             container.RegisterType<IJobScheduler, HangfireJobScheduler>();
             container.RegisterType<IClientCommunicator, ClientCommunicator>();
+
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<RolesAdminController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
+            container.RegisterType<UsersAdminController>(new InjectionConstructor());
         }
     }
 }

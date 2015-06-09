@@ -115,7 +115,6 @@ namespace JobEngine.Client
         {
             foreach(var jobQueueItem in jobQueue.GetConsumingEnumerable(consumerCancelTokenSource.Token))
             {
-
                 switch (jobQueueItem.JobType)
                 {
                     case JobType.AssemblyJob:

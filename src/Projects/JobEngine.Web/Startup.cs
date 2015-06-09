@@ -5,7 +5,10 @@ using JobEngine.Core.Persistence;
 using JobEngine.Models;
 using JobEngine.Persistence;
 using JobEngine.Web;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.Owin;
+using Microsoft.Practices.Unity;
 using Owin;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +25,7 @@ namespace JobEngine.Web
             app.UseHangfireServer();
             app.UseHangfireDashboard();
             ConfigureAuth(app);
-            InitializeJobs();
+            InitializeJobs();            
             app.MapSignalR();
         }
 
@@ -43,6 +46,21 @@ namespace JobEngine.Web
             {                
                 throw;
             }
+        }
+    }
+
+    public class UnityHubActivator : IHubActivator
+    {
+        private readonly IUnityContainer container;
+
+        public UnityHubActivator(IUnityContainer container)
+        {
+            this.container = container;
+        }
+
+        public IHub Create(HubDescriptor descriptor)
+        {
+            return (IHub)container.Resolve(descriptor.HubType);
         }
     }
 }

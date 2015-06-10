@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System.IO.Compression;
+using System.Threading.Tasks;
 
 namespace JobEngine.Core.WebApi.Controllers
 {
@@ -22,13 +23,13 @@ namespace JobEngine.Core.WebApi.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage SynchAssemblies([FromUri]Guid jobEngineClientId, Dictionary<string, DateTime> files)
+        public async Task<HttpResponseMessage> SynchAssemblies([FromUri]Guid jobEngineClientId, Dictionary<string, DateTime> files)
         {
             try
             {
                 string tempFolderName = Guid.NewGuid().ToString();
                 string tempDir = Path.Combine(Settings.TempDirectory, Guid.NewGuid().ToString());
-                var assemblyJobs = this.assemblyJobRepository.GetAll();
+                var assemblyJobs = await this.assemblyJobRepository.GetAllAsync();
 
                 bool isSendingFilesDownToClient = false;
                 foreach (var assemblyJob in assemblyJobs)

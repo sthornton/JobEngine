@@ -18,13 +18,13 @@ namespace JobEngine.Core.Persistence
             this.connectionString = connectionString;
         }
 
-        public IEnumerable<AssemblyJob> GetAll()
+        public async Task<IEnumerable<AssemblyJob>> GetAllAsync()
         {
             IEnumerable<AssemblyJob> results;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                results = conn.Query<AssemblyJob>(@"SELECT [AssemblyJobId]
+                results = await conn.QueryAsync<AssemblyJob>(@"SELECT [AssemblyJobId]
                                                           ,[Name]
                                                           ,[PluginName]
                                                           ,[PluginFileName]
@@ -37,13 +37,13 @@ namespace JobEngine.Core.Persistence
             return results;
         }
 
-        public AssemblyJob Get(int assemblyJobId)
+        public async Task<AssemblyJob> GetAsync(int assemblyJobId)
         {
             AssemblyJob results;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                results = conn.Query<AssemblyJob>(@"SELECT [AssemblyJobId]
+                var job = await conn.QueryAsync<AssemblyJob>(@"SELECT [AssemblyJobId]
                                                           ,[Name]
                                                           ,[PluginName]
                                                           ,[PluginFileName]
@@ -53,18 +53,19 @@ namespace JobEngine.Core.Persistence
                                                           ,[DateCreated]
                                                       FROM [AssemblyJobs]
                                                       WHERE AssemblyJobId = @AssemblyJobId",
-                                                new { AssemblyJobId = assemblyJobId }).Single();
-
-                results.Parameters = GetParameters(assemblyJobId).ToList();
+                                                new { AssemblyJobId = assemblyJobId });
+                results = job.Single();
+                var parameters = await GetParametersAsync(assemblyJobId);
+                results.Parameters = parameters.ToList();
             }
             return results;
         }
 
-        public void Edit(AssemblyJob assemblyJob)
+        public async Task EditAsync(AssemblyJob assemblyJob)
         {
             using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@"UPDATE [dbo].[AssemblyJobs]
+                await conn.ExecuteAsync(@"UPDATE [dbo].[AssemblyJobs]
                                 SET [Name] = @Name
                                     ,[PluginName] = @PluginName
                                     ,[PluginFileName] = @PluginFileName
@@ -87,7 +88,7 @@ namespace JobEngine.Core.Persistence
             }
         }
 
-        public int Create(AssemblyJob assemblyJob)
+        public async Task<int> CreateAsync(AssemblyJob assemblyJob)
         {
             int result;
             string insert = @"INSERT INTO [AssemblyJobs]
@@ -109,30 +110,31 @@ namespace JobEngine.Core.Persistence
                                     ,@DateCreated)";
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                result = conn.Query<int>(insert, new
-                {                   
-                    Name = assemblyJob.Name,          
+                var insertedId = await conn.QueryAsync<int>(insert, new
+                {
+                    Name = assemblyJob.Name,
                     PluginName = assemblyJob.PluginName,
                     PluginFileName = assemblyJob.PluginFileName,
                     PluginFile = assemblyJob.PluginFile,
                     DateModified = DateTime.UtcNow,
                     ModifiedBy = assemblyJob.ModifiedBy,
                     DateCreated = DateTime.UtcNow
-                }).Single();
+                });
+                result = insertedId.Single();
             }
             return result;
         }
 
-        public void Delete(int assemblyJobId)
+        public async Task DeleteAsync(int assemblyJobId)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute("DELETE FROM AssemblyJobs WHERE AssemblyJobId = @AssemblyJobId",
+                await conn.ExecuteAsync("DELETE FROM AssemblyJobs WHERE AssemblyJobId = @AssemblyJobId",
                     new { AssemblyJobId = assemblyJobId });
             }
         }
 
-        public int CreateParameter(AssemblyJobParameter assemblyJobParameter)
+        public async Task<int> CreateParameterAsync(AssemblyJobParameter assemblyJobParameter)
         {
             int result;
             string insert = @"INSERT INTO [AssemblyJobParameters]
@@ -152,7 +154,7 @@ namespace JobEngine.Core.Persistence
                                    ,@InputValidationRegExPattern)";
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                result = conn.Query<int>(insert, new
+                var insertedId = await conn.QueryAsync<int>(insert, new
                 {
                     AssemblyJobId = assemblyJobParameter.AssemblyJobId,
                     Name = assemblyJobParameter.Name,
@@ -160,16 +162,17 @@ namespace JobEngine.Core.Persistence
                     IsRequired = assemblyJobParameter.IsRequired,
                     IsEncrypted = assemblyJobParameter.IsEncrypted,
                     InputValidationRegExPattern = assemblyJobParameter.InputValidationRegExPattern
-                }).Single();
+                });
+                result = insertedId.Single();
             }
             return result;
         }
 
-        public void EditParameter(AssemblyJobParameter assemblyJobParameter)
+        public async Task EditParameterAsync(AssemblyJobParameter assemblyJobParameter)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@"UPDATE [dbo].[AssemblyJobParameters]
+               await conn.ExecuteAsync(@"UPDATE [dbo].[AssemblyJobParameters]
                                SET [AssemblyJobId] = @AssemblyJobId
                                   ,[Name] = @Name
                                   ,[DataType] = @DataType
@@ -190,22 +193,22 @@ namespace JobEngine.Core.Persistence
             }
         }
 
-        public void DeleteParameter(int assemblyJobParameterId)
+        public async Task DeleteParameterAsync(int assemblyJobParameterId)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@"DELETE FROM AssemblyJobParameters WHERE AssemblyJobParameterId = @AssemblyJobParameterId",
+                await conn.ExecuteAsync(@"DELETE FROM AssemblyJobParameters WHERE AssemblyJobParameterId = @AssemblyJobParameterId",
                             new { AssemblyJobParameterId = assemblyJobParameterId });
             }
         }
 
-        public IEnumerable<AssemblyJobParameter> GetParameters(int assemblyJobId)
+        public async Task<IEnumerable<AssemblyJobParameter>> GetParametersAsync(int assemblyJobId)
         {
             IEnumerable<AssemblyJobParameter> results;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                results = conn.Query<AssemblyJobParameter>(@"SELECT [AssemblyJobParameterId]
+                results = await conn.QueryAsync<AssemblyJobParameter>(@"SELECT [AssemblyJobParameterId]
                                                                   ,[AssemblyJobId]
                                                                   ,[Name]
                                                                   ,[DataType]

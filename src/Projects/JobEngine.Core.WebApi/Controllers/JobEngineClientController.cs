@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -22,9 +23,9 @@ namespace JobEngine.Core.Api.Areas.Api.Controllers
             this.clientRepository = clientRepository;
         }
 
-        public IEnumerable<JobEngineClient> GetAllClients()
+        public async Task<IEnumerable<JobEngineClient>> GetAllClients()
         {
-            return this.clientRepository.GetAll();
+            return await this.clientRepository.GetAllAsync();
         }
 
         public IEnumerable<Customer> GetAllCustomers()

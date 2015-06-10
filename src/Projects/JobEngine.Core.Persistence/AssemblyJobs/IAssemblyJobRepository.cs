@@ -9,15 +9,15 @@ namespace JobEngine.Core.Persistence
 {
     public interface IAssemblyJobRepository
     {
-        IEnumerable<AssemblyJob> GetAll();
-        AssemblyJob Get(int assemblyJobId);
-        void Edit(AssemblyJob assemblyJob);
-        int Create(AssemblyJob assemblyJob);
-        void Delete(int assemblyJobId);
+        Task<IEnumerable<AssemblyJob>> GetAllAsync();
+        Task<AssemblyJob> GetAsync(int assemblyJobId);
+        Task EditAsync(AssemblyJob assemblyJob);
+        Task<int> CreateAsync(AssemblyJob assemblyJob);
+        Task DeleteAsync(int assemblyJobId);
 
-        IEnumerable<AssemblyJobParameter> GetParameters(int assemblyJobId);
-        int CreateParameter(AssemblyJobParameter assemblyJobParameter);
-        void EditParameter(AssemblyJobParameter assemblyJobParameter);
-        void DeleteParameter(int assemblyobParameterId);
+        Task<IEnumerable<AssemblyJobParameter>> GetParametersAsync(int assemblyJobId);
+        Task<int> CreateParameterAsync(AssemblyJobParameter assemblyJobParameter);
+        Task EditParameterAsync(AssemblyJobParameter assemblyJobParameter);
+        Task DeleteParameterAsync(int assemblyobParameterId);
     }
 }

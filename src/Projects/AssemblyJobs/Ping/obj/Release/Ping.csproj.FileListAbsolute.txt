@@ -5,3 +5,10 @@ C:\Zebra\Source\Job Engine Client\Ping\obj\Release\Ping.dll
 C:\Zebra\Source\Job Engine Client\Ping\obj\Release\Ping.pdb
 C:\Zebra\Source\Job Engine Client\Ping\bin\Release\AssemblyJobHelper.dll
 C:\Zebra\Source\Job Engine Client\Ping\bin\Release\AssemblyJobHelper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Release\Ping.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Release\Ping.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Release\AssemblyJobHelper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Release\AssemblyJobHelper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\obj\Release\Ping.csprojResolveAssemblyReference.cache
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\obj\Release\Ping.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\obj\Release\Ping.pdb

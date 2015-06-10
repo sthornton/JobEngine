@@ -22,3 +22,23 @@ C:\Zebra\Source\JobEngine\Job Engine Client\JobEngine.Client.Shell\bin\Release\J
 C:\Zebra\Source\JobEngine\Job Engine Client\JobEngine.Client.Shell\obj\Release\JobEngine.Client.Shell.exe
 C:\Zebra\Source\JobEngine\Job Engine Client\JobEngine.Client.Shell\obj\Release\JobEngine.Client.Shell.pdb
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Client.Shell.exe.config
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Client.Shell.exe
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Client.Shell.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Client.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\Newtonsoft.Json.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\System.Net.Http.Formatting.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\AssemblyJobHelper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\log4net.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Common.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\Microsoft.AspNet.SignalR.Client.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Client.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\Newtonsoft.Json.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\System.Net.Http.Formatting.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\AssemblyJobHelper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\log4net.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\Microsoft.AspNet.SignalR.Client.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\obj\Release\JobEngine.Client.Shell.csprojResolveAssemblyReference.cache
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\obj\Release\JobEngine.Client.Shell.exe
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\obj\Release\JobEngine.Client.Shell.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\JobEngine.Models.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client.Shell\bin\Release\Plugins\default.txt

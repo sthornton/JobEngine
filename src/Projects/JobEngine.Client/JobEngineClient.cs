@@ -49,9 +49,17 @@ namespace JobEngine.Client
 
         private void ConnectToRealTimeServer()
         {
-            realTimeConnection = new RealTimeServerConnection();
-            realTimeConnection.PollRequested += RealTimeConnection_PollRequested;
-            realTimeConnection.Connect(Settings.RealTimeUrl, Settings.RealTimeHubName, Settings.JobEngineClientId);
+            try
+            {
+                realTimeConnection = new RealTimeServerConnection();
+                realTimeConnection.PollRequested += RealTimeConnection_PollRequested;
+                realTimeConnection.Connect(Settings.RealTimeUrl, Settings.RealTimeHubName, Settings.JobEngineClientId);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         private void RealTimeConnection_PollRequested(object sender, EventArgs e)

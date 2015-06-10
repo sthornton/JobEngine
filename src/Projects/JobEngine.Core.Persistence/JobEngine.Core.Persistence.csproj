@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\..\Solutions\Web\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Solutions\Web\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -67,7 +70,6 @@
     <Compile Include="RepositoryFactory.cs" />
     <Compile Include="ScheduledJobs\ScheduledJobsRepository.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="SqlMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

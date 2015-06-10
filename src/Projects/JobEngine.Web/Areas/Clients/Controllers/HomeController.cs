@@ -7,6 +7,7 @@ using JobEngine.Models;
 using JobEngine.Core.Persistence;
 using JobEngine.Web.Areas.Clients.Models;
 using AutoMapper;
+using System.Threading.Tasks;
 
 namespace JobEngine.Web.Areas.Clients.Controllers
 {
@@ -20,18 +21,18 @@ namespace JobEngine.Web.Areas.Clients.Controllers
             this.clientRepository = clientRepository;
             this.customerRepository = customerRepository;
         }
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var clients = this.clientRepository.GetAll();
+            var clients = await this.clientRepository.GetAllAsync();
             var viewModel = Mapper.Map<IEnumerable<JobEngineClient>, IEnumerable<JobEngineClientViewModel>>(clients);
             return View(viewModel.OrderBy(x => x.HostName));
         }
 
-        public ActionResult Details(Guid? id)
+        public async Task<ActionResult> Details(Guid? id)
         {
             if(id.HasValue)
             {
-                var client = this.clientRepository.Get(id.Value);
+                var client = await this.clientRepository.GetAsync(id.Value);
                 var viewModel = Mapper.Map<JobEngineClient, JobEngineClientViewModel>(client);
                 return View(viewModel);
             }
@@ -49,11 +50,11 @@ namespace JobEngine.Web.Areas.Clients.Controllers
      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateJobEngineClientViewModel viewModel)
+        public async Task<ActionResult> Create(CreateJobEngineClientViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Guid clientId = this.clientRepository.Create(
+                Guid clientId = await this.clientRepository.CreateAsync(
                         viewModel.SelectedCustomerId,
                         viewModel.Name,
                         viewModel.IsEnabled,
@@ -69,11 +70,11 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         }
 
 
-        public ActionResult Edit(Guid? id)
+        public async Task<ActionResult> Edit(Guid? id)
         {
             if (id.HasValue)
             {
-                var jobEngineClient = this.clientRepository.Get(id.Value);
+                var jobEngineClient = await this.clientRepository.GetAsync(id.Value);
                 JobEngineClientViewModel viewModel = Mapper.Map<JobEngineClient, JobEngineClientViewModel>(jobEngineClient);
                 return View(viewModel);                
             }
@@ -82,29 +83,29 @@ namespace JobEngine.Web.Areas.Clients.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(JobEngineClientViewModel viewModel)
+        public async Task<ActionResult> Edit(JobEngineClientViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var client =  this.clientRepository.Get(viewModel.JobEngineClientId);
+                var client =  await this.clientRepository.GetAsync(viewModel.JobEngineClientId);
                 client.IsEnabled = viewModel.IsEnabled;
                 client.Name = viewModel.Name;
                 client.Username = viewModel.Username;
                 client.Password = viewModel.Password;
                 client.ModifiedBy = User.Identity.Name;
                 client.DateModified = DateTime.UtcNow;
-                clientRepository.Edit(client);
+                await clientRepository.EditAsync(client);
                 SuccessMessage = "Client modified successfully";
                 return RedirectToAction("Index");
             }
             return View(viewModel);
         }
   
-        public ActionResult Delete(Guid? id)
+        public async Task<ActionResult> Delete(Guid? id)
         {
             if (id.HasValue)
             {
-                var client = this.clientRepository.Get(id.Value);
+                var client = await this.clientRepository.GetAsync(id.Value);
                 JobEngineClientViewModel viewModel = Mapper.Map<JobEngineClient, JobEngineClientViewModel>(client);
                 return View(viewModel);
                
@@ -114,9 +115,9 @@ namespace JobEngine.Web.Areas.Clients.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            this.clientRepository.Delete(id);
+            await this.clientRepository.DeleteAsync(id);
             SuccessMessage = "Deleted successfully";
             return RedirectToAction("Index");
         }

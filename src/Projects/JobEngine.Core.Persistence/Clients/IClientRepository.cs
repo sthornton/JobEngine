@@ -13,20 +13,20 @@ namespace JobEngine.Core.Persistence
         /// Get all Job Engine Clients
         /// </summary>
         /// <returns>All Clients</returns>
-        IEnumerable<JobEngineClient> GetAll();
+        Task<IEnumerable<JobEngineClient>> GetAllAsync();
 
         /// <summary>
         /// Gets the specified Job Engine Client
         /// </summary>
         /// <param name="jobEngineClientId"></param>
         /// <returns>Requested Job Engine Client</returns>
-        JobEngineClient Get(Guid jobEngineClientId);
+        Task<JobEngineClient> GetAsync(Guid jobEngineClientId);
 
         /// <summary>
         /// Deletes the specified client
         /// </summary>
         /// <param name="jobEngineClientId">Id of the Client to be deleted</param>
-        void Delete(Guid jobEngineClientId);
+        Task DeleteAsync(Guid jobEngineClientId);
         
         /// <summary>
         /// Creates new Job Engine Client
@@ -38,13 +38,13 @@ namespace JobEngine.Core.Persistence
         /// <param name="password"></param>
         /// <param name="createdBy"></param>
         /// <returns>Id of the newly created Client></returns>
-        Guid Create(Guid customerId, string name, bool isEnabled, string username, string password, string createdBy);
+        Task<Guid> CreateAsync(Guid customerId, string name, bool isEnabled, string username, string password, string createdBy);
 
         /// <summary>
         /// Updates the client in the database
         /// </summary>
         /// <param name="jobEngineClient"></param>
-        void Edit(JobEngineClient jobEngineClient);
+        Task EditAsync(JobEngineClient jobEngineClient);
         
 
     }

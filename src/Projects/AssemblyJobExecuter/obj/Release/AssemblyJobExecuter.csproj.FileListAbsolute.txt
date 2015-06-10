@@ -17,3 +17,22 @@ C:\Zebra\Source\Job Engine Client\AssemblyJobExecuter\bin\Release\Newtonsoft.Jso
 C:\Zebra\Source\Job Engine Client\AssemblyJobExecuter\obj\Release\AssemblyJobExecuter.csprojResolveAssemblyReference.cache
 C:\Zebra\Source\Job Engine Client\AssemblyJobExecuter\obj\Release\AssemblyJobExecuter.dll
 C:\Zebra\Source\Job Engine Client\AssemblyJobExecuter\obj\Release\AssemblyJobExecuter.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\AssemblyJobExecuter.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\AssemblyJobExecuter.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\AssemblyJobHelper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\JobEngine.Client.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\log4net.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\JobEngine.Models.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\JobEngine.Common.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\Microsoft.AspNet.SignalR.Client.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\System.Net.Http.Formatting.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\Newtonsoft.Json.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\AssemblyJobHelper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\JobEngine.Client.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\log4net.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\Microsoft.AspNet.SignalR.Client.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\System.Net.Http.Formatting.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\bin\Release\Newtonsoft.Json.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\obj\Release\AssemblyJobExecuter.csprojResolveAssemblyReference.cache
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\obj\Release\AssemblyJobExecuter.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobExecuter\obj\Release\AssemblyJobExecuter.pdb

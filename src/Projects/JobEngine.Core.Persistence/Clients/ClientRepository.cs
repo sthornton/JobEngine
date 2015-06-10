@@ -18,12 +18,12 @@ namespace JobEngine.Core.Persistence
             this.connectionString = connectionString;
         }
 
-        public IEnumerable<JobEngineClient> GetAll()
+        public async Task<IEnumerable<JobEngineClient>> GetAllAsync()
         {
             IEnumerable<JobEngineClient> results;
             using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                results = conn.Query<JobEngineClient>(@"SELECT [JobEngineClientId]
+                results = await conn.QueryAsync<JobEngineClient>(@"SELECT [JobEngineClientId]
                                                                 ,[CustomerId]
                                                                 ,[Name]
                                                                 ,[HostName]
@@ -41,12 +41,12 @@ namespace JobEngine.Core.Persistence
             return results;
         }
 
-        public JobEngineClient Get(Guid jobEngineClientId)
+        public async Task<JobEngineClient> GetAsync(Guid jobEngineClientId)
         {
             JobEngineClient result;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                result = conn.Query<JobEngineClient>(@"SELECT [JobEngineClientId]
+                var client = await conn.QueryAsync<JobEngineClient>(@"SELECT [JobEngineClientId]
                                                                 ,[CustomerId]
                                                                 ,[Name]
                                                                 ,[HostName]
@@ -60,21 +60,23 @@ namespace JobEngine.Core.Persistence
                                                                 ,[ModifiedBy]
                                                                 ,[DateCreated]
                                                             FROM [JobEngineClients] WHERE JobEngineClientId = @JobEngineClientId",
-                                                            new { @JobEngineClientId = jobEngineClientId }).First();
+                                                            new { @JobEngineClientId = jobEngineClientId });
+                result = client.First();
+
             }
             return result;
         }
 
-        public void Delete(Guid jobEngineClientId)
+        public async Task DeleteAsync(Guid jobEngineClientId)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Execute(@"DELETE FROM JobEngineClients WHERE JobEngineClientId = @JobEngineClientId",
+                await conn.ExecuteAsync(@"DELETE FROM JobEngineClients WHERE JobEngineClientId = @JobEngineClientId",
                         new { @JobEngineClientId = jobEngineClientId });
             }
         }
 
-        public Guid Create(Guid customerId, string name, bool isEnabled, string username, string password, string createdBy)
+        public async Task<Guid> CreateAsync(Guid customerId, string name, bool isEnabled, string username, string password, string createdBy)
         {
             Guid result;
             string insert = @"INSERT INTO [JobEngineClients]
@@ -100,7 +102,7 @@ namespace JobEngine.Core.Persistence
                                    ,@DateCreated);";
             using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                result = conn.Query<Guid>(insert, new
+                var insertedId = await conn.QueryAsync<Guid>(insert, new
                 {
                     CustomerId = customerId,
                     Name = name,
@@ -111,16 +113,17 @@ namespace JobEngine.Core.Persistence
                     DateModified = DateTime.UtcNow,
                     ModifiedBy = createdBy,
                     DateCreated = DateTime.UtcNow
-                }).Single();
+                });
+                result = insertedId.Single();
             }
             return result;
         }
 
-        public void Edit(JobEngineClient jobEngineClient)
+        public async Task EditAsync(JobEngineClient jobEngineClient)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Execute(@"UPDATE [dbo].[JobEngineClients]
+                await conn.ExecuteAsync(@"UPDATE [dbo].[JobEngineClients]
                                SET [CustomerId] = @CustomerId
                                   ,[Name] = @Name
                                   ,[HostName] = @HostName

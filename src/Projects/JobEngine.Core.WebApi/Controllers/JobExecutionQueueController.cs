@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace JobEngine.Core.WebApi.Controllers
@@ -30,10 +31,10 @@ namespace JobEngine.Core.WebApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        public HttpResponseMessage GetJobsWaitingToExecute(string id, string ipAddress, string hostName)
+        public async Task<HttpResponseMessage> GetJobsWaitingToExecute(string id, string ipAddress, string hostName)
         {
             var jobEngineClientId = new Guid(id);
-            var clients = this.clientRepository.GetAll();
+            var clients = await this.clientRepository.GetAllAsync();
             var client = clients.Where(x => x.JobEngineClientId == jobEngineClientId && x.IsEnabled && !x.IsDeleted)
                                 .FirstOrDefault();
             if (client == null)
@@ -46,7 +47,7 @@ namespace JobEngine.Core.WebApi.Controllers
             client.LastConnected = DateTime.UtcNow;
             client.IpAddress = ipAddress;
             client.HostName = hostName;
-            clientRepository.Edit(client);
+            await clientRepository.EditAsync(client);
             var jobsToExecute = this.jobExecutionQueueRepository.GetJobsToExecute(jobEngineClientId);
             return Request.CreateResponse(HttpStatusCode.OK, jobsToExecute);
         }

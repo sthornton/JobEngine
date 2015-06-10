@@ -50,3 +50,6 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\obj\
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\obj\Debug\JobEngine.Core.Persistence.pdb
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\_CreateDatabase\ElmahInstall.sql
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\Dapper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\Dapper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence\bin\Debug\Dapper.xml

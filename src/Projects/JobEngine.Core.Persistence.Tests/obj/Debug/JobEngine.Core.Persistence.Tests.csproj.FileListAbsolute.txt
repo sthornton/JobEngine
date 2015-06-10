@@ -70,3 +70,6 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Test
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\obj\Debug\JobEngine.Core.Persistence.Tests.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\obj\Debug\JobEngine.Core.Persistence.Tests.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\obj\Debug\JobEngine.Core.Persistence.Tests.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debug\Dapper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debug\Dapper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debug\Dapper.xml

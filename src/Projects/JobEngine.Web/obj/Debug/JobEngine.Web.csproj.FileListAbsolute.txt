@@ -279,3 +279,6 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\WebActivatorE
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.ServiceLocation.pdb
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.ServiceLocation.xml
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Dapper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Dapper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\Dapper.xml

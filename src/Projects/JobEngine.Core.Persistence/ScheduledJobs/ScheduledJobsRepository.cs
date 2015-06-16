@@ -18,13 +18,12 @@ namespace JobEngine.Core.Persistence
             this.connectionString = connectionString;
         }
 
-        public IEnumerable<ScheduledJob> GetAll()
+        public async Task<IEnumerable<ScheduledJob>> GetAll()
         {
             IEnumerable<ScheduledJob> results;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Open();
-                results = conn.Query<ScheduledJob>(@"SELECT [ScheduledJobId]
+                results = await conn.QueryAsync<ScheduledJob>(@"SELECT [ScheduledJobId]
                                                           ,[JobEngineClientId]
                                                           ,[CustomerId]
                                                           ,[Name]
@@ -44,12 +43,12 @@ namespace JobEngine.Core.Persistence
             return results;            
         }
 
-        public int CreateScheduledJob(ScheduledJob scheduledJob)
+        public async Task<int> CreateScheduledJob(ScheduledJob scheduledJob)
         {
             int result;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                result = conn.Query<int>(@"INSERT INTO [dbo].[ScheduledJobs]
+               var id = await conn.QueryAsync<int>(@"INSERT INTO [dbo].[ScheduledJobs]
                                                 ([JobEngineClientId]
                                                 ,[CustomerId]
                                                 ,[Name]
@@ -96,16 +95,17 @@ namespace JobEngine.Core.Persistence
                                  CreatedBy = scheduledJob.CreatedBy,
                                  DateModified = scheduledJob.DateModified,
                                  ModifiedBy = scheduledJob.ModifiedBy
-                             }).Single();
+                             });
+                result = id.Single();
             }
             return result;
         }
 
-        public void UpdateScheduledJob(ScheduledJob scheduledJob)
+        public async Task UpdateScheduledJob(ScheduledJob scheduledJob)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@"UPDATE [dbo].[ScheduledJobs]
+                await conn.ExecuteAsync(@"UPDATE [dbo].[ScheduledJobs]
                                        SET [JobEngineClientId] = @JobEngineClientId
                                           ,[CustomerId] = @CustomerId
                                           ,[Name] = @Name
@@ -142,22 +142,22 @@ namespace JobEngine.Core.Persistence
             }       
         }
 
-        public void DeleteScheduledJob(int id)
+        public async Task DeleteScheduledJob(int id)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute("DELETE FROM ScheduledJobs WHERE ScheduledJobId = @ScheduledJobId",
+                await conn.ExecuteAsync("DELETE FROM ScheduledJobs WHERE ScheduledJobId = @ScheduledJobId",
                     new { ScheduledJobId = id });
             }
         }
 
-        public ScheduledJob Get(int scheduledJobId)
+        public async Task<ScheduledJob> Get(int scheduledJobId)
         {
             ScheduledJob result;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                result = conn.Query<ScheduledJob>(@"SELECT [ScheduledJobId]
+                var job = await conn.QueryAsync<ScheduledJob>(@"SELECT [ScheduledJobId]
                                                           ,[JobEngineClientId]
                                                           ,[CustomerId]
                                                           ,[Name]
@@ -174,7 +174,8 @@ namespace JobEngine.Core.Persistence
                                                           ,[ModifiedBy]
                                                       FROM [ScheduledJobs]
                                                       WHERE ScheduledJobId = @ScheduledJobId",
-                                            new { ScheduledJobId = scheduledJobId }).Single();
+                                            new { ScheduledJobId = scheduledJobId });
+                result = job.Single();
             }
             return result;  
         }

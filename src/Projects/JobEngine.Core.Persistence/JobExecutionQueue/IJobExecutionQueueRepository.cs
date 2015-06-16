@@ -9,14 +9,14 @@ namespace JobEngine.Core.Persistence
 {
     public interface IJobExecutionQueueRepository
     {
-        void AckJobRecieved(long jobExecutionQueueId, DateTime dateRecieved);
+        Task AckJobRecievedAsync(long jobExecutionQueueId, DateTime dateRecieved);
 
-        void UpdateJobExecutionResult(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus, string resultMessage, DateTime dateCompleted, long totalExecutionTimeInMs);
+        Task UpdateJobExecutionResultAsync(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus, string resultMessage, DateTime dateCompleted, long totalExecutionTimeInMs);
 
-        void UpdateJobExecutionStatus(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus);
+        Task UpdateJobExecutionStatusAsync(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus);
 
-        IEnumerable<JobExecutionQueue> GetJobsToExecute(Guid jobEngineClientId);
+        Task<IEnumerable<JobExecutionQueue>> GetJobsToExecuteAsync(Guid jobEngineClientId);
 
-        JobExecutionQueue Get(long jobExecutionQueueId);
+        Task<JobExecutionQueue> GetAsync(long jobExecutionQueueId);
     }
 }

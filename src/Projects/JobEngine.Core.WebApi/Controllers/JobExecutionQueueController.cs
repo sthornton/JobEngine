@@ -25,9 +25,9 @@ namespace JobEngine.Core.WebApi.Controllers
             this.jobExecutionQueueRepository = jobExecutionQueueRepository;
             this.clientRepository = clientRepository;
         }
-        public HttpResponseMessage AckJobRecieved(long jobExecutionQueueId,DateTime dateRecieved)
+        public async Task<HttpResponseMessage> AckJobRecieved(long jobExecutionQueueId,DateTime dateRecieved)
         {
-            this.jobExecutionQueueRepository.AckJobRecieved(jobExecutionQueueId, dateRecieved);
+            await this.jobExecutionQueueRepository.AckJobRecievedAsync(jobExecutionQueueId, dateRecieved);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -48,11 +48,11 @@ namespace JobEngine.Core.WebApi.Controllers
             client.IpAddress = ipAddress;
             client.HostName = hostName;
             await clientRepository.EditAsync(client);
-            var jobsToExecute = this.jobExecutionQueueRepository.GetJobsToExecute(jobEngineClientId);
+            var jobsToExecute = await this.jobExecutionQueueRepository.GetJobsToExecuteAsync(jobEngineClientId);
             return Request.CreateResponse(HttpStatusCode.OK, jobsToExecute);
         }
 
-        public HttpResponseMessage UpdateJobExecutionStatus(long jobExecutionQueueId, string jobExecutionStatus)
+        public async Task<HttpResponseMessage> UpdateJobExecutionStatus(long jobExecutionQueueId, string jobExecutionStatus)
         {
             JobExecutionStatus status = JobExecutionStatus.ERROR;
             if (!Enum.TryParse(jobExecutionStatus, out status))
@@ -62,11 +62,11 @@ namespace JobEngine.Core.WebApi.Controllers
                 return response;
             }
 
-            this.jobExecutionQueueRepository.UpdateJobExecutionStatus(jobExecutionQueueId, status);
+            await this.jobExecutionQueueRepository.UpdateJobExecutionStatusAsync(jobExecutionQueueId, status);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        public HttpResponseMessage UpdateJobExecutionResult(JobExecutionQueueResult result)
+        public async Task<HttpResponseMessage> UpdateJobExecutionResult(JobExecutionQueueResult result)
         {
             JobExecutionStatus status = JobExecutionStatus.ERROR;
             switch (result.Result)
@@ -83,7 +83,7 @@ namespace JobEngine.Core.WebApi.Controllers
                     break;
             }
 
-            this.jobExecutionQueueRepository.UpdateJobExecutionResult(
+            await  this.jobExecutionQueueRepository.UpdateJobExecutionResultAsync(
                 jobExecutionQueueId: result.JobExecutionQueueId,
                 jobExecutionStatus: status,
                 resultMessage: result.Message,

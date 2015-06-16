@@ -21858,3 +21858,92 @@ Parameter name: path1
    at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
    --- End of inner exception stack trace ---<---
 
+2015-06-16 13:18:54,723 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-16 13:18:56,881 - WARN  - JobEngine.Client.JobEngineClient - System.AggregateException: One or more errors occurred. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at JobEngine.Client.JobEngineApi.GetAccessToken() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 224
+   at JobEngine.Client.JobEngineApi.SynchronizeAssemblies(String directory) in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 59
+   at JobEngine.Client.JobEngineClient.SynchAssemblies() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 197
+---> (Inner Exception #0) System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---<---
+
+2015-06-16 13:18:56,906 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-16 13:18:58,959 - ERROR - JobEngine.Client.JobEngineClient - System.AggregateException: One or more errors occurred. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at JobEngine.Client.JobEngineApi.GetAccessToken() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 224
+   at JobEngine.Client.JobEngineApi.<GetJobsWaitingToExecute>d__20.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 194
+---> (Inner Exception #0) System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---<---
+
+2015-06-16 13:27:30,846 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-16 13:27:31,450 - DEBUG - JobEngine.Client.JobEngineClient - Extracting updated Assembly Job Plugin: Ping.dll
+2015-06-16 13:27:31,452 - DEBUG - JobEngine.Client.JobEngineClient - Finished extracting updated Assembly Job Plugin: Ping.dll
+2015-06-16 13:27:31,453 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-16 13:27:31,961 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1186) using assembly Ping.dll
+2015-06-16 13:27:32,254 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1188) using assembly Ping.dll
+2015-06-16 13:27:32,348 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1183) using assembly Ping.dll
+2015-06-16 13:27:32,369 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1185) using assembly Ping.dll
+2015-06-16 13:27:33,322 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1188)
+2015-06-16 13:27:33,322 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1188) = SUCCESS
+2015-06-16 13:27:33,327 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1185)
+2015-06-16 13:27:33,327 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1186)
+2015-06-16 13:27:33,327 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1185) = SUCCESS
+2015-06-16 13:27:33,327 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1186) = SUCCESS
+2015-06-16 13:27:33,360 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1183)
+2015-06-16 13:27:33,360 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1183) = SUCCESS
+2015-06-16 13:27:33,415 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1188)
+2015-06-16 13:27:33,456 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1182) using assembly Ping.dll
+2015-06-16 13:27:33,462 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1185)
+2015-06-16 13:27:33,519 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1187) using assembly Ping.dll
+2015-06-16 13:27:33,585 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1183)
+2015-06-16 13:27:33,775 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1189) using assembly Ping.dll
+2015-06-16 13:27:33,898 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1184) using assembly Ping.dll
+2015-06-16 13:27:34,110 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1186)
+2015-06-16 13:27:34,469 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1190) using assembly Ping.dll
+2015-06-16 13:27:34,564 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Executing Assembly Job (JobExecutionId:1191) using assembly Ping.dll
+2015-06-16 13:27:35,161 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1182)
+2015-06-16 13:27:35,162 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1182) = SUCCESS
+2015-06-16 13:27:35,206 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1187)
+2015-06-16 13:27:35,207 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1187) = SUCCESS
+2015-06-16 13:27:35,334 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1182)
+2015-06-16 13:27:35,514 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1184)
+2015-06-16 13:27:35,514 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1184) = SUCCESS
+2015-06-16 13:27:35,552 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1189)
+2015-06-16 13:27:35,552 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1189) = SUCCESS
+2015-06-16 13:27:35,648 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1187)
+2015-06-16 13:27:35,787 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1190)
+2015-06-16 13:27:35,787 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1190) = SUCCESS
+2015-06-16 13:27:35,908 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished executing Assembly Job (JobExecutionId:1191)
+2015-06-16 13:27:35,908 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Assembly Job Result (JobExecutionId:1191) = SUCCESS
+2015-06-16 13:27:35,969 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1189)
+2015-06-16 13:27:36,060 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1184)
+2015-06-16 13:27:36,112 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1190)
+2015-06-16 13:27:36,169 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1191)

@@ -45,7 +45,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
         public async Task<ActionResult> Index()
         {
             var customers = this.customerRepository.GetAll();
-            var scheduledJobs = this.scheduledJobsRepository.GetAll();
+            var scheduledJobs = await this.scheduledJobsRepository.GetAll();
             var clients = await this.clientRepository.GetAllAsync();
 
             List<ScheduledJobViewModel> viewModel = new List<ScheduledJobViewModel>();
@@ -177,7 +177,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
                     ModifiedBy = User.Identity.Name,
                     Name = viewModel.Name
                 };
-                int jobId = this.scheduledJobsRepository.CreateScheduledJob(scheduledJob);
+                int jobId = await this.scheduledJobsRepository.CreateScheduledJob(scheduledJob);
 
                 if(scheduledJob.IsActive)
                 {
@@ -190,11 +190,11 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                var scheduledJob = this.scheduledJobsRepository.Get(id);
+                var scheduledJob = await this.scheduledJobsRepository.Get(id);
                 this.scheduledJobsRepository.DeleteScheduledJob(id);
                 this.jobScheduler.RemoveIfExists(scheduledJob.Name + "~" + scheduledJob.ScheduledJobId);
                 SuccessMessage = "Job '" + scheduledJob.Name + "' has been deleted successfully.";                
@@ -208,7 +208,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
 
         public async Task<ActionResult> Edit(int id)
         {
-            var scheduledJob = this.scheduledJobsRepository.Get(id);
+            var scheduledJob =await this.scheduledJobsRepository.Get(id);
             switch (scheduledJob.JobType)
             {
                 case JobType.AssemblyJob:
@@ -257,7 +257,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
             if (ModelState.IsValid)
             {
                 var assemblyJob = await this.assemblyJobsRepository.GetAsync(viewModel.AssemblyJobId);
-                var scheduledJob = this.scheduledJobsRepository.Get(viewModel.ScheduledJobId);
+                var scheduledJob = await this.scheduledJobsRepository.Get(viewModel.ScheduledJobId);
                 Dictionary<string, string> settings = new Dictionary<string, string>();
                 int parametersErrorCount = 0;
                 foreach (var param in assemblyJob.Parameters)
@@ -336,7 +336,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
 
         public async Task<ActionResult> Details(int id)
         {
-            var scheduledJob = this.scheduledJobsRepository.Get(id);
+            var scheduledJob = await this.scheduledJobsRepository.Get(id);
             switch (scheduledJob.JobType)
             {
                 case JobType.AssemblyJob:
@@ -374,27 +374,27 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult TriggerNow(int id)
+        public async Task<ActionResult> TriggerNow(int id)
         {
-            var scheduledJob = this.scheduledJobsRepository.Get(id);
+            var scheduledJob = await this.scheduledJobsRepository.Get(id);
             JobEngine.Persistence.JobQueue jobQueue = new Persistence.JobQueue();
             long jobExecutionQueueId = jobQueue.QueueScheduledJob(scheduledJob);
             ClientCommunicator clientCommunicator = new ClientCommunicator();
             clientCommunicator.SendPollRequest(scheduledJob.JobEngineClientId);
-            var jobExecutionQueueItem = this.jobExecutionQueueRepository.Get(jobExecutionQueueId);
+            var jobExecutionQueueItem = await this.jobExecutionQueueRepository.GetAsync(jobExecutionQueueId);
             TriggerNowJobResultsViewModel viewModel = Mapper.Map<JobExecutionQueue, TriggerNowJobResultsViewModel>(jobExecutionQueueItem);
             ViewBag.JobTitle = scheduledJob.Name;
             return View(viewModel);
         }
 
-        public ActionResult GetJobExecutionQueueStatus(long jobExecutionQueueId)
+        public async Task<ActionResult> GetJobExecutionQueueStatus(long jobExecutionQueueId)
         {
-            var queueItem = this.jobExecutionQueueRepository.Get(jobExecutionQueueId);
+            var queueItem = await this.jobExecutionQueueRepository.GetAsync(jobExecutionQueueId);
             dynamic dynamicObject = new ExpandoObject();
             dynamicObject.Status = queueItem.JobExecutionStatus.ToString();
             dynamicObject.ClientPickup = queueItem.DateReceivedByClient.HasValue ? queueItem.DateReceivedByClient : null;
             dynamicObject.TotalExecutionTime = queueItem.TotalExecutionTimeInMs.HasValue ? queueItem.TotalExecutionTimeInMs : null;            
-            var logs = this.loggingRepository.GetLogs(jobExecutionQueueId);
+            var logs = await this.loggingRepository.GetLogs(jobExecutionQueueId);
             dynamicObject.Logs = logs;
             var serailizedJsonResult = JsonConvert.SerializeObject(dynamicObject);
             return Content(serailizedJsonResult, "application/json");

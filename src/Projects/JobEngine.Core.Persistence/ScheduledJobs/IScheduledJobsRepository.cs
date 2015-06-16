@@ -9,10 +9,10 @@ namespace JobEngine.Core.Persistence
 {
     public interface IScheduledJobsRepository
     {
-        IEnumerable<ScheduledJob> GetAll();
-        ScheduledJob Get(int scheduledJobId);
-        int CreateScheduledJob(ScheduledJob scheduledJob);
-        void UpdateScheduledJob(ScheduledJob scheduledJob);
-        void DeleteScheduledJob(int scheduledJobId);
+        Task<IEnumerable<ScheduledJob>> GetAll();
+        Task<ScheduledJob> Get(int scheduledJobId);
+        Task<int> CreateScheduledJob(ScheduledJob scheduledJob);
+        Task UpdateScheduledJob(ScheduledJob scheduledJob);
+        Task DeleteScheduledJob(int scheduledJobId);
     }
 }

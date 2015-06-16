@@ -20,11 +20,11 @@ namespace JobEngine.Core.Persistence
             this.connectionString = connectionString;
         }
 
-        public void AckJobRecieved(long jobExecutionQueueId, DateTime dateRecieved)
+        public async Task AckJobRecievedAsync(long jobExecutionQueueId, DateTime dateRecieved)
         {
-            using(SqlConnection conn = new SqlConnection(this.connectionString))
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@"UPDATE [JobExecutionQueue]
+                await conn.ExecuteAsync(@"UPDATE [JobExecutionQueue]
                                SET [JobExecutionStatus] = @JobExecutionStatus                                 
                                   ,[DateReceivedByClient] = @DateReceivedByClient
                              WHERE JobExecutionQueueId = @JobExecutionQueueId",
@@ -37,12 +37,12 @@ namespace JobEngine.Core.Persistence
             }
         }
 
-        public IEnumerable<JobExecutionQueue> GetJobsToExecute(Guid jobEngineClientId)
+        public async Task<IEnumerable<JobExecutionQueue>> GetJobsToExecuteAsync(Guid jobEngineClientId)
         {
             IEnumerable<JobExecutionQueue> results;
             using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                results = conn.Query<JobExecutionQueue>(@"DECLARE @output TABLE
+                results = await conn.QueryAsync<JobExecutionQueue>(@"DECLARE @output TABLE
                                                         (
 	                                                    [JobExecutionQueueId] [bigint] NOT NULL,
 	                                                    [JobEngineClientId] [uniqueidentifier] NOT NULL,
@@ -92,11 +92,11 @@ namespace JobEngine.Core.Persistence
             return results;
         }
 
-        public void UpdateJobExecutionResult(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus, string resultMessage, DateTime dateCompleted, long totalExecutionTimeInMs)
+        public async Task UpdateJobExecutionResultAsync(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus, string resultMessage, DateTime dateCompleted, long totalExecutionTimeInMs)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@"
+                await conn.ExecuteAsync(@"
                                 DECLARE @scheduledJobId TABLE ( ScheduledJobId INT NULL);
                                 
                                 UPDATE [JobExecutionQueue]
@@ -129,11 +129,11 @@ namespace JobEngine.Core.Persistence
             }          
         }
 
-        public void UpdateJobExecutionStatus(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus)
+        public async Task UpdateJobExecutionStatusAsync(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@" UPDATE [JobExecutionQueue]
+                await conn.ExecuteAsync(@" UPDATE [JobExecutionQueue]
                                 SET  [JobExecutionStatus] = @JobExecutionStatus
                                 WHERE JobExecutionQueueId = @JobExecutionQueueId;",
                             new
@@ -143,18 +143,13 @@ namespace JobEngine.Core.Persistence
                             });
             }   
         }
-
-        public IEnumerable<JobExecutionQueue> GetJobsWaitingToExecute(string jobEngineClientId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public JobExecutionQueue Get(long jobExecutionQueueId)
+        
+        public async Task<JobExecutionQueue> GetAsync(long jobExecutionQueueId)
         {
             JobExecutionQueue result;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                   result = conn.Query<JobExecutionQueue>(@"
+                var queueItem = await conn.QueryAsync<JobExecutionQueue>(@"
                                 SELECT [JobExecutionQueueId]
                                     ,[JobEngineClientId]
                                     ,[CustomerId]
@@ -170,12 +165,14 @@ namespace JobEngine.Core.Persistence
                                     ,[DateEnteredQueue]
                                 FROM  [JobExecutionQueue]
                                 WHERE JobExecutionQueueId = @JobExecutionQueueId;",
-                            new
-                            {
-                                JobExecutionQueueId = jobExecutionQueueId
-                            }).Single();
+                         new
+                         {
+                             JobExecutionQueueId = jobExecutionQueueId
+                         });
+                result = queueItem.Single();
+
             }
             return result;
-        }
+        }       
     }
 }

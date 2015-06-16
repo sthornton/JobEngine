@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace JobEngine.Core.WebApi.Controllers
@@ -19,9 +20,9 @@ namespace JobEngine.Core.WebApi.Controllers
             this.loggingRepository = loggingRepository;
         }
 
-        public void AddJobExecutionLogEntry(JobExecutionLog logEntry)
+        public async Task AddJobExecutionLogEntry(JobExecutionLog logEntry)
         {
-            this.loggingRepository.AddJobExecutionLogEntry(logEntry);
+            await this.loggingRepository.AddJobExecutionLogEntry(logEntry);
         }
     }
 }

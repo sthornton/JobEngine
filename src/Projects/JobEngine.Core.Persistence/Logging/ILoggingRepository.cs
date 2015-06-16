@@ -9,8 +9,8 @@ namespace JobEngine.Core.Persistence
 {
     public interface ILoggingRepository
     {
-        void AddJobExecutionLogEntry(JobExecutionLog logEntry);
+        Task AddJobExecutionLogEntry(JobExecutionLog logEntry);
 
-        IEnumerable<JobExecutionLog> GetLogs(long jobExecutionQueueId);
+        Task<IEnumerable<JobExecutionLog>> GetLogs(long jobExecutionQueueId);
     }
 }

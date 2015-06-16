@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Dapper;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace JobEngine.Core.Persistence
 {
@@ -14,11 +15,11 @@ namespace JobEngine.Core.Persistence
             this.connectionString = connectionString;
         }
 
-        public void AddJobExecutionLogEntry(JobExecutionLog logEntry)
+        public async Task AddJobExecutionLogEntry(JobExecutionLog logEntry)
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                conn.Execute(@"INSERT INTO [JobExecutionLogs]
+                await conn.ExecuteAsync(@"INSERT INTO [JobExecutionLogs]
                                     ([JobExecutionQueueId]
                                     ,[Date]
                                     ,[LogLevel]
@@ -45,12 +46,12 @@ namespace JobEngine.Core.Persistence
         }
 
 
-        public IEnumerable<JobExecutionLog> GetLogs(long jobExecutionQueueId)
+        public async Task<IEnumerable<JobExecutionLog>> GetLogs(long jobExecutionQueueId)
         {
             IEnumerable<JobExecutionLog> results;
             using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                results = conn.Query<JobExecutionLog>(@"SELECT [JobExecutionLogId]
+                results = await conn.QueryAsync<JobExecutionLog>(@"SELECT [JobExecutionLogId]
                                   ,[JobExecutionQueueId]
                                   ,[Date]
                                   ,[LogLevel]

@@ -34,7 +34,7 @@ namespace JobEngine.Web
             try
             {
                 IScheduledJobsRepository repository = RepositoryFactory.GetScheduledJobsRepository();
-                var jobs = repository.GetAll().Where(x => x.IsActive);                
+                var jobs = repository.GetAll().Result.Where(x => x.IsActive);                
                 var jobScheduler = new HangfireJobScheduler();
                 foreach (var job in jobs)
                 {

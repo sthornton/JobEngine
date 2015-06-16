@@ -17,7 +17,8 @@ namespace JobEngine.Core.Api.Areas.Api.Controllers
         private IClientRepository clientRepository;
         private ICustomerRepository customerRepository;
 
-        public JobEngineClientController(IClientRepository clientRepository, ICustomerRepository customerRepository)
+        public JobEngineClientController(IClientRepository clientRepository, 
+                                         ICustomerRepository customerRepository)
         {
             this.customerRepository = customerRepository;
             this.clientRepository = clientRepository;

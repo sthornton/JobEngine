@@ -22,10 +22,10 @@ namespace JobEngine.Web
         public void Configuration(IAppBuilder app)
         {
             GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireConnectionString");
-            app.UseHangfireServer();
+          //  app.UseHangfireServer();
             app.UseHangfireDashboard();
             ConfigureAuth(app);
-            InitializeJobs();            
+           // InitializeJobs();            
             app.MapSignalR();
         }
 

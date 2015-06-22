@@ -128,6 +128,9 @@ namespace JobEngine.Client
                     case JobType.AssemblyJob:
                         Task.Factory.StartNew(() => ProcessAssemblyJob(jobQueueItem), TaskCreationOptions.LongRunning);
                         break;
+                    case JobType.PowerShell :
+                        Task.Factory.StartNew(() => Console.WriteLine("received powershell job"), TaskCreationOptions.LongRunning);
+                        break;
                     default:
                         break;
                 }

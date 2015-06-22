@@ -7,6 +7,7 @@ namespace JobEngine.Models
 {
     public enum JobType
     {
-        AssemblyJob = 1
+        AssemblyJob = 1,
+        PowerShell = 2
     }
 }

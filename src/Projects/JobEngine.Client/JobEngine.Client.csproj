@@ -40,9 +40,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Job Engine\JobEngine.Common\bin\Debug\JobEngine.Common.dll</HintPath>
     </Reference>
-    <Reference Include="JobEngine.Models">
-      <HintPath>..\..\Job Engine\JobEngine.Models\bin\Debug\JobEngine.Models.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Solutions\Client\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
@@ -88,6 +85,10 @@
     <ProjectReference Include="..\AssemblyJobHelper\AssemblyJobHelper.csproj">
       <Project>{ec386ca0-b465-463a-83b7-0a8c98a0b34a}</Project>
       <Name>AssemblyJobHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobEngine.Models\JobEngine.Models.csproj">
+      <Project>{497393ab-4f09-4e3b-ba8e-0c5985e97f21}</Project>
+      <Name>JobEngine.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

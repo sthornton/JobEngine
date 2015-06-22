@@ -12,3 +12,10 @@ C:\Zebra\GIT\Source\Repos\JobEngine\Projects\AssemblyJobs\Ping\bin\Debug\Assembl
 C:\Zebra\GIT\Source\Repos\JobEngine\Projects\AssemblyJobs\Ping\obj\Debug\Ping.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\JobEngine\Projects\AssemblyJobs\Ping\obj\Debug\Ping.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\Projects\AssemblyJobs\Ping\obj\Debug\Ping.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Debug\Ping.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Debug\Ping.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Debug\AssemblyJobHelper.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\bin\Debug\AssemblyJobHelper.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\obj\Debug\Ping.csprojResolveAssemblyReference.cache
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\obj\Debug\Ping.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\AssemblyJobs\Ping\obj\Debug\Ping.pdb

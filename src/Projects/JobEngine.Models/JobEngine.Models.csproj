@@ -52,6 +52,8 @@
     <Compile Include="JobExecutionStatus.cs" />
     <Compile Include="JobType.cs" />
     <Compile Include="LogLevel.cs" />
+    <Compile Include="PowerShellJob.cs" />
+    <Compile Include="PowerShellJobParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JobExecutionQueue.cs" />
     <Compile Include="ScheduledJob.cs" />

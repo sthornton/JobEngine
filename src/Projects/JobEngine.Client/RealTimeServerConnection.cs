@@ -36,7 +36,6 @@ namespace JobEngine.Client
                 {
                     Console.WriteLine(e.Message);
                 }       
-
             }
         }
 

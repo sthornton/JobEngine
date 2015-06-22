@@ -24,15 +24,15 @@ namespace JobEngine.Core.WebApi
 
             appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
-            Hangfire.GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireConnectionString");
-            appBuilder.UseHangfireServer();
-            //app.UseHangfireDashboard();
+            //Hangfire.GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireConnectionString");
+            //appBuilder.UseHangfireServer();
+            ////app.UseHangfireDashboard();
 
-            //appBuilder.UseHangfire(config =>
-            //{
-            //    config.UseSqlServerStorage("HangfireConnectionString");
-            //    config.UseServer();
-            //});
+            ////appBuilder.UseHangfire(config =>
+            ////{
+            ////    config.UseSqlServerStorage("HangfireConnectionString");
+            ////    config.UseServer();
+            ////});
         }
 
         private void ConfigureAuth(IAppBuilder app)

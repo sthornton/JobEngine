@@ -66,6 +66,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
             SelectJobTypeViewModel viewModel = new SelectJobTypeViewModel();
             viewModel.JobTypeItems = new List<JobTypeItem>();
             viewModel.JobTypeItems.Add(new JobTypeItem { Name = "Assembly Job", ActionLink = "SelectAssembly" });
+            viewModel.JobTypeItems.Add(new JobTypeItem { Name = "PowerShell", ActionLink = "SelectPowerShell" });
             return View(viewModel);
         }
 
@@ -195,13 +196,13 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
             try
             {
                 var scheduledJob = await this.scheduledJobsRepository.Get(id);
-                this.scheduledJobsRepository.DeleteScheduledJob(id);
+                await this.scheduledJobsRepository.DeleteScheduledJob(id);
                 this.jobScheduler.RemoveIfExists(scheduledJob.Name + "~" + scheduledJob.ScheduledJobId);
                 SuccessMessage = "Job '" + scheduledJob.Name + "' has been deleted successfully.";                
             }
             catch (Exception e)
             {
-                ErrorMessage = "An error occurred while delete the job.";
+                ErrorMessage = "An error occurred while deleting the job.";
             }
             return RedirectToAction("Index");
         }
@@ -320,7 +321,7 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
                 scheduledJob.JobSettings = serializedAssemblyJobSettings;
                 scheduledJob.ModifiedBy = User.Identity.Name;
                 scheduledJob.Name = viewModel.Name;
-                this.scheduledJobsRepository.UpdateScheduledJob(scheduledJob);
+                await this.scheduledJobsRepository.UpdateScheduledJob(scheduledJob);
 
                 this.jobScheduler.RemoveIfExists(scheduledJob.Name + "~" + scheduledJob.ScheduledJobId);
 

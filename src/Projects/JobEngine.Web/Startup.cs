@@ -22,30 +22,9 @@ namespace JobEngine.Web
         public void Configuration(IAppBuilder app)
         {
             GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireConnectionString");
-          //  app.UseHangfireServer();
             app.UseHangfireDashboard();
             ConfigureAuth(app);
-           // InitializeJobs();            
             app.MapSignalR();
-        }
-
-        public void InitializeJobs()
-        {
-            try
-            {
-                IScheduledJobsRepository repository = RepositoryFactory.GetScheduledJobsRepository();
-                var jobs = repository.GetAll().Result.Where(x => x.IsActive);                
-                var jobScheduler = new HangfireJobScheduler();
-                foreach (var job in jobs)
-                {
-                    jobScheduler.RemoveIfExists(job.Name + "~" + job.ScheduledJobId);
-                    jobScheduler.AddOrUpdate(job);
-                }
-            }
-            catch (System.Exception e)
-            {                
-                throw;
-            }
         }
     }
 

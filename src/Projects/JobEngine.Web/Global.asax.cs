@@ -4,6 +4,7 @@ using JobEngine.Web.App_Start;
 using JobEngine.Web.Areas.AssemblyJobs.Models;
 using JobEngine.Web.Areas.Clients.Models;
 using JobEngine.Web.Areas.Customers.Models;
+using JobEngine.Web.Areas.PowerShellJobs.Models;
 using JobEngine.Web.Areas.ScheduledJobs.Models;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -23,7 +24,11 @@ namespace JobEngine.Web
             Mapper.CreateMap<ScheduledJob, ScheduledJobViewModel>();
             Mapper.CreateMap<Customer, CustomerViewModel>();
             Mapper.CreateMap<JobEngineClient, JobEngineClientViewModel>();
-            Mapper.CreateMap<JobExecutionQueue, TriggerNowJobResultsViewModel>();  
+            Mapper.CreateMap<JobExecutionQueue, TriggerNowJobResultsViewModel>();
+            Mapper.CreateMap<PowerShellJob, PowerShellJobViewModel>();
+            Mapper.CreateMap<PowerShellJobParameter, PowerShellJobParameterViewModel>(); 
+            Mapper.CreateMap<PowerShellJobViewModel, PowerShellJob>();
+            Mapper.CreateMap<PowerShellJobParameterViewModel, PowerShellJobParameter>();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace JobEngine.Models
         public DateTime DateModified { get; set; }
 
         public string ModifiedBy { get; set; }
-
+       
         public DateTime DateCreated { get; set; }
     }
 }

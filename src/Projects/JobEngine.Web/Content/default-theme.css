@@ -2,6 +2,9 @@
     background-color:#eeeeee;
 }
 
+.form-control{
+    max-width:300px;
+}
 
 .navbar{ 
     background-image: none;

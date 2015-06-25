@@ -23,7 +23,7 @@ namespace JobEngine.Core.Persistence
             IEnumerable<PowerShellJob> results;
             using(SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                results = await conn.QueryAsync<PowerShellJob>(@"SELECT [PowellShellJobId]
+                results = await conn.QueryAsync<PowerShellJob>(@"SELECT [PowerShellJobId]
                                                                       ,[Name]
                                                                       ,[Description]
                                                                       ,[Script]
@@ -40,7 +40,7 @@ namespace JobEngine.Core.Persistence
             PowerShellJob result;
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                var job = await conn.QueryAsync<PowerShellJob>(@"SELECT [PowellShellJobId]
+                var job = await conn.QueryAsync<PowerShellJob>(@"SELECT [PowerShellJobId]
                                                                       ,[Name]
                                                                       ,[Description]
                                                                       ,[Script]
@@ -128,8 +128,7 @@ namespace JobEngine.Core.Persistence
                                                               Script = powerShellJob.Script,
                                                               DateModified = powerShellJob.DateModified,
                                                               ModifiedBy = powerShellJob.ModifiedBy,
-                                                              DateCreated = powerShellJob.DateCreated,
-                                                              PowerShellJobId = powerShellJob.PowerShellJobId
+                                                              DateCreated = powerShellJob.DateCreated
                                                           });
                 resultId = result.Single();                
             }

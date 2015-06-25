@@ -19,10 +19,13 @@ namespace JobEngine.Web.Areas.PowerShellJobs.Models
 
         public List<PowerShellJobParameterViewModel> Parameters { get; set; }
 
+        [Display(Name = "Date Modified")]
         public DateTime DateModified { get; set; }
 
+        [Display(Name = "Modified By")]
         public string ModifiedBy { get; set; }
 
+         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
     }
 }

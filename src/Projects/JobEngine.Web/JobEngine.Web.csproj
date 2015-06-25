@@ -214,6 +214,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\PowerShellJobs\Views\web.config" />
+    <Content Include="Areas\PowerShellJobs\Views\Home\Index.cshtml" />
+    <Content Include="Areas\PowerShellJobs\Views\Home\Create.cshtml" />
+    <Content Include="Areas\PowerShellJobs\Views\Home\Edit.cshtml" />
     <None Include="Content\bootstrap-theme.min.css.orig" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -490,7 +493,6 @@
     <Folder Include="Areas\Clients\Views\Shared\" />
     <Folder Include="Areas\Customers\Views\Shared\" />
     <Folder Include="Areas\Dashboard\Views\Shared\" />
-    <Folder Include="Areas\PowerShellJobs\Views\Home\" />
     <Folder Include="Areas\PowerShellJobs\Views\Shared\" />
     <Folder Include="Areas\ScheduledJobs\Views\Shared\" />
     <Folder Include="Areas\SiteManagement\Views\Shared\" />

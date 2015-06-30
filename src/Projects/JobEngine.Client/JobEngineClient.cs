@@ -56,8 +56,7 @@ namespace JobEngine.Client
                 realTimeConnection.Connect(Settings.RealTimeUrl, Settings.RealTimeHubName, Settings.JobEngineClientId);
             }
             catch (Exception)
-            {
-                
+            {                
                 throw;
             }
         }
@@ -129,12 +128,55 @@ namespace JobEngine.Client
                         Task.Factory.StartNew(() => ProcessAssemblyJob(jobQueueItem), TaskCreationOptions.LongRunning);
                         break;
                     case JobType.PowerShell :
-                        Task.Factory.StartNew(() => Console.WriteLine("received powershell job"), TaskCreationOptions.LongRunning);
+                        Task.Factory.StartNew(() => ProcessPowerShellJob(jobQueueItem), TaskCreationOptions.LongRunning);
                         break;
                     default:
                         break;
                 }
             }
+        }
+  
+        private async void ProcessPowerShellJob(JobExecutionQueue jobQueueItem)
+        {
+            JobEngineApi jobEngineApi = new JobEngineApi(Settings.ApiUrl, Settings.ApiUsername, Settings.ApiPassword);
+
+            try
+            {
+                await jobEngineApi.AddJobExecutionLogEntry(jobQueueItem.JobExecutionQueueId,
+                                date: DateTime.UtcNow,
+                                logLevel: JobEngine.Models.LogLevel.INFO,
+                                logger: logger,
+                                message: "Beginning to execute job",
+                                exception: null);
+
+                await jobEngineApi.UpdateJobExecutionStatus(jobQueueItem.JobExecutionQueueId, JobExecutionStatus.EXECUTING);
+
+                DateTime startTime = DateTime.UtcNow;
+                var powerShellJob = JsonConvert.DeserializeObject<PowerShellJob>(jobQueueItem.JobSettings);
+
+                PowerShellJobExecutor executor = new PowerShellJobExecutor();
+                Stopwatch stopWatch = new Stopwatch();
+                stopWatch.Start();
+                PowerShellJobResult result = executor.Execute(jobExecutionQueueId: jobQueueItem.JobExecutionQueueId, powerShellJob: powerShellJob);
+                stopWatch.Stop();
+
+                await jobEngineApi.AddJobExecutionLogEntry(jobQueueItem.JobExecutionQueueId,
+                                date: DateTime.UtcNow,
+                                logLevel: (result.Errors.Count > 0) ? JobEngine.Models.LogLevel.ERROR : JobEngine.Models.LogLevel.INFO,
+                                logger: logger,
+                                message: "Finished executing PowerShell Job with " + result.Errors.Count + " errors reported",
+                                exception: null);
+
+                await jobEngineApi.UpdateJobExecutionResult(jobQueueItem.JobExecutionQueueId,
+                                jobExecutionStatus: StatusMapper.FromAssemblyJobResultToJobExecutionResult(Result.FATAL),
+                                resultMessage: (result.Errors.Count > 0) ? result.Errors.Count + " errors reported" : "Finished Executing Successfully",
+                                dateCompleted: DateTime.UtcNow,
+                                totalExecutionTimeInMs: stopWatch.ElapsedMilliseconds);
+            }
+            catch (Exception e)
+            {
+                log.Error(e);
+            }      
         }
 
         private async void ProcessAssemblyJob(JobExecutionQueue jobQueueItem)

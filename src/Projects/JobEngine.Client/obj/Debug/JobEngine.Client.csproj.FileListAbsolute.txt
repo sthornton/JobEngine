@@ -47,3 +47,5 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\bin\Debug\Syst
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\obj\Debug\JobEngine.Client.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\obj\Debug\JobEngine.Client.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\obj\Debug\JobEngine.Client.pdb
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\bin\Debug\JobEngine.Models.dll
+C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\bin\Debug\System.Management.Automation.dll

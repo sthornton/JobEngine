@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobEngine.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace JobEngine.Web.Areas.PowerShellJobs.Models
         public string Description { get; set; }
 
         public string Script { get; set; }
+
+        [Display(Name = "PowerShell Result Type")]
+        public PSResultType PSResultType { get; set; }
 
         public List<PowerShellJobParameterViewModel> Parameters { get; set; }
 

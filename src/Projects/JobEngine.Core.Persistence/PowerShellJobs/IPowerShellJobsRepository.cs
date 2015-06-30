@@ -13,6 +13,8 @@ namespace JobEngine.Core.Persistence
         Task<PowerShellJob> GetAsync(int powerShellJobId);
         Task EditAsync(PowerShellJob powerShellJob);
         Task<int> CreateAsync(PowerShellJob powerShellJob);
+        Task<int> CreateParameterAsync(PowerShellJobParameter powerShellJobParameter);
         Task DeleteAsync(int powerShellJobId);
+        Task DeleteParameterAsync(int powerShellJobParameterId);
     }
 }

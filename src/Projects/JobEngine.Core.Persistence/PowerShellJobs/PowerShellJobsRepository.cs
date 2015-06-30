@@ -27,6 +27,7 @@ namespace JobEngine.Core.Persistence
                                                                       ,[Name]
                                                                       ,[Description]
                                                                       ,[Script]
+                                                                      ,[PSResultType]
                                                                       ,[DateModified]
                                                                       ,[ModifiedBy]
                                                                       ,[DateCreated]
@@ -44,6 +45,7 @@ namespace JobEngine.Core.Persistence
                                                                       ,[Name]
                                                                       ,[Description]
                                                                       ,[Script]
+                                                                      ,[PSResultType]
                                                                       ,[DateModified]
                                                                       ,[ModifiedBy]
                                                                       ,[DateCreated]
@@ -77,13 +79,14 @@ namespace JobEngine.Core.Persistence
         }
 
         public async Task EditAsync(PowerShellJob powerShellJob)
-        {
+        {          
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 await conn.ExecuteAsync(@"UPDATE [PowerShellJobs]
                                            SET [Name] = @Name
                                               ,[Description] = @Description
                                               ,[Script] = @Script
+                                              ,[PSResultType] = @PSResultType
                                               ,[DateModified] = @DateModified
                                               ,[ModifiedBy] = @ModifiedBy
                                               ,[DateCreated] = @DateCreated
@@ -93,6 +96,7 @@ namespace JobEngine.Core.Persistence
                                               Name = powerShellJob.Name,
                                               Description = powerShellJob.Description,
                                               Script = powerShellJob.Script,
+                                              PSResultType = powerShellJob.PSResultType,
                                               DateModified = powerShellJob.DateModified,
                                               ModifiedBy = powerShellJob.ModifiedBy,
                                               DateCreated = powerShellJob.DateCreated,
@@ -110,6 +114,7 @@ namespace JobEngine.Core.Persistence
                                                                 ([Name]
                                                                 ,[Description]
                                                                 ,[Script]
+                                                                ,[PSResultType]
                                                                 ,[DateModified]
                                                                 ,[ModifiedBy]
                                                                 ,[DateCreated])
@@ -118,6 +123,7 @@ namespace JobEngine.Core.Persistence
                                                                 (@Name
                                                                 ,@Description
                                                                 ,@Script
+                                                                ,@PSResultType
                                                                 ,@DateModified
                                                                 ,@ModifiedBy
                                                                 ,@DateCreated)",
@@ -126,6 +132,7 @@ namespace JobEngine.Core.Persistence
                                                               Name = powerShellJob.Name,
                                                               Description = powerShellJob.Description,
                                                               Script = powerShellJob.Script,
+                                                              PSResultType = powerShellJob.PSResultType,
                                                               DateModified = powerShellJob.DateModified,
                                                               ModifiedBy = powerShellJob.ModifiedBy,
                                                               DateCreated = powerShellJob.DateCreated
@@ -139,9 +146,52 @@ namespace JobEngine.Core.Persistence
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
-                await conn.ExecuteAsync(@"DELETE FROM [PowerShellJobs] WHERE PowerShellJobId = @PowerShellJobId
-                                         WHERE PowerShellJobId = @PowerShellJobId",
+                await conn.ExecuteAsync(@"DELETE FROM [PowerShellJobs] WHERE PowerShellJobId = @PowerShellJobId",
                                           new { PowerShellJobId = powerShellJobId });
+            }
+        }
+
+        public async Task<int> CreateParameterAsync(PowerShellJobParameter powerShellJobParameter)
+        {
+            int result;
+            string insert = @"INSERT INTO [PowerShellJobParameters]
+                                   ([PowerShellJobId]
+                                   ,[Name]
+                                   ,[DataType]
+                                   ,[IsRequired]
+                                   ,[IsEncrypted]
+                                   ,[InputValidationRegExPattern])
+                            OUTPUT INSERTED.PowerShellJobParameterId
+                             VALUES
+                                   (@PowerShellJobId
+                                   ,@Name
+                                   ,@DataType
+                                   ,@IsRequired
+                                   ,@IsEncrypted
+                                   ,@InputValidationRegExPattern)";
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                var insertedId = await conn.QueryAsync<int>(insert, new
+                {
+                    PowerShellJobId = powerShellJobParameter.PowerShellJobId,
+                    Name = powerShellJobParameter.Name,
+                    DataType = powerShellJobParameter.DataType,
+                    IsRequired = powerShellJobParameter.IsRequired,
+                    IsEncrypted = powerShellJobParameter.IsEncrypted,
+                    InputValidationRegExPattern = powerShellJobParameter.InputValidationRegExPattern
+                });
+                result = insertedId.Single();
+            }
+            return result;
+        }
+
+
+        public async Task DeleteParameterAsync(int powerShellJobParameterId)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                await conn.ExecuteAsync(@"DELETE FROM [PowerShellJobParameters] WHERE PowerShellJobParameterId = @PowerShellJobParameterId",
+                                          new { PowerShellJobParameterId = powerShellJobParameterId });
             }
         }
     }

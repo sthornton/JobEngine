@@ -18,6 +18,8 @@ namespace JobEngine.Models
 
         public string Script { get; set; }
 
+        public PSResultType PSResultType { get; set; }
+
         public List<PowerShellJobParameter> Parameters { get; set; }
 
         public DateTime DateModified { get; set; }
@@ -26,4 +28,6 @@ namespace JobEngine.Models
        
         public DateTime DateCreated { get; set; }
     }
+
+    
 }

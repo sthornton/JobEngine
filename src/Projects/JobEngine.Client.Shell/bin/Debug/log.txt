@@ -22361,3 +22361,74 @@ Parameter name: path1
 2015-06-18 14:31:03,638 - DEBUG - JobEngine.Client.AssemblyJobProcessor - Finished unloading App Domain for Assembly Job (JobExecutionId:1264)
 2015-06-18 14:34:05,755 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
 2015-06-18 14:34:05,771 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 09:21:45,803 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 09:21:53,262 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 09:27:08,445 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 09:27:10,986 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 12:51:33,471 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 12:51:35,870 - WARN  - JobEngine.Client.JobEngineClient - System.AggregateException: One or more errors occurred. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at JobEngine.Client.JobEngineApi.GetAccessToken() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 224
+   at JobEngine.Client.JobEngineApi.SynchronizeAssemblies(String directory) in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 59
+   at JobEngine.Client.JobEngineClient.SynchAssemblies() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 242
+---> (Inner Exception #0) System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---<---
+
+2015-06-30 12:51:35,929 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 12:51:38,177 - ERROR - JobEngine.Client.JobEngineClient - System.AggregateException: One or more errors occurred. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at JobEngine.Client.JobEngineApi.GetAccessToken() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 224
+   at JobEngine.Client.JobEngineApi.<GetJobsWaitingToExecute>d__20.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 194
+---> (Inner Exception #0) System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:64196
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.Net.Http.HttpClientHandler.GetRequestStreamCallback(IAsyncResult ar)
+   --- End of inner exception stack trace ---<---
+
+2015-06-30 12:52:50,165 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 12:52:53,684 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 12:59:28,711 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 12:59:29,691 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 13:11:29,040 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 13:11:30,693 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:18:19,012 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:18:20,269 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:23:20,288 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:23:20,490 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:26:11,380 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:26:12,479 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:31:12,481 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:31:12,497 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:33:50,727 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:33:52,128 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:43:41,857 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:43:43,089 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:48:10,791 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:48:11,819 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-06-30 14:49:39,257 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-06-30 14:49:40,157 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs

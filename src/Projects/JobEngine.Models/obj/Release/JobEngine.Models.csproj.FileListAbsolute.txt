@@ -1,9 +1,0 @@
-C:\Zebra\Source\Job Engine\JobEngine.Models\bin\Release\JobEngine.Models.dll
-C:\Zebra\Source\Job Engine\JobEngine.Models\bin\Release\JobEngine.Models.pdb
-C:\Zebra\Source\Job Engine\JobEngine.Models\obj\Release\JobEngine.Models.csprojResolveAssemblyReference.cache
-C:\Zebra\Source\Job Engine\JobEngine.Models\obj\Release\JobEngine.Models.dll
-C:\Zebra\Source\Job Engine\JobEngine.Models\obj\Release\JobEngine.Models.pdb
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Models\bin\Release\JobEngine.Models.dll
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Models\bin\Release\JobEngine.Models.pdb
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Models\obj\Release\JobEngine.Models.dll
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Models\obj\Release\JobEngine.Models.pdb

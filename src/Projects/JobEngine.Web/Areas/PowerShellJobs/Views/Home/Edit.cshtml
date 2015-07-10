@@ -5,10 +5,36 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var wrapper = document.getElementById("OverwriteExistingDataWrapper");
+            var selectList = document.getElementById("PSResultType");
+            var selectedPSResultTYpe = selectList.options[selectList.selectedIndex].text;
+            if (selectedPSResultTYpe == "Table")
+                wrapper.style.display = 'block';
+            else
+                wrapper.style.display = 'none';
+        });
+
+        function ShowOverwriteDropDownList(item) {
+            var wrapper = document.getElementById("OverwriteExistingDataWrapper");
+            var selectedPSResultTYpe = item.options[item.selectedIndex].text;
+            if (selectedPSResultTYpe == "Table")
+                wrapper.style.display = 'block';
+            else
+                wrapper.style.display = 'none';
+
+        }
+    </script>
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>PowerShell Job</h4>
         <hr />
@@ -43,9 +69,18 @@
             @Html.LabelFor(model => model.PSResultType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EnumDropDownListFor(model => model.PSResultType, new { @class = "form-control", @style = "max-width:150px;" })
+                    @Html.EnumDropDownListFor(model => model.PSResultType, new { @class = "form-control", @style = "max-width:150px;", @onchange = "ShowOverwriteDropDownList(this)" })
                     @Html.ValidationMessageFor(model => model.PSResultType, "", new { @class = "text-danger" })
                 </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="OverwriteExistingDataWrapper" style="display:none">
+            @Html.LabelFor(model => model.OverwriteExistingData, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OverwriteExistingData)
+                @Html.ValidationMessageFor(model => model.OverwriteExistingData, "", new { @class = "text-danger" })
+
             </div>
         </div>
 

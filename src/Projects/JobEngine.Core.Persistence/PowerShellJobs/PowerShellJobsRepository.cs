@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dapper;
 using JobEngine.Models;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
 
 namespace JobEngine.Core.Persistence
 {
@@ -28,6 +29,7 @@ namespace JobEngine.Core.Persistence
                                                                       ,[Description]
                                                                       ,[Script]
                                                                       ,[PSResultType]
+                                                                      ,[OverwriteExistingData]
                                                                       ,[DateModified]
                                                                       ,[ModifiedBy]
                                                                       ,[DateCreated]
@@ -46,6 +48,7 @@ namespace JobEngine.Core.Persistence
                                                                       ,[Description]
                                                                       ,[Script]
                                                                       ,[PSResultType]
+                                                                      ,[OverwriteExistingData]
                                                                       ,[DateModified]
                                                                       ,[ModifiedBy]
                                                                       ,[DateCreated]
@@ -87,6 +90,7 @@ namespace JobEngine.Core.Persistence
                                               ,[Description] = @Description
                                               ,[Script] = @Script
                                               ,[PSResultType] = @PSResultType
+                                              ,[OverwriteExistingData] = @OverwriteExistingData
                                               ,[DateModified] = @DateModified
                                               ,[ModifiedBy] = @ModifiedBy
                                               ,[DateCreated] = @DateCreated
@@ -97,6 +101,7 @@ namespace JobEngine.Core.Persistence
                                               Description = powerShellJob.Description,
                                               Script = powerShellJob.Script,
                                               PSResultType = powerShellJob.PSResultType,
+                                              OverwriteExistingData = powerShellJob.OverwriteExistingData,
                                               DateModified = powerShellJob.DateModified,
                                               ModifiedBy = powerShellJob.ModifiedBy,
                                               DateCreated = powerShellJob.DateCreated,
@@ -115,6 +120,7 @@ namespace JobEngine.Core.Persistence
                                                                 ,[Description]
                                                                 ,[Script]
                                                                 ,[PSResultType]
+                                                                ,[OverwriteExistingData]
                                                                 ,[DateModified]
                                                                 ,[ModifiedBy]
                                                                 ,[DateCreated])
@@ -124,6 +130,7 @@ namespace JobEngine.Core.Persistence
                                                                 ,@Description
                                                                 ,@Script
                                                                 ,@PSResultType
+                                                                ,@OverwriteExistingData
                                                                 ,@DateModified
                                                                 ,@ModifiedBy
                                                                 ,@DateCreated)",
@@ -133,6 +140,7 @@ namespace JobEngine.Core.Persistence
                                                               Description = powerShellJob.Description,
                                                               Script = powerShellJob.Script,
                                                               PSResultType = powerShellJob.PSResultType,
+                                                              OverwriteExistingData = powerShellJob.OverwriteExistingData,
                                                               DateModified = powerShellJob.DateModified,
                                                               ModifiedBy = powerShellJob.ModifiedBy,
                                                               DateCreated = powerShellJob.DateCreated
@@ -192,6 +200,31 @@ namespace JobEngine.Core.Persistence
             {
                 await conn.ExecuteAsync(@"DELETE FROM [PowerShellJobParameters] WHERE PowerShellJobParameterId = @PowerShellJobParameterId",
                                           new { PowerShellJobParameterId = powerShellJobParameterId });
+            }
+        }
+
+
+        public async Task CreatePowerShellJobResult(PowerShellJobResult result, int? scheduledJobId, DateTime dateCompleted)
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                 await conn.QueryAsync<int>(@"INSERT INTO [PowerShellJobResults]
+                                                                   ([ScheduledJobId]
+                                                                   ,[Results]
+                                                                   ,[Errors]
+                                                                   ,[DateCompleted])
+                                                             VALUES
+                                                                   (@ScheduledJobId
+                                                                   ,@Results
+                                                                   ,@Errors
+                                                                   ,@DateCompleted)",
+                                                          new
+                                                          {
+                                                              ScheduledJobId = scheduledJobId,
+                                                              Results = result.Results,
+                                                              Errors = JsonConvert.SerializeObject(result.Errors),
+                                                              DateCompleted = dateCompleted
+                                                          });
             }
         }
     }

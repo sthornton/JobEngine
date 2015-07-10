@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace JobEngine.Models
 {
     public class PowerShellJobResult
-    {               
+    {
+        public int? ScheduledJobId { get; set; }
+
+        public DateTime DateCompleted { get; set; }
+
         public string Results { get; set; }
 
         public List<ErrorInfo> Errors { get; set; }

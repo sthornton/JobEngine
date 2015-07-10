@@ -194,7 +194,6 @@ C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.csp
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.dll
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Web\obj\Debug\JobEngine.Web.pdb
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\AutoMapper.Net4.dll
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\_CreateDatabase\ElmahInstall.sql
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\JobEngine.Web.dll.config
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\JobEngine.Web.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Web\bin\JobEngine.Web.pdb

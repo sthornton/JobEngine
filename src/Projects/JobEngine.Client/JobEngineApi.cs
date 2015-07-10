@@ -108,11 +108,27 @@ namespace JobEngine.Client
             }
         }
 
+        public async Task CreatePowerShellJobResult(PowerShellJobResult powerShellJobResult)
+        {
+            try
+            {
+                HttpResponseMessage responseMessage;
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GetAccessToken());
+                    responseMessage = await client.PostAsync(new Uri(m_BaseUri, "api/PowerShell/CreatePowerShellJobResult/"), powerShellJobResult, new JsonMediaTypeFormatter());
+                    responseMessage.EnsureSuccessStatusCode();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public async Task UpdateJobExecutionResult(long jobExecutionQueueId, JobExecutionStatus jobExecutionStatus, string resultMessage, DateTime dateCompleted, long totalExecutionTimeInMs)
         {
             HttpResponseMessage responseMessage;
-            MediaTypeFormatter jsonFormatter = new JsonMediaTypeFormatter();
 
             JobExecutionQueueResult jobResult = new JobExecutionQueueResult
             {

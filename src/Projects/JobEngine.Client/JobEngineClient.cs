@@ -159,6 +159,10 @@ namespace JobEngine.Client
                 stopWatch.Start();
                 PowerShellJobResult result = executor.Execute(jobExecutionQueueId: jobQueueItem.JobExecutionQueueId, powerShellJob: powerShellJob);
                 stopWatch.Stop();
+                result.DateCompleted = DateTime.UtcNow;
+                result.ScheduledJobId = jobQueueItem.ScheduledJobId;
+
+                await jobEngineApi.CreatePowerShellJobResult(result);
 
                 await jobEngineApi.AddJobExecutionLogEntry(jobQueueItem.JobExecutionQueueId,
                                 date: DateTime.UtcNow,
@@ -172,6 +176,7 @@ namespace JobEngine.Client
                                 resultMessage: (result.Errors.Count > 0) ? result.Errors.Count + " errors reported" : "Finished Executing Successfully",
                                 dateCompleted: DateTime.UtcNow,
                                 totalExecutionTimeInMs: stopWatch.ElapsedMilliseconds);
+
             }
             catch (Exception e)
             {

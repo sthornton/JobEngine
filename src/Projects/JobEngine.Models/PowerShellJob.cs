@@ -20,6 +20,8 @@ namespace JobEngine.Models
 
         public PSResultType PSResultType { get; set; }
 
+        public bool? OverwriteExistingData { get; set; }
+
         public List<PowerShellJobParameter> Parameters { get; set; }
 
         public DateTime DateModified { get; set; }

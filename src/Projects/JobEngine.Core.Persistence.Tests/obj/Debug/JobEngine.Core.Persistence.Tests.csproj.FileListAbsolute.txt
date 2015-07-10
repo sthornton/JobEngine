@@ -53,7 +53,6 @@ C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debu
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence.Tests\obj\Debug\JobEngine.Core.Persistence.Tests.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence.Tests\obj\Debug\JobEngine.Core.Persistence.Tests.dll
 C:\Zebra\GIT\Source\Repos\src\Projects\JobEngine.Core.Persistence.Tests\obj\Debug\JobEngine.Core.Persistence.Tests.pdb
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debug\_CreateDatabase\ElmahInstall.sql
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debug\JobEngine.Core.Persistence.Tests.dll.config
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debug\JobEngine.Core.Persistence.Tests.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.Persistence.Tests\bin\Debug\JobEngine.Core.Persistence.Tests.pdb

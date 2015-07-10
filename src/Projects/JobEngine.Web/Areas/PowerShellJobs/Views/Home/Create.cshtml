@@ -5,6 +5,22 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        function ShowOverwriteDropDownList(item)
+        {
+            var wrapper = document.getElementById("OverwriteExistingDataWrapper");
+            var selectedPSResultTYpe = item.options[item.selectedIndex].text;
+            if(selectedPSResultTYpe == "Table")
+                wrapper.style.display = 'block';
+            else
+                wrapper.style.display = 'none';
+
+        }
+    </script>
+}
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -36,14 +52,23 @@
                 @Html.ValidationMessageFor(model => model.Script, "", new { @class = "text-danger" })
             </div>
         </div>
-
+      
         <div class="form-group">
-            @Html.LabelFor(model => model.ResultType, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PSResultType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EnumDropDownListFor(model => model.ResultType, new { @class = "form-control", @style = "max-width:150px;" })
-                    @Html.ValidationMessageFor(model => model.ResultType, "", new { @class = "text-danger" })
+                    @Html.EnumDropDownListFor(model => model.PSResultType, new { @class = "form-control", @style = "max-width:150px;", @onchange="ShowOverwriteDropDownList(this)" })
+                    @Html.ValidationMessageFor(model => model.PSResultType, "", new { @class = "text-danger" })
                 </div>
+            </div>
+        </div>
+
+        <div class="form-group" id="OverwriteExistingDataWrapper" style="display:none">
+            @Html.LabelFor(model => model.OverwriteExistingData, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OverwriteExistingData)
+                @Html.ValidationMessageFor(model => model.OverwriteExistingData, "", new { @class = "text-danger" })
+
             </div>
         </div>
 

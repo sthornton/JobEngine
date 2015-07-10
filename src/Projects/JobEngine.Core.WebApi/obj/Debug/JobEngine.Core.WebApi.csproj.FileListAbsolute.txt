@@ -165,7 +165,6 @@ C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Syste
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.csprojResolveAssemblyReference.cache
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\obj\Debug\JobEngine.Core.WebApi.pdb
-C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\_CreateDatabase\ElmahInstall.sql
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.Configuration.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Microsoft.Practices.Unity.dll
 C:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Core.WebApi\bin\Unity.WebApi.dll

@@ -21,6 +21,9 @@ namespace JobEngine.Web.Areas.PowerShellJobs.Models
         [Display(Name = "PowerShell Result Type")]
         public PSResultType PSResultType { get; set; }
 
+        [Display(Name = "Overwrite Existing Data")]
+        public bool? OverwriteExistingData { get; set; }
+
         public List<PowerShellJobParameterViewModel> Parameters { get; set; }
 
         [Display(Name = "Date Modified")]

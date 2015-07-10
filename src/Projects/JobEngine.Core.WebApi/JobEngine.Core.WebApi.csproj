@@ -209,6 +209,7 @@
     <Compile Include="Controllers\JobExecutionQueueController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\FilesHandlerController.cs" />
+    <Compile Include="Controllers\PowerShellController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -22432,3 +22432,153 @@ Parameter name: path1
 2015-06-30 14:48:11,819 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
 2015-06-30 14:49:39,257 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
 2015-06-30 14:49:40,157 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-07-10 12:46:28,442 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-07-10 12:46:29,577 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-07-10 12:47:43,632 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-07-10 12:47:44,348 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-07-10 12:48:02,384 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:48:37,058 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:09,954 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:09,957 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-07-10 12:58:09,990 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-07-10 12:58:21,914 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:26,739 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:27,270 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:27,270 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:27,348 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:27,379 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:27,395 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:27,426 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 12:58:27,489 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 13:00:47,158 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-07-10 13:00:47,755 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-07-10 13:00:59,850 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 13:00:59,850 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 13:01:54,269 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 13:02:14,645 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 13:03:34,798 - ERROR - JobEngine.Client.JobEngineClient - System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at JobEngine.Client.JobEngineApi.<CreatePowerShellJobResult>d__11.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineApi.cs:line 125
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at JobEngine.Client.JobEngineClient.<ProcessPowerShellJob>d__6.MoveNext() in c:\Zebra\GIT\Source\Repos\JobEngine\src\Projects\JobEngine.Client\JobEngineClient.cs:line 165
+2015-07-10 13:05:47,757 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-07-10 13:05:47,820 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-07-10 13:10:47,773 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-07-10 13:10:47,789 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs
+2015-07-10 13:15:47,778 - DEBUG - JobEngine.Client.JobEngineClient - Synching Assembly Jobs
+2015-07-10 13:15:47,809 - DEBUG - JobEngine.Client.JobEngineClient - Finished Synching Assembly Jobs

@@ -28,6 +28,7 @@ namespace JobEngine.Core.WebApi
             container.RegisterType<IClientRepository, ClientRepository>(new InjectionConstructor(jobEngineConnectionString));
             container.RegisterType<ILoggingRepository, LoggingRepository>(new InjectionConstructor(jobEngineConnectionString));
             container.RegisterType<IJobExecutionQueueRepository, JobExecutionQueueRepository>(new InjectionConstructor(jobEngineConnectionString));
+            container.RegisterType<IPowerShellJobsRepository, PowerShellJobsRepository>(new InjectionConstructor(jobEngineConnectionString));
         }
     }
 }

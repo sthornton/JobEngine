@@ -1,0 +1,74 @@
+﻿@model JobEngine.Web.Areas.ScheduledJobs.Models.ViewHistoryViewModel
+
+@{
+    ViewBag.Title = "View History";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+}
+
+@section style
+{
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mainTable").DataTable({
+                "bSort": false
+            });
+        });
+    </script>
+}
+
+<table id="mainTable" class="display" style="text-align:center;">
+    <thead>
+        <tr>
+            <th>Execution Id</th>
+            <th>Status</th>
+            <th>Started By</th>
+            <th>Execution Time (ms)</th>
+            <th>Date Executed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.JobExecutionQueueItems)
+        {
+            <tr>
+
+                <td>
+                    @item.JobExecutionQueueId
+                </td>
+                <td>
+                    @item.JobExecutionStatus.ToString()
+                </td>
+                <td>
+                    @item.CreatedBy
+                </td>
+                <td>
+                    @item.TotalExecutionTimeInMs
+                </td>
+                <td>
+                    @item.DateEnteredQueue
+                </td>
+                <td>
+                    @Html.ActionLink("Execution Details", "ViewExecutionDetails", new {  id= item.JobExecutionQueueId  }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>

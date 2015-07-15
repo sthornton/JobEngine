@@ -221,6 +221,8 @@
     <Content Include="Areas\ScheduledJobs\Views\Home\SelectPowerShellScript.cshtml" />
     <Content Include="Areas\ScheduledJobs\Views\Home\CreatePowerShellJob.cshtml" />
     <Content Include="Areas\ScheduledJobs\Views\Home\EditPowerShellJob.cshtml" />
+    <Content Include="Areas\ScheduledJobs\Views\Home\ViewHistory.cshtml" />
+    <Content Include="Areas\ScheduledJobs\Views\Home\ViewExecutionDetails.cshtml" />
     <None Include="Content\bootstrap-theme.min.css.orig" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -445,11 +447,13 @@
     <Compile Include="Areas\PowerShellJobs\Models\PowerShellJobViewModel.cs" />
     <Compile Include="Areas\PowerShellJobs\PowerShellJobsAreaRegistration.cs" />
     <Compile Include="Areas\ScheduledJobs\Controllers\HomeController.cs" />
+    <Compile Include="Areas\ScheduledJobs\Models\ExecutionDetailsViewModel.cs" />
     <Compile Include="Areas\ScheduledJobs\Models\ScheduledAssemblyJobViewModel.cs" />
     <Compile Include="Areas\ScheduledJobs\Models\ScheduledJobViewModel.cs" />
     <Compile Include="Areas\ScheduledJobs\Models\ScheduledPowerShellJobViewModel.cs" />
     <Compile Include="Areas\ScheduledJobs\Models\SelectJobTypeViewModel.cs" />
     <Compile Include="Areas\ScheduledJobs\Models\TriggerNowJobResultsViewModel.cs" />
+    <Compile Include="Areas\ScheduledJobs\Models\ViewHistoryViewModel.cs" />
     <Compile Include="Areas\ScheduledJobs\ScheduledJobsAreaRegistration.cs" />
     <Compile Include="Areas\SiteManagement\Controllers\AccountController.cs" />
     <Compile Include="Areas\SiteManagement\Controllers\ManageController.cs" />

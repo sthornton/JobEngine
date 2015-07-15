@@ -210,22 +210,73 @@ namespace JobEngine.Core.Persistence
             {
                  await conn.QueryAsync<int>(@"INSERT INTO [PowerShellJobResults]
                                                                    ([ScheduledJobId]
+                                                                   ,[JobExecutionQueueId]
                                                                    ,[Results]
                                                                    ,[Errors]
                                                                    ,[DateCompleted])
                                                              VALUES
                                                                    (@ScheduledJobId
+                                                                   ,@JobExecutionQueueId
                                                                    ,@Results
                                                                    ,@Errors
                                                                    ,@DateCompleted)",
                                                           new
                                                           {
+                                                              JobExecutionQueueId = result.JobExecutionQueueId,
                                                               ScheduledJobId = scheduledJobId,
                                                               Results = result.Results,
                                                               Errors = JsonConvert.SerializeObject(result.Errors),
                                                               DateCompleted = dateCompleted
                                                           });
             }
+        }
+
+        public async Task<PowerShellJobResult> GetPowerShellResult(int powerShellResultsId)
+        {
+            PowerShellJobResult result;
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                var job = await conn.QueryAsync<PowerShellJobResult>(@"SELECT [PowerShellJobResultsId]
+                                                                      ,[JobExecutionQueueId]
+                                                                      ,[ScheduledJobId]
+                                                                      ,[Results]
+                                                                      ,[Errors]
+                                                                      ,[DateCompleted]
+                                                                  FROM [PowerShellJobResults]
+                                                                  WHERE PowerShellResultsId = @PowerShellResultsId",
+                                                                  new { PowerShellResultsId = powerShellResultsId });
+                result = job.Single();
+            }
+            return result;
+        }
+
+        public async Task<PowerShellJobResult> GetPowerShellResultFromExecutionId(int jobExecutionQueueId)
+        {
+            PowerShellJobResult result = new PowerShellJobResult(); ;
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                SqlCommand command = new SqlCommand(@"SELECT [PowerShellJobResultsId]
+                                                                      ,[JobExecutionQueueId]
+                                                                      ,[ScheduledJobId]
+                                                                      ,[Results]
+                                                                      ,[Errors]
+                                                                      ,[DateCompleted]
+                                                                  FROM [PowerShellJobResults]
+                                                                  WHERE JobExecutionQueueId = @jobExecutionQueueId",
+                                                                  conn);
+                command.Parameters.AddWithValue("jobExecutionQueueId", jobExecutionQueueId);
+                conn.Open();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                while (reader.Read())
+                {
+                    result.JobExecutionQueueId = (long)reader["JobExecutionQueueId"];
+                    result.ScheduledJobId = (int)reader["ScheduledJobId"];
+                    result.Results = reader["Results"] != DBNull.Value ? (string)reader["Results"] : null;
+                    result.Errors = reader["Errors"] != DBNull.Value ? JsonConvert.DeserializeObject<List<ErrorInfo>>((string)reader["Errors"]) : null;
+                    result.DateCompleted = (DateTime)reader["DateCompleted"];
+                }
+            }
+            return result;
         }
     }
 }

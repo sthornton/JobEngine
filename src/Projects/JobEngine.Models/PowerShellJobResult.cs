@@ -10,6 +10,8 @@ namespace JobEngine.Models
     {
         public int? ScheduledJobId { get; set; }
 
+        public long JobExecutionQueueId { get; set; }
+
         public DateTime DateCompleted { get; set; }
 
         public string Results { get; set; }

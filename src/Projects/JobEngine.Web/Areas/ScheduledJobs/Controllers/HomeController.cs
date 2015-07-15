@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JobEngine.Common;
 using JobEngine.Core.Persistence;
 using JobEngine.Models;
 using JobEngine.Web.Areas.AssemblyJobs.Models;
@@ -8,6 +9,7 @@ using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Dynamic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -628,6 +630,47 @@ namespace JobEngine.Web.Areas.ScheduledJobs.Controllers
             return Content(serailizedJsonResult, "application/json");
         }
 
-        
+        public async Task<ActionResult> ViewHistory(int id)
+        {
+            var scheduledJob = await this.scheduledJobsRepository.Get(id);
+            var queueItems = await this.jobExecutionQueueRepository.GetScheduledJobsAsync(id);
+            ViewHistoryViewModel viewModel = new ViewHistoryViewModel();
+            viewModel.ScheduledJob = Mapper.Map<ScheduledJob, ScheduledJobViewModel>(scheduledJob);
+            viewModel.JobExecutionQueueItems = queueItems;
+            return View(viewModel);
+        }
+
+        public async Task<ActionResult> ViewExecutionDetails(int id)
+        {
+            ExecutionDetailsViewModel viewModel = new ExecutionDetailsViewModel();
+            var jobQueueItem = await this.jobExecutionQueueRepository.GetAsync(id);
+            var scheduledJob = await this.scheduledJobsRepository.Get(jobQueueItem.ScheduledJobId.Value);
+            viewModel.ScheduledJobId = scheduledJob.ScheduledJobId;
+            viewModel.ScheduledJobName = scheduledJob.Name;
+            viewModel.StringResults = jobQueueItem.ResultMessage;
+
+            switch (scheduledJob.JobType)
+            {
+                case JobType.AssemblyJob:
+                    viewModel.StringResults = jobQueueItem.ResultMessage;
+                    break;
+                case JobType.PowerShell:
+                    PowerShellJob psJob = JsonConvert.DeserializeObject<PowerShellJob>(scheduledJob.JobSettings);
+                    var psResult = await this.powerShellJobsRepository.GetPowerShellResultFromExecutionId(id);
+                    if (psResult == null || psResult.Results == null)
+                    {
+                        ErrorMessage = "Results not received yet!";
+                        return RedirectToAction("ViewHistory", new { id = scheduledJob.ScheduledJobId });
+                    }
+                    if(psJob.PSResultType == PSResultType.Table && psResult != null)
+                        viewModel.DataTableResults = JsonConvert.DeserializeObject<DataTable>(psResult.Results, new DataTableConverter());
+                    else
+                        viewModel.StringResults = psResult.Results;                        
+                    break;
+                default:
+                    break;
+            }
+            return View(viewModel);
+        }
     }
 }

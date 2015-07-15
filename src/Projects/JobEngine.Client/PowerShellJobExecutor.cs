@@ -21,68 +21,79 @@ namespace JobEngine.Client
         {
             PowerShellJobResult result = new PowerShellJobResult();
             result.Errors = new List<ErrorInfo>();
-            using (Runspace runspace = RunspaceFactory.CreateRunspace())
+            try
             {
-                //set the default runspace for this thread
-                //otherwise you get exception: There is no Runspace available to run scripts in this thread.
-                Runspace.DefaultRunspace = runspace;
-
-                runspace.Open();
-                using (Pipeline pipeline = runspace.CreatePipeline())
+                using (Runspace runspace = RunspaceFactory.CreateRunspace())
                 {
-                    pipeline.Commands.AddScript(powerShellJob.Script);
+                    //set the default runspace for this thread
+                    //otherwise you get exception: There is no Runspace available to run scripts in this thread.
+                    Runspace.DefaultRunspace = runspace;
 
-                    if(powerShellJob.PSResultType == PSResultType.String)
-                        pipeline.Commands.Add("Out-String");
-
-                    if (powerShellJob.Parameters != null && powerShellJob.Parameters.Count > 0)
+                    runspace.Open();
+                    using (Pipeline pipeline = runspace.CreatePipeline())
                     {
-                        foreach (var param in powerShellJob.Parameters)
+                        pipeline.Commands.AddScript(powerShellJob.Script);
+
+                        if (powerShellJob.PSResultType == PSResultType.String)
+                            pipeline.Commands.Add("Out-String");
+
+                        if (powerShellJob.Parameters != null && powerShellJob.Parameters.Count > 0)
                         {
-                            switch (param.DataType)
+                            foreach (var param in powerShellJob.Parameters)
                             {
-                                case DataType.Int32:
-                                    pipeline.Runspace.SessionStateProxy.SetVariable(param.Name, int.Parse(param.Value));
-                                    break;
-                                case DataType.Long:
-                                    pipeline.Runspace.SessionStateProxy.SetVariable(param.Name, long.Parse(param.Value));
-                                    break;
-                                case DataType.String:
-                                    pipeline.Runspace.SessionStateProxy.SetVariable(param.Name, param.Value);
-                                    break;
-                                default:
-                                    break;
+                                switch (param.DataType)
+                                {
+                                    case DataType.Int32:
+                                        pipeline.Runspace.SessionStateProxy.SetVariable(param.Name, int.Parse(param.Value));
+                                        break;
+                                    case DataType.Long:
+                                        pipeline.Runspace.SessionStateProxy.SetVariable(param.Name, long.Parse(param.Value));
+                                        break;
+                                    case DataType.String:
+                                        pipeline.Runspace.SessionStateProxy.SetVariable(param.Name, param.Value);
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
-                    }
-                    Collection<PSObject> PSOutput = pipeline.Invoke();
+                        Collection<PSObject> PSOutput = pipeline.Invoke();
 
-                    if (pipeline.Error.Count > 0)
-                    {
-                        var errors = pipeline.Error.Read() as Collection<ErrorRecord>;
-                        foreach(var error in errors)
+                        if (pipeline.Error.Count > 0)
                         {
-                            ErrorInfo errorInfo = new ErrorInfo();
-                            errorInfo.Exception = error.Exception;
-                            errorInfo.Message = error.ErrorDetails.Message;
-                            errorInfo.RecommendedAction = error.ErrorDetails.RecommendedAction;
-                            result.Errors.Add(errorInfo);
+                            var errors = pipeline.Error.Read() as Collection<ErrorRecord>;
+                            foreach (var error in errors)
+                            {
+                                ErrorInfo errorInfo = new ErrorInfo();
+                                errorInfo.Exception = error.Exception;
+                                errorInfo.Message = error.ErrorDetails.Message;
+                                errorInfo.RecommendedAction = error.ErrorDetails.RecommendedAction;
+                                result.Errors.Add(errorInfo);
+                            }
+                        }
+
+                        switch (powerShellJob.PSResultType)
+                        {
+                            case PSResultType.Table:
+                                DataTable dataTableResults = GetDataTableResults(PSOutput);
+                                result.Results = JsonConvert.SerializeObject(dataTableResults, new DataTableConverter());
+                                break;
+                            case PSResultType.String:
+                                result.Results = GetStringResults(PSOutput);
+                                break;
+                            default:
+                                break;
                         }
                     }
-
-                    switch (powerShellJob.PSResultType)
-                    {
-                        case PSResultType.Table:
-                            DataTable dataTableResults = GetDataTableResults(PSOutput);
-                            result.Results = JsonConvert.SerializeObject(dataTableResults, new DataTableConverter());
-                            break;
-                        case PSResultType.String:
-                            result.Results = GetStringResults(PSOutput);
-                            break;
-                        default:
-                            break;
-                    }                   
                 }
+            }
+            catch (Exception ex)
+            {
+                result.Errors.Add(new ErrorInfo
+                    {
+                        Exception = ex,
+                        Message = ex.Message
+                    });
             }
             return result;
         }

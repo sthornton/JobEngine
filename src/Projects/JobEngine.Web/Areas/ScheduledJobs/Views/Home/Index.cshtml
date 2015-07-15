@@ -127,6 +127,7 @@
                     @Html.DisplayFor(modelItem => item.IsActive)
                 </td>
                 <td>
+                    @Html.ActionLink("View History", "ViewHistory", new { id = item.ScheduledJobId }) | 
                     @Html.ActionLink("Trigger Now", "TriggerNow", new { id = item.ScheduledJobId }) |
                     @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledJobId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.ScheduledJobId }) |

@@ -169,10 +169,40 @@ namespace JobEngine.Core.Persistence
                          {
                              JobExecutionQueueId = jobExecutionQueueId
                          });
-                result = queueItem.Single();
-
+                result = queueItem.Single();                
             }
             return result;
+        }
+
+        public async Task<IEnumerable<JobExecutionQueue>> GetScheduledJobsAsync(int scheduledJobId)
+        {
+            IEnumerable<JobExecutionQueue> results;
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                results = await conn.QueryAsync<JobExecutionQueue>(@"
+                                SELECT [JobExecutionQueueId]
+                                    ,[JobEngineClientId]
+                                    ,[CustomerId]
+                                    ,[JobType]
+                                    ,[JobSettings]
+                                    ,[JobExecutionStatus]
+                                    ,[ResultMessage]
+                                    ,[TotalExecutionTimeInMs]
+                                    ,[ScheduledJobId]
+                                    ,[CreatedBy]
+                                    ,[DateReceivedByClient]
+                                    ,[DateExecutionCompleted]
+                                    ,[DateEnteredQueue]
+                                FROM  [JobExecutionQueue]
+                                WHERE ScheduledJobId = @ScheduledJobId
+                                ORDER BY JobExecutionQueueId DESC;",
+                         new
+                         {
+                             ScheduledJobId = scheduledJobId
+                         });
+
+            }
+            return results;
         }       
     }
 }

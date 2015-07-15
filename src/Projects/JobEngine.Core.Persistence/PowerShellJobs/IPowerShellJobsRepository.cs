@@ -17,5 +17,7 @@ namespace JobEngine.Core.Persistence
         Task DeleteAsync(int powerShellJobId);
         Task DeleteParameterAsync(int powerShellJobParameterId);
         Task CreatePowerShellJobResult(PowerShellJobResult result, int? scheduledJobId, DateTime dateCompleted);
+        Task<PowerShellJobResult> GetPowerShellResult(int powerShellResultsId);
+        Task<PowerShellJobResult> GetPowerShellResultFromExecutionId(int jobExecutionQueueId);
     }
 }

@@ -18,5 +18,7 @@ namespace JobEngine.Core.Persistence
         Task<IEnumerable<JobExecutionQueue>> GetJobsToExecuteAsync(Guid jobEngineClientId);
 
         Task<JobExecutionQueue> GetAsync(long jobExecutionQueueId);
+
+        Task<IEnumerable<JobExecutionQueue>> GetScheduledJobsAsync(int scheduledJobId);
     }
 }

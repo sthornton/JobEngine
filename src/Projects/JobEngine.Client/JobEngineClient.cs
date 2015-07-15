@@ -10,6 +10,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace JobEngine.Client
 {
@@ -35,8 +37,8 @@ namespace JobEngine.Client
 
         public void Start()
         {
-            InitializeSyncAssemblyJobsTimer();            
-            
+            InitializeSyncAssemblyJobsTimer();
+
             jobsProducerThread = new Thread(ProduceJobs);
             jobsProducerThread.Start();
 
@@ -44,7 +46,7 @@ namespace JobEngine.Client
             jobsConsumerThread.Start();
 
             realTimeListenerThread = new Thread(ConnectToRealTimeServer);
-            realTimeListenerThread.Start();    
+            realTimeListenerThread.Start();
         }
 
         private void ConnectToRealTimeServer()
@@ -56,14 +58,14 @@ namespace JobEngine.Client
                 realTimeConnection.Connect(Settings.RealTimeUrl, Settings.RealTimeHubName, Settings.JobEngineClientId);
             }
             catch (Exception)
-            {                
+            {
                 throw;
             }
         }
 
         private void RealTimeConnection_PollRequested(object sender, EventArgs e)
         {
-            DownloadJobsWaitingToExecute(); 
+            DownloadJobsWaitingToExecute();
         }
 
         private void InitializeSyncAssemblyJobsTimer()
@@ -85,9 +87,9 @@ namespace JobEngine.Client
 
         public void ProduceJobs()
         {
-            while(!isStopping)
+            while (!isStopping)
             {
-                DownloadJobsWaitingToExecute();            
+                DownloadJobsWaitingToExecute();
                 Thread.Sleep(Settings.PollInterval * 1000);
             }
         }
@@ -96,7 +98,7 @@ namespace JobEngine.Client
         {
             if (!isCurrentlyDownloadingJobs)
             {
-                isCurrentlyDownloadingJobs = true;    
+                isCurrentlyDownloadingJobs = true;
                 try
                 {
                     JobEngineApi api = new JobEngineApi(Settings.ApiUrl, Settings.ApiUsername, Settings.ApiPassword);
@@ -120,14 +122,14 @@ namespace JobEngine.Client
 
         public void ConsumeJobs()
         {
-            foreach(var jobQueueItem in jobQueue.GetConsumingEnumerable(consumerCancelTokenSource.Token))
+            foreach (var jobQueueItem in jobQueue.GetConsumingEnumerable(consumerCancelTokenSource.Token))
             {
                 switch (jobQueueItem.JobType)
                 {
                     case JobType.AssemblyJob:
                         Task.Factory.StartNew(() => ProcessAssemblyJob(jobQueueItem), TaskCreationOptions.LongRunning);
                         break;
-                    case JobType.PowerShell :
+                    case JobType.PowerShell:
                         Task.Factory.StartNew(() => ProcessPowerShellJob(jobQueueItem), TaskCreationOptions.LongRunning);
                         break;
                     default:
@@ -135,7 +137,7 @@ namespace JobEngine.Client
                 }
             }
         }
-  
+
         private async void ProcessPowerShellJob(JobExecutionQueue jobQueueItem)
         {
             JobEngineApi jobEngineApi = new JobEngineApi(Settings.ApiUrl, Settings.ApiUsername, Settings.ApiPassword);
@@ -161,19 +163,24 @@ namespace JobEngine.Client
                 stopWatch.Stop();
                 result.DateCompleted = DateTime.UtcNow;
                 result.ScheduledJobId = jobQueueItem.ScheduledJobId;
+                result.JobExecutionQueueId = jobQueueItem.JobExecutionQueueId;
 
                 await jobEngineApi.CreatePowerShellJobResult(result);
+
+                string errors = GetErrorString(result.Errors);
 
                 await jobEngineApi.AddJobExecutionLogEntry(jobQueueItem.JobExecutionQueueId,
                                 date: DateTime.UtcNow,
                                 logLevel: (result.Errors.Count > 0) ? JobEngine.Models.LogLevel.ERROR : JobEngine.Models.LogLevel.INFO,
                                 logger: logger,
-                                message: "Finished executing PowerShell Job with " + result.Errors.Count + " errors reported",
-                                exception: null);
+                                exception: null,
+                                message: !string.IsNullOrEmpty(errors) ? "Finished executing PowerShell Job with " + result.Errors.Count + " errors reported\r\n" + errors :
+                                                                         "Finished executing PowerShell Job with " + result.Errors.Count + " errors reported");
+                                
 
                 await jobEngineApi.UpdateJobExecutionResult(jobQueueItem.JobExecutionQueueId,
                                 jobExecutionStatus: StatusMapper.FromAssemblyJobResultToJobExecutionResult(Result.FATAL),
-                                resultMessage: (result.Errors.Count > 0) ? result.Errors.Count + " errors reported" : "Finished Executing Successfully",
+                                resultMessage: (result.Errors.Count > 0) ? result.Errors.Count + " error/s reported\r\n" + errors : "Finished Executing Successfully",
                                 dateCompleted: DateTime.UtcNow,
                                 totalExecutionTimeInMs: stopWatch.ElapsedMilliseconds);
 
@@ -181,7 +188,7 @@ namespace JobEngine.Client
             catch (Exception e)
             {
                 log.Error(e);
-            }      
+            }
         }
 
         private async void ProcessAssemblyJob(JobExecutionQueue jobQueueItem)
@@ -200,14 +207,14 @@ namespace JobEngine.Client
                 await jobEngineApi.UpdateJobExecutionStatus(jobQueueItem.JobExecutionQueueId, JobExecutionStatus.EXECUTING);
 
                 DateTime startTime = DateTime.UtcNow;
-                var assemblyJob = JsonConvert.DeserializeObject<AssemblyJob>(jobQueueItem.JobSettings);             
-               
+                var assemblyJob = JsonConvert.DeserializeObject<AssemblyJob>(jobQueueItem.JobSettings);
+
                 AssemblyJobProcessor assemblyJobProcessor = new AssemblyJobProcessor();
                 Stopwatch stopWatch = new Stopwatch();
                 stopWatch.Start();
                 AssemblyJobResult result = assemblyJobProcessor.ProcessJob(
-                                                        jobExecutionQueueId: jobQueueItem.JobExecutionQueueId, 
-                                                        assemblyJob: assemblyJob, 
+                                                        jobExecutionQueueId: jobQueueItem.JobExecutionQueueId,
+                                                        assemblyJob: assemblyJob,
                                                         logger: new AssemblyJobLogger());
                 stopWatch.Stop();
 
@@ -227,7 +234,7 @@ namespace JobEngine.Client
             catch (Exception e)
             {
                 log.Error(e);
-            }      
+            }
         }
 
         private void SynchAssembliesTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -271,6 +278,17 @@ namespace JobEngine.Client
                 isSynchingAssemblyJobs = false;
                 log.Debug("Finished Synching Assembly Jobs");
             }
+        }
+
+        private string GetErrorString(List<ErrorInfo> errors)
+        {
+            string result = string.Empty;
+            if (errors.Count > 0)
+            {
+                var errorsList = errors.Select(x => "Message: " + x.Message + "\r\nStack Trace: " + x.Exception.StackTrace + "\r\n").ToList();
+                result = string.Join("\r\n\r\n", errorsList);
+            }
+            return result;
         }
     }
 }

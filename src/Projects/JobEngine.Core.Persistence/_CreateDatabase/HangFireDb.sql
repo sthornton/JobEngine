@@ -1,0 +1,2 @@
+﻿CREATE Database [HangFire]
+GO

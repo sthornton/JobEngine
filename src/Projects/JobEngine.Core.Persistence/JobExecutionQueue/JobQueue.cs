@@ -18,7 +18,7 @@ namespace JobEngine.Persistence
             long jobExecutionQueueId = 0;
             using(SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
             {
-                jobExecutionQueueId = conn.Execute(@"INSERT INTO [JobExecutionQueue]
+                jobExecutionQueueId = conn.Query<long>(@"INSERT INTO [JobExecutionQueue]
                                     ([JobEngineClientId]
                                     ,[CustomerId]
                                     ,[JobType]
@@ -47,7 +47,7 @@ namespace JobEngine.Persistence
                               ScheduledJobId = job.ScheduledJobId,
                               CreatedBy = "scheduler",
                               DateEnteredQueue = DateTime.UtcNow
-                          });
+                          }).Single();
             }
             return jobExecutionQueueId;
         }
@@ -57,7 +57,7 @@ namespace JobEngine.Persistence
             long jobExecutionQueueId = 0;
             using (SqlConnection conn = new SqlConnection(Settings.JobEngineConnectionString))
             {
-                conn.Execute(@"INSERT INTO [JobExecutionQueue]
+                jobExecutionQueueId = conn.Query<long>(@"INSERT INTO [JobExecutionQueue]
                                     ([JobEngineClientId]
                                     ,[CustomerId]
                                     ,[JobType]
@@ -83,7 +83,7 @@ namespace JobEngine.Persistence
                               JobExecutionStatus = JobExecutionStatus.NOT_RECIEVED_BY_CLIENT,
                               CreatedBy = createdBy,
                               DateEnteredQueue = DateTime.UtcNow
-                          });
+                          }).Single();
             }
             return jobExecutionQueueId;           
         }

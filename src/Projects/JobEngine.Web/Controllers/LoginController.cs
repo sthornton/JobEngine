@@ -46,10 +46,7 @@ namespace JobEngine.Web.Controllers
 
         public async Task<ActionResult> Login(LoginViewModel viewModel)
         {
-
-#if DEBUG
-            await SetupDefaultUser();
-#endif         
+            await SetupDefaultUser();  
 
             if (ModelState.IsValid)
             {

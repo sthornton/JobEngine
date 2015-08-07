@@ -125,19 +125,23 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult AddParameter(AssemblyJobParameterViewModel viewModel)
+        public async Task<ActionResult> AddParameter(AssemblyJobParameterViewModel viewModel)
         {
-            AssemblyJobParameter parameter = new AssemblyJobParameter
+            if (ModelState.IsValid)
             {
-                AssemblyJobId = viewModel.AssemblyJobId,
-                DataType = DataType.String,
-                InputValidationRegExPattern = viewModel.InputValidationRegExPattern,
-                IsEncrypted = viewModel.IsEncrypted,
-                IsRequired = viewModel.IsRequired,
-                Name = viewModel.Name
-            };
-            this.assemblyJobRepository.CreateParameterAsync(parameter);
-            return RedirectToAction("Edit", new { id = viewModel.AssemblyJobId });
+                AssemblyJobParameter parameter = new AssemblyJobParameter
+                {
+                    AssemblyJobId = viewModel.AssemblyJobId,
+                    DataType = DataType.String,
+                    InputValidationRegExPattern = viewModel.InputValidationRegExPattern,
+                    IsEncrypted = viewModel.IsEncrypted,
+                    IsRequired = viewModel.IsRequired,
+                    Name = viewModel.Name
+                };
+                await this.assemblyJobRepository.CreateParameterAsync(parameter);
+                return RedirectToAction("Edit", new { id = viewModel.AssemblyJobId });
+            }
+            return View(viewModel);
         }
 
         public ActionResult Delete(int id)

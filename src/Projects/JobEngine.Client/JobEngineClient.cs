@@ -179,7 +179,7 @@ namespace JobEngine.Client
                                 
 
                 await jobEngineApi.UpdateJobExecutionResult(jobQueueItem.JobExecutionQueueId,
-                                jobExecutionStatus: StatusMapper.FromAssemblyJobResultToJobExecutionResult(Result.FATAL),
+                                jobExecutionStatus: (result.Errors.Count > 0) ? JobExecutionStatus.ERROR : JobExecutionStatus.SUCCESS,
                                 resultMessage: (result.Errors.Count > 0) ? result.Errors.Count + " error/s reported\r\n" + errors : "Finished Executing Successfully",
                                 dateCompleted: DateTime.UtcNow,
                                 totalExecutionTimeInMs: stopWatch.ElapsedMilliseconds);

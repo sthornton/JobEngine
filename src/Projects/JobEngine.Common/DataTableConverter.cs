@@ -100,7 +100,10 @@ namespace JobEngine.Common
                     else
                     {
                         // All allowed data types exist in the System namespace
-                        column.DataType = Type.GetType(string.Concat("System.", dataType));
+                        if (dataType == "SafeHandle")
+                            column.DataType = Type.GetType("System.String");
+                        else                            
+                            column.DataType = Type.GetType(string.Concat("System.", dataType));
                     }
                 }
 

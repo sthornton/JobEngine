@@ -60,7 +60,7 @@ namespace JobEngine.Client
                         Collection<PSObject> PSOutput = pipeline.Invoke();
 
                         if (pipeline.Error.Count > 0)
-                        {
+                        {                          
                             var errors = pipeline.Error.Read() as Collection<ErrorRecord>;
                             foreach (var error in errors)
                             {

@@ -78,6 +78,7 @@
     <Content Include="_CreateDatabase\HangFireDb.sql">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="_CreateDatabase\seed.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -126,7 +126,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.IsActive)
                 </td>
-                <td>
+                <td style="text-align:right;">
                     @Html.ActionLink("View History", "ViewHistory", new { id = item.ScheduledJobId }) | 
                     @Html.ActionLink("Trigger Now", "TriggerNow", new { id = item.ScheduledJobId }) |
                     @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledJobId }) |

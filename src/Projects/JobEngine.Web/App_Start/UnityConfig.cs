@@ -53,7 +53,7 @@ namespace JobEngine.Web.App_Start
             container.RegisterType<ILoggingRepository, LoggingRepository>(new InjectionConstructor(jobEngineConnectionString));
             container.RegisterType<IJobExecutionQueueRepository, JobExecutionQueueRepository>(new InjectionConstructor(jobEngineConnectionString));
             container.RegisterType<IPowerShellJobsRepository, PowerShellJobsRepository>(new InjectionConstructor(jobEngineConnectionString));
-
+            container.RegisterType<IClientInstallFilesRepository, ClientInstallFilesRepository>(new InjectionConstructor(jobEngineConnectionString));
             container.RegisterType<ICacheProvider, MemoryCacheProvider>();
             container.RegisterType<IJobScheduler, HangfireJobScheduler>();
             container.RegisterType<IClientCommunicator, ClientCommunicator>();

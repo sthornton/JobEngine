@@ -5,6 +5,60 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
+@section style
+{
+    <style type="text/css">
+        .btn-file {
+            position: relative;
+            overflow: hidden;            
+        }
+
+            .btn-file input[type=file] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                text-align: right;
+                filter: alpha(opacity=0);
+                opacity: 0;
+                background: red;
+                cursor: inherit;
+                display: block;
+            }
+
+        input[readonly] {
+            background-color: white !important;
+            cursor: text !important;
+            
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $(document).ready(function () {
+            $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+        });
+    </script>
+    }
 <form action="" method="post" enctype="multipart/form-data">
 
     @Html.AntiForgeryToken()
@@ -32,7 +86,17 @@
         <div class="form-group">
             @Html.LabelFor(m => m.File, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.File, new { type = "file" })
+
+                <div class="input-group">
+
+                    <span class="input-group-btn">
+                        <span class="btn btn-default btn-file" style="margin-left:10px;">
+                            Browse
+                            @Html.TextBoxFor(m => m.File, new { @type = "file" })
+                        </span>
+                        <input type="text" class="form-control" disabled="disabled" readonly>
+                    </span>
+                </div>
             </div>
         </div>
 

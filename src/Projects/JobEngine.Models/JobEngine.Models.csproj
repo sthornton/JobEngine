@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyJob.cs" />
+    <Compile Include="ClientInstallFile.cs" />
     <Compile Include="JobExecutionLog.cs" />
     <Compile Include="AssemblyJobParameter.cs" />
     <Compile Include="Customer.cs" />

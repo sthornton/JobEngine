@@ -37,6 +37,34 @@
 .navbar-custom .navbar-toggle {
   	background-color:#506cc4;
 }
-.navbar-custom .icon-bar {
-  	background-color:#F4A57A;
+    .navbar-custom .icon-bar {
+        background-color: #F4A57A;
+    }
+
+@media (min-width: 979px) {
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+    }
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        background: red;
+        cursor: inherit;
+        display: block;
+    }
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
 }

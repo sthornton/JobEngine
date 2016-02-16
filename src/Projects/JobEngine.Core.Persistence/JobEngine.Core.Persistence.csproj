@@ -63,6 +63,8 @@
     <Compile Include="AssemblyJobs\IAssemblyJobRepository.cs" />
     <Compile Include="Clients\IClientRepository.cs" />
     <Compile Include="Customers\ICustomerRepository.cs" />
+    <Compile Include="ClientInstallFiles\IClientInstallFilesRepository.cs" />
+    <Compile Include="ClientInstallFiles\ClientInstallFilesRepository.cs" />
     <Compile Include="PowerShellJobs\IPowerShellJobsRepository.cs" />
     <Compile Include="JobExecutionQueue\IJobExecutionQueueRepository.cs" />
     <Compile Include="Logging\ILoggingRepository.cs" />

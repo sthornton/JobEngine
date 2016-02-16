@@ -25,7 +25,7 @@
             margin-left: 50px;
         }
     </style>
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         $(document).ready(function () {
             $('#text').animate({
                 marginLeft: '-=50px'
@@ -35,7 +35,7 @@
             }, 50);
 
         });
-    </script>
+    </script>*@
 
     <title>@ViewBag.Title</title>
 </head>
@@ -62,23 +62,23 @@
                             </a>
                         </li>
                         <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Customers<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="active-x">
-                                <a href="~/Customers/">
-                                    <i class="fa fa-user "></i>&nbsp;&nbsp;&nbsp;Customers
-                                </a>
-                            </li>
-                            <li class="active-x">
-                                <a href="~/Clients/">
-                                    <i class="fa fa-cloud "></i>&nbsp;&nbsp;Job Engine Clients
-                                </a>
-                            </li>
-                        </ul>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Customers<span></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="active-x">
+                                    <a href="~/Customers/">
+                                        <i class="fa fa-user "></i>&nbsp;&nbsp;&nbsp;Customers
+                                    </a>
+                                </li>
+                                <li class="active-x">
+                                    <a href="~/Clients/">
+                                        <i class="fa fa-cloud "></i>&nbsp;&nbsp;Job Engine Clients
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                      
-                        <li class="dropdown">                           
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Jobs<span class="caret"></span></a>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Jobs<span></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="~/AssemblyJobs">
@@ -96,12 +96,14 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>                        
+                        </li>
+
                         <li class="dropdown">
                             @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                             {
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Management<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Management<span></span></a>
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="~/SiteManagement/ClientInstallFiles"><i class="fa fa-users"></i>&nbsp;&nbsp;Client Install Files</a></li>
                                     <li><a href="~/SiteManagement/UsersAdmin"><i class="fa fa-user"></i>&nbsp;&nbsp;Users</a></li>
                                     <li><a href="~/SiteManagement/RolesAdmin"><i class="fa fa-users"></i>&nbsp;&nbsp;Roles</a></li>
                                     <li>
@@ -109,6 +111,7 @@
                                             <i class="fa fa-area-chart"></i>&nbsp;&nbsp;Hangfire Dashboard
                                         </a>
                                     </li>
+
                                 </ul>
                             }
                         </li>
@@ -119,15 +122,15 @@
         </nav>     
         </div>
 
-    <div class="page-wrapper" style="margin-left:-50px;">
+    <div  >
 
         <div class="container-fluid">
             <div class="row" >
 
                 @if (!string.IsNullOrEmpty(ViewBag.Title))
                 {
-                    <div class="col-md-3">
-                        <div id="text" class="title">
+                    <div class="col-md-6 left">
+                        <div id="text" >
                             <h2>@ViewBag.Title</h2>
                         </div>
                     </div>
@@ -145,7 +148,7 @@
 
                 @if (TempData["SuccessMessage"] != null)
                 {
-                    <div class="col-md-9">
+                    <div class="col-md-6">
 
                         <div id="successMessage" class="alert alert-success">
                             <a href="#" class="close" data-dismiss="alert"></a>

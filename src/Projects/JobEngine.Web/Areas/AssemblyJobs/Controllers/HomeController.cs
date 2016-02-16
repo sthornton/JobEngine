@@ -56,7 +56,7 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
                     AssemblyJob assemblyJob = new AssemblyJob();
                     assemblyJob.Name = viewModel.Name;
                     assemblyJob.PluginName = viewModel.PluginName;
-                    assemblyJob.PluginFile = ConvertToBytes(viewModel.File);
+                    assemblyJob.PluginFile = base.ConvertToBytes(viewModel.File);
                     assemblyJob.PluginFileName = Path.GetFileName(viewModel.File.FileName);
                     assemblyJob.DateCreated = DateTime.UtcNow;
                     assemblyJob.DateModified = DateTime.UtcNow;
@@ -149,14 +149,6 @@ namespace JobEngine.Web.Areas.AssemblyJobs.Controllers
             this.assemblyJobRepository.DeleteAsync(id);
             SuccessMessage = "Assembly Job deleted successfully";
             return RedirectToAction("Index");
-        }
-
-        public byte[] ConvertToBytes(HttpPostedFileBase image)
-        {
-            byte[] imageBytes = null;
-            BinaryReader reader = new BinaryReader(image.InputStream);
-            imageBytes = reader.ReadBytes((int)image.ContentLength);
-            return imageBytes;
         }
     }
 }

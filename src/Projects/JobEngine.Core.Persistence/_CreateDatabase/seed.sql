@@ -65,3 +65,13 @@
         INSERT INTO JobExecutionStatus
   ( Id, Name)
   VALUES (7, 'FATAL')
+
+
+INSERT DataType (Id, NAME)
+VALUES (1,'Int32')
+
+INSERT DataType (Id, NAME)
+VALUES (2,'Long')
+
+INSERT DataType (Id, NAME)
+VALUES (3,'String')

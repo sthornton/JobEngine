@@ -71,6 +71,7 @@
                 </td>
              
                 <td style="text-align:right;">
+                    @Html.ActionLink("Download", "Download", new { id = item.JobEngineClientId }) |
                     @Html.ActionLink("Edit", "Edit", new { id = item.JobEngineClientId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.JobEngineClientId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.JobEngineClientId })

@@ -8,18 +8,27 @@ using JobEngine.Core.Persistence;
 using JobEngine.Web.Areas.Clients.Models;
 using AutoMapper;
 using System.Threading.Tasks;
+using System.IO;
+using System.IO.Compression;
+using Ionic.Zip;
+using System.Configuration;
 
 namespace JobEngine.Web.Areas.Clients.Controllers
 {
+    [Authorize]
     public class HomeController : BaseController
     {
         private IClientRepository clientRepository;
         private ICustomerRepository customerRepository;
+        private IClientInstallFilesRepository clientInstallFilesRepository;
 
-        public HomeController(IClientRepository clientRepository, ICustomerRepository customerRepository)
+        public HomeController(IClientRepository clientRepository, 
+                              ICustomerRepository customerRepository,
+                              IClientInstallFilesRepository clientInstallRepository)
         {
             this.clientRepository = clientRepository;
             this.customerRepository = customerRepository;
+            this.clientInstallFilesRepository = clientInstallRepository;
         }
         public async Task<ActionResult> Index()
         {
@@ -119,6 +128,34 @@ namespace JobEngine.Web.Areas.Clients.Controllers
         {
             await this.clientRepository.DeleteAsync(id);
             SuccessMessage = "Deleted successfully";
+            return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> Download(Guid? id)
+        {
+            if(id.HasValue)
+            {
+                var jobEngineClient = await this.clientRepository.GetAsync(id.Value);
+                var installFileDetails = await this.clientInstallFilesRepository.GetActiveInstallerAsync();
+                var configFile = System.IO.File.ReadAllText(Server.MapPath("~/Content/Configs/App.config"));
+                configFile = configFile.Replace("JOBENGINE_CLIENT_ID", jobEngineClient.JobEngineClientId.ToString());
+                configFile = configFile.Replace("REALTIME_URL", ConfigurationManager.AppSettings["RealtimeUrl"]);
+                configFile = configFile.Replace("API_URL", ConfigurationManager.AppSettings["ApiUrl"]);
+                configFile = configFile.Replace("API_USERNAME", jobEngineClient.Username);
+                configFile = configFile.Replace("API_PASSWORD", jobEngineClient.Password);
+                configFile = configFile.Replace("TEMP_FILE_DIRECTORY", ConfigurationManager.AppSettings["TempFileDirectory"]);
+
+                Stream outputStream = new MemoryStream();
+                Stream stream = new MemoryStream(installFileDetails.File);
+                using (var zipFile = ZipFile.Read(stream))
+                {
+                    zipFile.RemoveEntry("JobEngine.Client.Shell.exe.config");
+                    zipFile.AddEntry("JobEngine.Client.Shell.exe.config", configFile);
+                    zipFile.Save(outputStream);
+                    outputStream.Position = 0;
+                    return File(outputStream, "application/zip");
+                }
+            }
             return RedirectToAction("Index");
         }
     }

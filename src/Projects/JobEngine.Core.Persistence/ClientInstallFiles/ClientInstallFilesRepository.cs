@@ -99,6 +99,26 @@ namespace JobEngine.Core.Persistence
             }
         }
 
+        public async Task<ClientInstallFile> GetActiveInstallerAsync()
+        {
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                var installFile = await conn.QueryAsync<ClientInstallFile>(@"SELECT [ClientInstallFileId]
+                                                          ,[Name]
+                                                          ,[File]
+                                                          ,[Version]
+                                                          ,[IsActive]
+                                                          ,[DateModified]
+                                                          ,[ModifiedBy]
+                                                          ,[DateCreated]
+                                                          ,[CreatedBy]
+                                                      FROM [ClientInstallFiles]
+                                                      WHERE IsActive = 1");
+                return installFile.Single();
+            }
+        }
+
         public async Task<IEnumerable<ClientInstallFile>> GetAllAsync()
         {
             using (SqlConnection conn = new SqlConnection(this.connectionString))

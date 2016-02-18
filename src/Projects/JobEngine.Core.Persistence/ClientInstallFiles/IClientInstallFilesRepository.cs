@@ -11,6 +11,7 @@ namespace JobEngine.Core.Persistence
     {
         Task<IEnumerable<ClientInstallFile>> GetAllAsync();
         Task<ClientInstallFile> GetAsync(int clientInstallFileId);
+        Task<ClientInstallFile> GetActiveInstallerAsync();
 
         /// <summary>
         /// Returns details excluding the actual file

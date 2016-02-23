@@ -14,7 +14,7 @@ namespace JobEngine.Web.Areas.SiteManagement.Models
         [Required, Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Required, Display(Name = "File")]
+        [Display(Name = "File")]
         public HttpPostedFileBase File { get; set; }
 
         [Display(Name = "Version")]

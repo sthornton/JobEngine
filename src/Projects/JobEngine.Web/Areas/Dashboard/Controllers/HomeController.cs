@@ -2,6 +2,7 @@
 using JobEngine.Core.Persistence;
 using JobEngine.Models;
 using JobEngine.Web.Areas.Clients.Models;
+using JobEngine.Web.Areas.Dashboard.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,10 +21,11 @@ namespace JobEngine.Web.Areas.Dashboard.Controllers
 
         public async Task<ActionResult> Index()
         {
+            var viewModel = new DashboardViewModel();
             var clients = await this.clientRepository.GetAllAsync();
             clients = clients.Where(x => x.IsEnabled && !x.IsDeleted);
-            List<JobEngineClientViewModel> viewModel = Mapper.Map<List<JobEngineClient>, List<JobEngineClientViewModel>>(clients.ToList());
-            return View(viewModel.OrderBy(x => x.Name));
+            viewModel.JobEngineClients = Mapper.Map<List<JobEngineClient>, List<JobEngineClientViewModel>>(clients.ToList());
+            return View(viewModel);
         }
     }
 }

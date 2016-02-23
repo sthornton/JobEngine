@@ -11,6 +11,12 @@ namespace JobEngine.Core.WebApi
 {
     public class ApplicationOAuthServerProvider : OAuthAuthorizationServerProvider
     {
+        private IClientRepository clientRepository;
+        public ApplicationOAuthServerProvider(IClientRepository clientRepository)
+        {
+            this.clientRepository = clientRepository;
+        }
+
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             // Required call
@@ -21,25 +27,34 @@ namespace JobEngine.Core.WebApi
         {
             // Here we can plug in any backing store to validate the credentials
             // Make sure you await the request to free up resources!
-
-            if (context.UserName != "testUser" && context.Password != "password")
+            var parameters = await context.Request.ReadFormAsync();            
+            if (context.UserName != "" && context.Password != "" && parameters != null && parameters["jobengine_clientid"] != null)
             {
-                context.SetError(
-                    "invalid_grant", "The user name or password is incorrect.");
-                context.Rejected();
-                return;
+                Guid jobEngineClientId;
+                if (Guid.TryParse(parameters["jobengine_clientid"], out jobEngineClientId))
+                {
+                    var jobEngineClient = await this.clientRepository.GetAsync(jobEngineClientId);
+                    if (jobEngineClient != null && jobEngineClient.Username == context.UserName && jobEngineClient.Password == context.Password)
+                    {
+                        // Creates or retrieves a Claims Identity to represent the Authenticated user
+                        ClaimsIdentity identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                        identity.AddClaim(new Claim("user_name", context.UserName));
+                        //identity.AddClaim(new Claim("expires_in", DateTime.Now.AddMinutes(Settings.RefreshTokenIntervalMinutes).ToString());
+
+                        // Add any new roles here
+                        identity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
+
+                        // Identitity will be encoded into a token in this call
+                        context.Validated(identity);
+                        return;                    
+                    }
+                }
             }
 
-            // Creates or retrieves a Claims Identity to represent the Authenticated user
-            ClaimsIdentity identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("user_name", context.UserName));
-            //identity.AddClaim(new Claim("expires_in", DateTime.Now.AddMinutes(Settings.RefreshTokenIntervalMinutes).ToString());
+            context.SetError("invalid_grant", "You enterd the wrong shit in somewhere");
+            context.Rejected();
+            return;
 
-            // Add any new roles here
-            identity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
-
-            // Identitity will be encoded into a token in this call
-            context.Validated(identity);
         }
     }
 }

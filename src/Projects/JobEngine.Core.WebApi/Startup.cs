@@ -13,6 +13,8 @@ using Hangfire.SqlServer;
 
 namespace JobEngine.Core.WebApi
 {
+    using Persistence;
+    using System.Configuration;
     // use an alias for the OWIN AppFunc:
     using AppFunc = Func<IDictionary<string, object>, Task>;
 
@@ -40,7 +42,7 @@ namespace JobEngine.Core.WebApi
             var OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
-                Provider = new ApplicationOAuthServerProvider(),
+                Provider = new ApplicationOAuthServerProvider(new ClientRepository(ConfigurationManager.ConnectionStrings["JobEngineConnectionString"].ConnectionString)),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(3),
                 RefreshTokenProvider = new ApplicationRefreshTokenProvider(),
                 // Change before going to production

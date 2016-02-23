@@ -227,9 +227,10 @@ namespace JobEngine.Client
             {
                 var pairs = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>( "grant_type", "password" ), 
+                    new KeyValuePair<string, string>( "grant_type", "password"), 
                     new KeyValuePair<string, string>( "username", m_Username), 
-                    new KeyValuePair<string, string> ( "password", m_Password )
+                    new KeyValuePair<string, string> ( "password", m_Password),
+                    new KeyValuePair<string, string> ("jobengine_clientid", Settings.JobEngineClientId.ToString())
                 };
                 var content = new FormUrlEncodedContent(pairs);
 

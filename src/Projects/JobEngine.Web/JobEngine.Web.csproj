@@ -231,6 +231,8 @@
     <Content Include="Areas\SiteManagement\Views\ClientInstallFiles\Index.cshtml" />
     <Content Include="Areas\SiteManagement\Views\ClientInstallFiles\Create.cshtml" />
     <Content Include="Areas\SiteManagement\Views\ClientInstallFiles\Details.cshtml" />
+    <Content Include="Areas\SiteManagement\Views\ClientInstallFiles\Edit.cshtml" />
+    <Content Include="Areas\SiteManagement\Views\ClientInstallFiles\Delete.cshtml" />
     <None Include="Content\bootstrap-theme.min.css.orig" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

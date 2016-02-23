@@ -64,8 +64,9 @@ namespace JobEngine.Core.Persistence
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                await conn.QueryAsync(@"DELETE FROM [ClientInstallFiles]
-                                        WHERE ClientInstallFileId = @Id");
+                await conn.ExecuteAsync(@"DELETE FROM [ClientInstallFiles]
+                                        WHERE ClientInstallFileId = @Id",
+                                        new { @id = clientInstallFileId });
             }
         }
 
@@ -74,7 +75,7 @@ namespace JobEngine.Core.Persistence
             using (SqlConnection conn = new SqlConnection(this.connectionString))
             {
                 conn.Open();
-                await conn.QueryAsync(@"UPDATE [ClientInstallFiles]
+                await conn.ExecuteAsync(@"UPDATE [ClientInstallFiles]
                                         SET [Name] = @Name
                                             ,[File] = @File
                                             ,[Version] = @Version

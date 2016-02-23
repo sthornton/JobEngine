@@ -32,38 +32,13 @@ namespace JobEngine.Client
 
         static Settings()
         {
-
-#if DEBUG
-            ApiUsername = "username";
-#else
-            ApiUsername = ConfigurationManager.AppSettings["ApiUser"];
-#endif 
-
-#if DEBUG
-            ApiPassword = "password";
-#else
-            ApiPassword = ConfigurationManager.AppSettings["ApiPassword"];
-#endif
-
-#if DEBUG
-            ApiUrl = "http://localhost:64196";
-#else
+            
+            ApiUsername = ConfigurationManager.AppSettings["ApiUsername"];            
+            ApiPassword = ConfigurationManager.AppSettings["ApiPassword"];            
             ApiUrl = ConfigurationManager.AppSettings["ApiUrl"];
-#endif
-
             RealTimeHubName = "ClientCommunicatorHub";
-
-#if DEBUG
-            RealTimeUrl = "http://localhost:63376/";
-#else
             RealTimeUrl = ConfigurationManager.AppSettings["RealtimeUrl"];
-#endif
-
-#if DEBUG
-            JobEngineClientId = new Guid("F120F9C0-5ACF-E511-828B-4C34883F5CC2");
-#else
             JobEngineClientId = Guid.Parse(ConfigurationManager.AppSettings["JobEngineClientId"]);
-#endif
             TempFileDirectory = ConfigurationManager.AppSettings["TempFileDirectory"];
             PollInterval = 20;
 

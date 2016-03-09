@@ -5,11 +5,44 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
+@section styles
+{
+    <link href="~/Content/jquery-cron.css" rel="stylesheet" />
+    <style>
+        #selector
+        {
+            max-width:480px;
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-cron-min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#selector').cron(); // apply cron with default options
+
+            try {
+                $('#selector').cron("value", '@Model.CronSchedule');
+            } catch (e) {
+                alert(e);
+            }
+            $("form").submit(function () {
+                $("#hidden_cron_schedule").val($('#selector').cron("value"));
+            });
+
+        });
+    </script>
+    <!--- somewhere within <body> -->
+}
+
 @using (Html.BeginForm("EditPowerShellJob", "Home"))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.PowerShellJobId)
     @Html.HiddenFor(m => m.ScheduledJobId)
+    @Html.HiddenFor(m => m.CronSchedule, new { @id = "hidden_cron_schedule" })
     <div class="form-horizontal">
         <h4>@Model.Name</h4>
 
@@ -43,7 +76,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CronSchedule, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CronSchedule, new { htmlAttributes = new { @class = "form-control" } })
+                <div id='selector' class="form-control"></div>
+                @*@Html.EditorFor(model => model.CronSchedule, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.CronSchedule, "", new { @class = "text-danger" })
             </div>
         </div>

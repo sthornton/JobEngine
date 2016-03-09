@@ -1,83 +1,312 @@
 ﻿@model JobEngine.Web.Areas.Dashboard.Models.DashboardViewModel
 
 @{
-    ViewBag.Title = "Client Status";
+    ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/c3.min.css" rel="stylesheet" />
+
 <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
 <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+<script src="~/Scripts/c3.min.js"></script>
+<script src="~/Scripts/d3.min.js"></script>
 
 @section scripts
 {
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#mainTable").DataTable({ bFilter: false, bInfo: false, bLengthChange: false });
-    });
-</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mainTable").DataTable({ bFilter: false, bInfo: false, bLengthChange: false });
+
+
+
+            var donutChart = c3.generate({
+                bindto: '#donutChart',
+                data: {
+                    columns: [
+                        ['data', 0.00]
+                    ],
+                    type: 'gauge',
+                    onclick: function (d, i) { console.log("onclick", d, i); },
+                    onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                    onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                },
+                gauge: {
+                    //        label: {
+                    //            format: function(value, ratio) {
+                    //                return value;
+                    //            },
+                    //            show: false // to turn off the min/max labels.
+                    //        },
+                    //    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+                    //    max: 100, // 100 is default
+                    //    units: ' %',
+                    //    width: 39 // for adjusting arc thickness
+                },
+                color: {
+                    pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+                    threshold: {
+                        //            unit: 'value', // percentage is default
+                        //            max: 200, // 100 is default
+                        values: [30, 60, 90, 100]
+                    }
+                },
+                size: {
+                    height: 120
+                }
+            });
+
+            setTimeout(function () {
+                donutChart.load({
+                    columns: [['data', @(Model.PercSuccessfullScheduleJobs)]]
+                });
+            }, 1000);
+
+            var clientsOnlineChart = c3.generate({
+                bindto: '#clientsOnlineChart',
+                data: {
+                    columns: [
+                        ['data', 0.00]
+                    ],
+                    type: 'gauge',
+                    onclick: function (d, i) { console.log("onclick", d, i); },
+                    onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                    onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                },
+                color: {
+                    pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+                    threshold: {
+                        //            unit: 'value', // percentage is default
+                        //            max: 200, // 100 is default
+                        values: [30, 60, 90, 100]
+                    }
+                },
+                size: {
+                    height: 120
+                }
+            });
+
+            setTimeout(function () {
+                clientsOnlineChart.load({
+                    columns: [['data', @(Model.PercClientsOnline)]]
+                });
+            }, 1000);
+
+            var trendChart = c3.generate({
+                bindto: '#trendChart',
+                data: {
+                    x: 'x',
+                    columns: [
+                        ['x', @Html.Raw(string.Join(",", Model.JobCountTrend.Select(x => "'" + x.Key.ToString("yyyy-MM-dd") + "'")))],
+                        ['Jobs Executed', @string.Join(",", Model.JobCountTrend.Select(x => x.Value.ToString()))]
+                    ]
+                },
+                axis: {
+                    x: {
+                        type: 'timeseries',
+                        // if true, treat x value as localtime (Default)
+                        // if false, convert to UTC internally
+                        tick: {
+                            values: [ @Html.Raw(string.Join(",", Model.JobCountTrend.Select(x => "'" + x.Key.ToString("yyyy-MM-dd") + "'")))]
+                        }
+                    },
+                    y: {
+                        tick: {
+                            format: d3.format('d'),
+                            outer: false
+                        }
+                    }
+                },
+                size: {
+                    height: 120
+                }
+            });
+
+            var chart = c3.generate({
+                bindto: '#jobCountByClientChart',
+                data: {
+                    json: [
+                        @{ 
+                            for (int i = 0; i < Model.JobCountGroupedByClient.Count; i++)
+                                {
+                                    var item = Model.JobCountGroupedByClient.ElementAt(i);
+                                    var itemKey = item.Key;
+                                    var itemValue = item.Value;
+                                    var values = "{'name':'" + itemKey + "','value':" + itemValue + "}";
+                                    if (i != Model.JobCountGroupedByClient.Count - 1)
+                                    {
+                                        values = values + ",";
+                                    }
+                                    @Html.Raw(values);
+                                }
+                            }
+                        ]
+                         ,
+                    keys: {
+                        x: 'name',
+                        value: ['value']
+                    },
+                    type : 'bar'
+                },
+                axis: {
+                    rotated: false,         // horizontal bar chart
+                    x: {
+                        type: 'category'   // this needed to load string x value
+                    }
+                },
+                size: {
+                    height: 280
+                }
+            });
+
+        });
+
+    </script>
+
 }
 
 
 <div class="row">
     <div class="col-md-6">
-        <table id="mainTable" class="display">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.JobEngineClients[0].Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.JobEngineClients[0].LastConnected)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.JobEngineClients[0].IpAddress)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.JobEngineClients)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4>Execution Trend</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div style="text-align:center;max-height: 180px;">
+                    <div id='trendChart' style="max-height: 180px; position: relative;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        @if (item.LastConnected == null)
-                {
-                            <td>
-                                <div class="label label-warning" style="font-size:12px;">
-                                    NEVER CONNECTED
-                                </div>
-                            </td>
-                        }
-                        else if (item.LastConnected < DateTime.UtcNow.AddMinutes(-5))
-                        {
-                            <td>
-                                <div class="label label-danger" style="font-size:12px;">
-                                    @Html.DisplayFor(modelItem => item.LastConnected)
-                                </div>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                <div class="label label-success" style="font-size:12px;">
-                                    @Html.DisplayFor(modelItem => item.LastConnected)
-                                </div>
-                            </td>
-                        }
+    <div class="col-md-3">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4>Successfull Jobs</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div style="text-align:center;">
+                    <div id='donutChart' style="max-height: 280px; position: relative;"></div>
 
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IpAddress)
-                        </td>
-                    </tr>
-                }
-            </tbody>
-
-        </table>
-
+                </div>
+                <div style="text-align:center;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4>Clients Online</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div style="text-align:center;">
+                    <div id='clientsOnlineChart' style="max-height: 280px; position: relative;"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<!-- begin BASIC TABLES MAIN ROW -->
+<div class="row">
+
+    <!-- Basic Responsive Table -->
+    <!-- /.col-lg-6 -->
+    <!-- Striped Responsive Table -->
+    <div class="col-lg-6">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4>Engines</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.JobEngineClients[0].Name)</th>
+                                <th>@Html.DisplayNameFor(model => model.JobEngineClients[0].LastConnected)</th>
+                                <th>@Html.DisplayNameFor(model => model.JobEngineClients[0].IpAddress)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.JobEngineClients)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+
+                                    @if (item.LastConnected == null)
+                {
+                                        <td>
+                                            <div class="label label-warning" style="font-size:12px;">
+                                                NEVER CONNECTED
+                                            </div>
+                                        </td>
+                                    }
+                                    else if (item.LastConnected < DateTime.UtcNow.AddMinutes(-5))
+                                    {
+                                        <td>
+                                            <div class="label label-danger" style="font-size:12px;">
+                                                @Html.DisplayFor(modelItem => item.LastConnected)
+                                            </div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <div class="label label-success" style="font-size:12px;">
+                                                @Html.DisplayFor(modelItem => item.LastConnected)
+                                            </div>
+                                        </td>
+                                    }
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IpAddress)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.portlet -->
+    </div>
+    <!-- /.col-lg-6 -->
+
+    <div class="col-md-6">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4>Jobs by Client</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div style="text-align:center;max-height: 270px;">
+                    <div id='jobCountByClientChart' style="max-height: 280px; position: relative;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.row -->

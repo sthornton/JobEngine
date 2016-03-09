@@ -36,7 +36,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="mainTable" class="display" style="text-align:center;">
+<table id="mainTable" class="display">
     <thead>
         <tr>
             <th>
@@ -64,7 +64,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td style="text-align:left">
+                <td>
                     @Html.DisplayFor(modelItem => item.CustomerName)
                 </td>
                 <td>

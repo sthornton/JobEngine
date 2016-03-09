@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR.Client;
+﻿using log4net;
+using Microsoft.AspNet.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace JobEngine.Client
         private string hubName;
         private Guid jobEngineClientId;
         private bool isStopping = false;
+        private static readonly ILog log = LogManager.GetLogger(typeof(RealTimeServerConnection));
 
         public event EventHandler PollRequested;
 
@@ -30,17 +32,23 @@ namespace JobEngine.Client
                 try
                 {
                     Thread.Sleep(5000);
-                    SetupConnection();
+
+                    if (hubConnection == null)
+                        SetupConnection();
+                    else if(hubConnection.State == ConnectionState.Disconnected)
+                        SetupConnection();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    log.Warn(e.Message);
                 }       
             }
         }
 
         private void SetupConnection()
         {
+            log.Info("Establishing real-time connection to server");
+
             hubConnection = new HubConnection(serverUrl);
             hubProxy = hubConnection.CreateHubProxy(hubName);
 
@@ -49,6 +57,9 @@ namespace JobEngine.Client
 
             hubConnection.Closed -= HubConnection_Closed;
             hubConnection.Closed += HubConnection_Closed;
+
+            //hubConnection.TraceLevel = TraceLevels.All;
+            //hubConnection.TraceWriter = Console.Out;
 
             hubProxy.On("sendPollRequest", () =>
             {
@@ -62,16 +73,18 @@ namespace JobEngine.Client
             hubConnection.Start().Wait();
 
             hubProxy.Invoke("AwaitingCommands", jobEngineClientId).Wait();
+
+            log.Info("Successfully established real-time connection to server");
         }
 
         void HubConnection_Closed()
         {
-            Console.WriteLine("Realtime connection closed");
+            log.Warn("Realtime connection has been closed");
         }
 
-        void HubConnection_Error(Exception obj)
+        void HubConnection_Error(Exception ex)
         {
-            Console.WriteLine("Realtime connection error. " + obj.Message);
+            log.Warn("Realtime connection error/s detected.",ex);
         }
 
         public void Disconnect()

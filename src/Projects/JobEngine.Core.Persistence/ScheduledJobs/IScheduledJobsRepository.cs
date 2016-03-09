@@ -14,5 +14,6 @@ namespace JobEngine.Core.Persistence
         Task<int> CreateScheduledJob(ScheduledJob scheduledJob);
         Task UpdateScheduledJob(ScheduledJob scheduledJob);
         Task DeleteScheduledJob(int scheduledJobId);
+        Task<decimal> GetPercentageOfSuccessfullJobs(DateTime startTime, DateTime endTime);
     }
 }

@@ -20,5 +20,9 @@ namespace JobEngine.Core.Persistence
         Task<JobExecutionQueue> GetAsync(long jobExecutionQueueId);
 
         Task<IEnumerable<JobExecutionQueue>> GetScheduledJobsAsync(int scheduledJobId);
+
+        Task<Dictionary<DateTime, int>> GetJobCountTrend(DateTime startDate, DateTime endDate);
+
+        Task<Dictionary<string, int>> GetJobCountGroupedByClient(DateTime startDate, DateTime endDate);
     }
 }

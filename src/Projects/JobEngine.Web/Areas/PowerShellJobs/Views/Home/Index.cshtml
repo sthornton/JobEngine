@@ -10,12 +10,6 @@
 {
     <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
-
-    <style>
-        th {
-            text-align: center;
-        }
-    </style>
 }
 
 @section scripts
@@ -33,7 +27,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="mainTable" class="display" style="text-align:center;">
+<table id="mainTable" class="display">
     <thead>
     <tr>
         <th>
@@ -41,10 +35,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Script)
-        </th>
+        </th>       
         <th>
             @Html.DisplayNameFor(model => model.DateModified)
         </th>
@@ -67,10 +58,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Script)
-                </td>
+                </td>               
                 <td>
                     @Html.DisplayFor(modelItem => item.DateModified)
                 </td>

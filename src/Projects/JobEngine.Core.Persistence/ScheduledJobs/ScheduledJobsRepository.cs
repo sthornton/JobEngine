@@ -179,5 +179,34 @@ namespace JobEngine.Core.Persistence
             }
             return result;  
         }
+
+        public async Task<decimal> GetPercentageOfSuccessfullJobs(DateTime startTime, DateTime endTime)
+        {
+            decimal result;
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                var job = await conn.QueryAsync<decimal?>(@"SELECT ISNULL(ROUND((
+			                                                            SELECT SUM(CASE 
+							                                                            WHEN JobExecutionStatus = 3
+								                                                            THEN 1
+							                                                            ELSE 0
+							                                                            END)
+			                                                            FROM [JobExecutionQueue]
+			                                                            WHERE DateExecutionCompleted > @StartDate
+				                                                            AND DateExecutionCompleted < @EndDate
+			                                                            ) * 100.0 / COUNT(JobExecutionQueueId), 3),0)
+                                                            FROM [JobExecutionQueue]
+                                                            WHERE DateExecutionCompleted > @StartDate
+	                                                            AND DateExecutionCompleted < @EndDate",
+                                            new
+                                            {
+                                                @StartDate = startTime,
+                                                @EndDate = endTime
+                                            });
+                result = job != null && job.Single().HasValue ? job.FirstOrDefault().Value : 0;
+            }
+            return result;
+        }
     }
 }

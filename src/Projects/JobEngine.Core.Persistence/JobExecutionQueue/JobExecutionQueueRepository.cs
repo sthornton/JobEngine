@@ -203,6 +203,49 @@ namespace JobEngine.Core.Persistence
 
             }
             return results;
-        }       
+        }
+
+        public async Task<Dictionary<DateTime, int>> GetJobCountTrend(DateTime startDate, DateTime endDate)
+        {
+            Dictionary<DateTime, int> result = new Dictionary<DateTime, int>();
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                var results = await conn.QueryAsync(@"SELECT FullDate,
+	                                   (SELECT COUNT(JobExecutionQueueId)
+	                                    FROM JobExecutionQueue
+		                                WHERE CAST(FLOOR(CAST(DateExecutionCompleted as float)) as datetime) = FullDate) as Cnt
+                                  FROM [DateDimension]
+                                  where FullDate >  @StartDate 
+                                  AND FullDate < @EndDate
+                                  order by FullDate",
+                                            new { @StartDate = startDate,@EndDate = endDate });
+                foreach (var val in results)
+                {
+                    result.Add(val.FullDate, val.Cnt);
+                }
+            }
+            return result;
+        }
+
+        public async Task<Dictionary<string, int>> GetJobCountGroupedByClient(DateTime startDate, DateTime endDate)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            using (SqlConnection conn = new SqlConnection(this.connectionString))
+            {
+                conn.Open();
+                var results = await conn.QueryAsync(@"SELECT JobEngineClients.Name
+	                                    ,COUNT(JobExecutionQueue.JobExecutionQueueId) AS Cnt
+                                    FROM [JobExecutionQueue]
+                                    INNER JOIN JobEngineClients ON JobEngineClients.JobEngineClientId = JobExecutionQueue.JobEngineClientId
+                                    GROUP BY JobEngineClients.NAME",
+                                            new { @StartDate = startDate, @EndDate = endDate });
+                foreach (var val in results)
+                {
+                    result.Add(val.Name, val.Cnt);
+                }
+            }
+            return result;
+        }
     }
 }

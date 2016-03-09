@@ -1,0 +1,18 @@
+﻿@section styles
+{
+    <link href="~/Content/jquery-cron.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-cron-min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#selector').cron(); // apply cron with default options
+        });
+    </script>
+    <!--- somewhere within <body> -->
+    
+}
+
+<div id='selector'></div>

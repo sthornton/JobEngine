@@ -57,9 +57,9 @@ namespace JobEngine.Client
                 realTimeConnection.PollRequested += RealTimeConnection_PollRequested;
                 realTimeConnection.Connect(Settings.RealTimeUrl, Settings.RealTimeHubName, Settings.JobEngineClientId);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                log.Error(e);
             }
         }
 

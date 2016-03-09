@@ -8,6 +8,7 @@ using JobEngine.Web.Areas.PowerShellJobs.Models;
 using JobEngine.Web.Areas.ScheduledJobs.Models;
 using JobEngine.Web.Areas.SiteManagement.Models;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace JobEngine.Web
@@ -19,6 +20,7 @@ namespace JobEngine.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             UnityWebActivator.Start();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Mapper.CreateMap<AssemblyJobParameter, AssemblyJobParameterViewModel>();
             Mapper.CreateMap<AssemblyJob, AssemblyJobViewModel>();

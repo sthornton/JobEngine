@@ -20,10 +20,8 @@
         $(document).ready(function () {
             $("#mainTable").DataTable({ bFilter: false, bInfo: false, bLengthChange: false });
 
-
-
-            var donutChart = c3.generate({
-                bindto: '#donutChart',
+            var successfulJobsChart = c3.generate({
+                bindto: '#successfulJobsChart',
                 data: {
                     columns: [
                         ['data', 0.00]
@@ -32,18 +30,6 @@
                     onclick: function (d, i) { console.log("onclick", d, i); },
                     onmouseover: function (d, i) { console.log("onmouseover", d, i); },
                     onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-                },
-                gauge: {
-                    //        label: {
-                    //            format: function(value, ratio) {
-                    //                return value;
-                    //            },
-                    //            show: false // to turn off the min/max labels.
-                    //        },
-                    //    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-                    //    max: 100, // 100 is default
-                    //    units: ' %',
-                    //    width: 39 // for adjusting arc thickness
                 },
                 color: {
                     pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
@@ -59,7 +45,7 @@
             });
 
             setTimeout(function () {
-                donutChart.load({
+                successfulJobsChart.load({
                     columns: [['data', @(Model.PercSuccessfullScheduleJobs)]]
                 });
             }, 1000);
@@ -103,6 +89,12 @@
                         ['Jobs Executed', @string.Join(",", Model.JobCountTrend.Select(x => x.Value.ToString()))]
                     ]
                 },
+                color: {
+                    pattern: ['#ff7f0e']
+                },
+                legend: {
+                    show: false
+                },
                 axis: {
                     x: {
                         type: 'timeseries',
@@ -115,7 +107,10 @@
                     y: {
                         tick: {
                             format: d3.format('d'),
-                            outer: false
+                            outer: false,
+                            ticket: {
+                                multiline: false
+                            }
                         }
                     }
                 },
@@ -195,7 +190,7 @@
             </div>
             <div class="portlet-body">
                 <div style="text-align:center;">
-                    <div id='donutChart' style="max-height: 280px; position: relative;"></div>
+                    <div id='successfulJobsChart' style="max-height: 280px; position: relative;"></div>
 
                 </div>
                 <div style="text-align:center;">

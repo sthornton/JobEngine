@@ -105,7 +105,13 @@ a:focus {
 
 /* -- Text Color Helper Classes */
 
- .text-dark-blue {
+.text {
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    font-size: 13px;
+}
+
+.text-dark-blue {
     color: #34495e;
 }
 
